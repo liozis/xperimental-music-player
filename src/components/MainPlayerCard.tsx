@@ -12,6 +12,7 @@ interface MainPlayerCardProps {
   onSeek: (v: number) => void;
   onToggleShuffle: () => void;
   onToggleRepeat: () => void;
+  className?: string;
 }
 
 export function MainPlayerCard({
@@ -26,6 +27,7 @@ export function MainPlayerCard({
   onSeek,
   onToggleShuffle,
   onToggleRepeat,
+  className = '',
 }: MainPlayerCardProps) {
   function parseDuration(d: string): number {
     const [m, s] = d.split(':').map(Number);
@@ -37,7 +39,7 @@ export function MainPlayerCard({
 
   return (
     <div
-      className="bg-surface border border-border shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
+      className={`bg-surface border border-border shadow-[0_4px_20px_rgba(0,0,0,0.6)] flex flex-col ${className}`}
       style={{ borderRadius: 'var(--radius-card)' }}
     >
       {/* Card label bar */}
@@ -69,7 +71,7 @@ export function MainPlayerCard({
       <div
         id="visualizer-container"
         aria-label="Audio Visualizer"
-        className="mx-3 mt-3 h-[52px] border border-dashed border-border bg-bg/60 flex items-center justify-center"
+        className="mx-3 mt-3 flex-1 min-h-[80px] border border-dashed border-border bg-bg/60 flex items-center justify-center"
         style={{ borderRadius: 'var(--radius-card)' }}
       >
         <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-textSecondary/40 select-none">

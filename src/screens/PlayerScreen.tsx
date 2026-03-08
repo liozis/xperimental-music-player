@@ -76,10 +76,10 @@ export function PlayerScreen() {
         </button>
       </div>
 
-      {/* ── Three-card vertical stack ─────────────────────────── */}
-      <div className="flex-1 overflow-y-auto scroll-y px-3 pb-4 flex flex-col gap-3">
+      {/* ── Three-card vertical stack — fills remaining height exactly ── */}
+      <div className="flex-1 min-h-0 overflow-hidden px-3 pb-4 flex flex-col gap-3">
 
-        {/* CARD 1 — Main Player (cover art, visualizer, controls) */}
+        {/* CARD 1 — Main Player: flex-1 so its visualizer fills dead space */}
         <MainPlayerCard
           currentTrack={currentTrack}
           isPlaying={isPlaying}
@@ -92,6 +92,7 @@ export function PlayerScreen() {
           onSeek={setProgress}
           onToggleShuffle={() => setShuffle(s => !s)}
           onToggleRepeat={() => setRepeat(r => !r)}
+          className="flex-1 min-h-0"
         />
 
         {/* CARD 2 — Equalizer */}

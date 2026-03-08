@@ -20,10 +20,9 @@ function HorizontalSection({ title, tracks }: SectionProps) {
       <h2 className="text-base font-display text-textSecondary px-4 mb-4 tracking-widest uppercase">
         {title}
       </h2>
-      <div className="scroll-x flex gap-4">
-        {/* 16px leading spacer — more reliable than padding-left on overflow containers */}
-        <div className="w-4 flex-shrink-0" aria-hidden="true" />
+      <div className="scroll-x flex gap-4 pl-4">
         {tracks.map(t => <TrackCard key={t.id} track={t} />)}
+        {/* 16px trailing spacer only — pl-4 handles the left side precisely */}
         <div className="w-4 flex-shrink-0" aria-hidden="true" />
       </div>
     </section>

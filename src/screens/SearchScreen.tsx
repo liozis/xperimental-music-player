@@ -12,41 +12,13 @@ const RECENT_SEARCHES = [
 ];
 
 const POPULAR_TILES = [
-  { id: 'p1', label: 'Electronic', img: ARTISTS[1].imageUrl, accent: '#1e3a5f' },
-  { id: 'p2', label: 'Trip Hop',   img: ARTISTS[2].imageUrl, accent: '#1b3a2f' },
-  { id: 'p3', label: 'Ambient',    img: ARTISTS[3].imageUrl, accent: '#2a1a40' },
-  { id: 'p4', label: 'Soundscape', img: ARTISTS[4].imageUrl, accent: '#3a1a1a' },
-  { id: 'p5', label: 'Dance',      img: ARTISTS[5].imageUrl, accent: '#1a2a3a' },
-  { id: 'p6', label: 'Downtempo',  img: ARTISTS[6].imageUrl, accent: '#1a3a2a' },
+  { id: 'p1', label: 'Electronic', img: ARTISTS[1].imageUrl },
+  { id: 'p2', label: 'Trip Hop',   img: ARTISTS[2].imageUrl },
+  { id: 'p3', label: 'Ambient',    img: ARTISTS[3].imageUrl },
+  { id: 'p4', label: 'Soundscape', img: ARTISTS[4].imageUrl },
+  { id: 'p5', label: 'Dance',      img: ARTISTS[5].imageUrl },
+  { id: 'p6', label: 'Downtempo',  img: ARTISTS[6].imageUrl },
 ];
-
-function TrackTypeIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
-    </svg>
-  );
-}
-function ArtistTypeIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-      <circle cx="12" cy="7" r="4"/>
-    </svg>
-  );
-}
-function PlaylistTypeIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
-      <line x1="8" y1="18" x2="21" y2="18"/>
-      <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/>
-      <line x1="3" y1="18" x2="3.01" y2="18"/>
-    </svg>
-  );
-}
-
-const TYPE_ICON = { track: TrackTypeIcon, artist: ArtistTypeIcon, playlist: PlaylistTypeIcon } as const;
 
 export function SearchScreen() {
   const [query, setQuery] = useState('');
@@ -105,41 +77,37 @@ export function SearchScreen() {
       {/* ── Browse mode ────────────────────────────────────── */}
       {showBrowse && (
         <>
-          {/* Recent Searches */}
+          {/* Recent Searches — no trailing icons */}
           <section className="mb-6">
             <h2 className="text-[10px] font-mono uppercase tracking-widest text-textSecondary px-4 mb-1">
               Recent Searches
             </h2>
-            {RECENT_SEARCHES.map(item => {
-              const Icon = TYPE_ICON[item.type];
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    if (item.type === 'track') {
-                      const track = TRACKS.find(t => t.title === item.label);
-                      if (track) { play(track); navigate('/player'); }
-                    }
-                  }}
-                  className="flex items-center gap-3 w-full px-4 py-2.5 active:opacity-70 transition-opacity"
-                >
-                  <img
-                    src={item.img}
-                    alt={item.label}
-                    className="w-11 h-11 object-cover flex-shrink-0"
-                    style={{ borderRadius: item.round ? '50%' : 'var(--radius-card)' }}
-                  />
-                  <div className="flex-1 text-left min-w-0">
-                    <p className="text-sm text-textPrimary font-body truncate">{item.label}</p>
-                    <p className="text-xs text-textSecondary truncate capitalize">{item.sub}</p>
-                  </div>
-                  <span className="text-textSecondary/50 flex-shrink-0"><Icon /></span>
-                </button>
-              );
-            })}
+            {RECENT_SEARCHES.map(item => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  if (item.type === 'track') {
+                    const track = TRACKS.find(t => t.title === item.label);
+                    if (track) { play(track); navigate('/player'); }
+                  }
+                }}
+                className="flex items-center gap-3 w-full px-4 py-2.5 active:opacity-70 transition-opacity"
+              >
+                <img
+                  src={item.img}
+                  alt={item.label}
+                  className="w-11 h-11 object-cover flex-shrink-0"
+                  style={{ borderRadius: item.round ? '50%' : 'var(--radius-card)' }}
+                />
+                <div className="flex-1 text-left min-w-0">
+                  <p className="text-sm text-textPrimary font-body truncate">{item.label}</p>
+                  <p className="text-xs text-textSecondary truncate capitalize">{item.sub}</p>
+                </div>
+              </button>
+            ))}
           </section>
 
-          {/* Popular */}
+          {/* Popular — uniform bg-surface color, adapts to active skin */}
           <section className="px-4">
             <h2 className="text-[10px] font-mono uppercase tracking-widest text-textSecondary mb-3">
               Popular
@@ -149,7 +117,7 @@ export function SearchScreen() {
                 <div
                   key={tile.id}
                   className="relative overflow-hidden h-20 flex items-end"
-                  style={{ borderRadius: 'var(--radius-card)', background: tile.accent }}
+                  style={{ borderRadius: 'var(--radius-card)', background: 'var(--color-surface)' }}
                 >
                   <img
                     src={tile.img}
@@ -157,7 +125,7 @@ export function SearchScreen() {
                     className="absolute bottom-0 right-0 w-16 h-16 object-cover opacity-50"
                     style={{ transform: 'rotate(12deg) translate(4px, 4px)' }}
                   />
-                  <span className="relative z-10 text-sm font-display text-white px-3 pb-2.5 leading-tight drop-shadow">
+                  <span className="relative z-10 text-sm font-display text-textPrimary px-3 pb-2.5 leading-tight">
                     {tile.label}
                   </span>
                 </div>

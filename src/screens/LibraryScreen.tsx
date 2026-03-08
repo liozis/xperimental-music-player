@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import { ALBUMS, TRACKS, PLAYLISTS, ARTISTS, DOWNLOADED_ITEMS } from '../data/mockData';
+
+// Map DOWNLOADED_ITEMS to real artwork from ALBUMS (which has Deezer/iTunes URLs)
+const downloadedWithArt = DOWNLOADED_ITEMS.map(item => ({
+  ...item,
+  coverUrl: ALBUMS.find(a => a.title.toLowerCase() === item.title.toLowerCase())?.coverUrl ?? item.coverUrl,
+}));
 import { TrackRow } from '../components/TrackRow';
 import { usePlayer } from '../context/PlayerContext';
 import { useNavigate } from 'react-router-dom';
@@ -115,7 +121,7 @@ export function LibraryScreen() {
       {/* ---- Downloaded Tab (Upgrade 8): 2-column grid ---- */}
       {active === 'Downloaded' && (
         <div className="grid grid-cols-2 gap-4 px-4">
-          {DOWNLOADED_ITEMS.map(item => (
+          {downloadedWithArt.map(item => (
             <button
               key={item.id}
               onClick={() => { play(TRACKS[0]); navigate('/player'); }}

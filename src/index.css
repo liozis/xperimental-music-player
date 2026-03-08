@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech+Mono&family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&family=UnifrakturMaguntia&family=Special+Elite&family=Courier+Prime&family=Exo+2:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   SKIN 1: CASSETTE FUTURISM
+   ============================================================ */
+:root,
+[data-skin="cassette"] {
+  --color-bg:             #0f0e0c;
+  --color-surface:        #1e1c18;
+  --color-border:         #2e2b24;
+  --color-accent:         #ff6a00;
+  --color-accent2:        #ffaa33;
+  --color-text-primary:   #e8dfc8;
+  --color-text-secondary: #6a6050;
+
+  --font-display: 'Electrolize', monospace;
+  --font-body:    'Share Tech Mono', monospace;
+  --font-mono:    'Share Tech Mono', monospace;
+
+  --radius-card:  2px;
+  --radius-btn:   1px;
+  --visualizer-style: 'bars';
+}
+
+/* ============================================================
+   SKIN 2: ACIDGRAFIX
+   ============================================================ */
+[data-skin="acidgrafix"] {
+  --color-bg:             #000000;
+  --color-surface:        #080808;
+  --color-border:         #00ff41;
+  --color-accent:         #00ff41;
+  --color-accent2:        #ff2d78;
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: #00cc33;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Barlow Condensed', sans-serif;
+  --font-mono:    'Share Tech Mono', monospace;
+
+  --radius-card:  0px;
+  --radius-btn:   0px;
+  --visualizer-style: 'peaks';
+}
+
+/* ============================================================
+   SKIN 3: METALHEART
+   ============================================================ */
+[data-skin="metalheart"] {
+  --color-bg:             #050508;
+  --color-surface:        #0d0d18;
+  --color-border:         #2a2a4a;
+  --color-accent:         #4fc3f7;
+  --color-accent2:        #b0bec5;
+  --color-text-primary:   #dde8f0;
+  --color-text-secondary: #607080;
+
+  --font-display: 'Orbitron', sans-serif;
+  --font-body:    'Rajdhani', sans-serif;
+  --font-mono:    'Share Tech Mono', monospace;
+
+  --radius-card:  6px;
+  --radius-btn:   999px;
+  --visualizer-style: 'wave';
+}
+
+/* ============================================================
+   SKIN 4: FUTURE MEDIEVAL
+   ============================================================ */
+[data-skin="medieval"] {
+  --color-bg:             #0a0c08;
+  --color-surface:        #161a10;
+  --color-border:         #8b6914;
+  --color-accent:         #cc1100;
+  --color-accent2:        #d4a017;
+  --color-text-primary:   #f0e8d0;
+  --color-text-secondary: #b8a878;
+
+  --font-display: 'UnifrakturMaguntia', cursive;
+  --font-body:    'Special Elite', cursive;
+  --font-mono:    'Courier Prime', monospace;
+
+  --radius-card:  0px;
+  --radius-btn:   0px;
+  --visualizer-style: 'radial';
+}
+
+/* ============================================================
+   BASE RESET
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  overscroll-behavior: none;
+}
+
+/* Scrollable containers */
+.scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+}
+.scroll-x::-webkit-scrollbar { display: none; }
+.scroll-x > * {
+  scroll-snap-align: start;
+}
+
+.scroll-y {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scroll-y::-webkit-scrollbar { display: none; }
+
+/* ============================================================
+   MARQUEE ANIMATION (Upgrade 5)
+   ============================================================ */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-text {
+  display: inline-block;
+  padding-right: 2em;
+  animation: marquee 8s linear infinite;
+}
+
+/* ============================================================
+   EQ SLIDER STYLING (Upgrade 13)
+   ============================================================ */
+input[type="range"].eq-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  height: 80px;
+  width: 24px;
+}
+
+input[type="range"].eq-slider::-webkit-slider-runnable-track {
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  width: 4px;
+}
+
+input[type="range"].eq-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  margin-left: -5px;
+}
+
+input[type="range"].eq-slider::-moz-range-track {
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  width: 4px;
+}
+
+input[type="range"].eq-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: none;
+}

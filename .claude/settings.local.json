@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(export PATH=\"/usr/local/bin:/opt/homebrew/bin:$HOME/.nvm/versions/node/*/bin:$HOME/.volta/bin:$HOME/.fnm/aliases/default/bin:$PATH\")",
+      "Bash(node --version)",
+      "Bash(npm --version)",
+      "Bash(mdfind \"kMDItemFSName == ''node''\")",
+      "Bash(source ~/.zshrc)",
+      "Bash(source ~/.bashrc)",
+      "Bash(source ~/.bash_profile)",
+      "Bash(source ~/.zprofile)",
+      "Bash(echo \"PATH=$PATH\")",
+      "Bash(curl -fsSL https://fnm.vercel.app/install)",
+      "Bash(bash)",
+      "Bash(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(\"/Users/idilozis/Desktop/Modern Winamp/start-dev.sh\":*)",
+      "Bash(chmod +x \"/Users/idilozis/Desktop/Modern Winamp/start-dev.sh\")",
+      "Bash(ln -sf /Users/idilozis/.nvm/versions/node/v24.14.0/bin/node /Users/idilozis/.local/bin/node)",
+      "Bash(ln -sf /Users/idilozis/.nvm/versions/node/v24.14.0/bin/npm /Users/idilozis/.local/bin/npm)",
+      "Bash(ln -sf /Users/idilozis/.nvm/versions/node/v24.14.0/bin/npx /Users/idilozis/.local/bin/npx)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx vite build)",
+      "Bash(git init)",
+      "Bash(git add -A)",
+      "Bash(git commit:*)"
+    ]
+  }
+}

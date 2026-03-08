@@ -1,7 +1,6 @@
 import type { Track } from '../data/mockData';
 import { usePlayer } from '../context/PlayerContext';
 import { useNavigate } from 'react-router-dom';
-import { MarqueeText } from './MarqueeText';
 
 export function TrackCard({ track }: { track: Track }) {
   const { play } = usePlayer();
@@ -18,7 +17,7 @@ export function TrackCard({ track }: { track: Track }) {
         className="w-[140px] h-[140px] rounded-card object-cover"
       />
       <div className="text-left w-full overflow-hidden">
-        <MarqueeText text={track.title} className="text-xs font-body text-textPrimary" />
+        <p className="text-xs font-body text-textPrimary truncate">{track.title}</p>
         <p className="text-xs text-textSecondary truncate">{track.artist}</p>
       </div>
     </button>

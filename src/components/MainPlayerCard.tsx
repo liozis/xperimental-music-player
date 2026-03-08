@@ -27,7 +27,13 @@ export function MainPlayerCard({
   onToggleShuffle,
   onToggleRepeat,
 }: MainPlayerCardProps) {
-  const elapsed = `${String(Math.floor((progress / 100) * 4)).padStart(1, '0')}:${String(Math.floor(((progress / 100) * 4 * 60) % 60)).padStart(2, '0')}`;
+  function parseDuration(d: string): number {
+    const [m, s] = d.split(':').map(Number);
+    return (m || 0) * 60 + (s || 0);
+  }
+  const totalSecs  = parseDuration(currentTrack.duration);
+  const elapsedSec = Math.floor((progress / 100) * totalSecs);
+  const elapsed = `${Math.floor(elapsedSec / 60)}:${String(elapsedSec % 60).padStart(2, '0')}`;
 
   return (
     <div
@@ -56,7 +62,6 @@ export function MainPlayerCard({
             {currentTrack.title}
           </h2>
           <p className="text-sm text-textSecondary font-body truncate">{currentTrack.artist}</p>
-          <p className="text-xs text-textSecondary font-mono mt-0.5 truncate">{currentTrack.album}</p>
         </div>
       </div>
 

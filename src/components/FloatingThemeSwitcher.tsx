@@ -15,7 +15,7 @@ export function FloatingThemeSwitcher() {
   const current = SKIN_META.find(s => s.id === skin) ?? SKIN_META[0];
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[9999]">
+    <div className="fixed top-1/2 -translate-y-1/2 z-[9999]" style={{ left: 'calc(50% + 230px)' }}>
       {/* Toggle pill */}
       <button
         onClick={() => setOpen(o => !o)}

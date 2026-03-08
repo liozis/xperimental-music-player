@@ -17,8 +17,20 @@ export function PlayerScreen() {
   const [repeat, setRepeat]   = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
+  // Slide-in on mount
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setVisible(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   // Reset like when track changes
   useEffect(() => { setIsLiked(false); }, [currentTrack?.id]);
+
+  const dismiss = () => {
+    setVisible(false);
+    setTimeout(() => navigate(-1), 300);
+  };
 
   if (!currentTrack) return null;
 
@@ -30,16 +42,23 @@ export function PlayerScreen() {
   });
 
   return (
-    <div className="absolute inset-0 bg-bg z-50 flex flex-col overflow-hidden">
+    <div
+      className="absolute inset-0 bg-bg z-50 flex flex-col overflow-hidden"
+      style={{
+        transform: visible ? 'translateY(0)' : 'translateY(100%)',
+        transition: 'transform 0.32s cubic-bezier(0.4, 0, 0.2, 1)',
+      }}
+    >
 
-      {/* ── Screen chrome: back + title + like ───────────────── */}
+      {/* ── Screen chrome: dismiss + title + like ────────────── */}
       <div className="flex items-center justify-between px-4 pt-6 pb-3 flex-shrink-0">
         <button
-          onClick={() => navigate(-1)}
+          onClick={dismiss}
           className="text-textSecondary active:text-accent min-w-[44px] min-h-[44px] flex items-center justify-center -ml-2"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <polyline points="15,18 9,12 15,6"/>
+          {/* Down chevron — mimics Spotify dismiss gesture */}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6,9 12,15 18,9"/>
           </svg>
         </button>
 

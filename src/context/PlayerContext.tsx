@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useRef, ReactNode } from 'react';
+import { createContext, useContext, useState, useRef, useEffect, ReactNode } from 'react';
 import type { Track } from '../data/mockData';
 import { TRACKS } from '../data/mockData';
 
@@ -38,6 +38,19 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     const nextTrack = queue[(idx + 1) % queue.length];
     play(nextTrack);
   };
+
+  // ── Simulated playback: increment progress second-by-second ──
+  useEffect(() => {
+    if (!isPlaying || !currentTrack) return;
+    const [m, s] = currentTrack.duration.split(':').map(Number);
+    const totalSecs = (m || 0) * 60 + (s || 0);
+    if (totalSecs <= 0) return;
+    const increment = 100 / totalSecs;
+    const id = setInterval(() => {
+      setProgress(p => Math.min(p + increment, 100));
+    }, 1000);
+    return () => clearInterval(id);
+  }, [isPlaying, currentTrack?.id]);
 
   const prev = () => {
     if (!currentTrack) return;

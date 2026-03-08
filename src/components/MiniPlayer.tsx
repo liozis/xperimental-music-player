@@ -1,5 +1,6 @@
 import { usePlayer } from '../context/PlayerContext';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { MarqueeText } from './MarqueeText';
 
 export function MiniPlayer() {
   const { currentTrack, isPlaying, togglePlay } = usePlayer();
@@ -17,9 +18,9 @@ export function MiniPlayer() {
             alt={currentTrack.title}
             className="w-9 h-9 rounded object-cover flex-shrink-0"
           />
-          <div className="text-left min-w-0">
-            <p className="text-sm text-textPrimary truncate font-body">{currentTrack.title}</p>
-            <p className="text-xs text-textSecondary truncate">{currentTrack.artist}</p>
+          <div className="text-left min-w-0 overflow-hidden">
+            <MarqueeText text={currentTrack.title} className="text-sm text-textPrimary font-body" threshold={22} />
+            <MarqueeText text={currentTrack.artist} className="text-xs text-textSecondary" threshold={28} />
           </div>
         </button>
         <button onClick={togglePlay} className="text-accent min-w-[44px] min-h-[44px] flex items-center justify-center active:opacity-70">

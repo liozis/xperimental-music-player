@@ -16,11 +16,11 @@ interface SectionProps {
 
 function HorizontalSection({ title, tracks }: SectionProps) {
   return (
-    <section className="mb-6">
-      <h2 className="text-sm font-display text-textSecondary px-4 mb-3 tracking-widest uppercase">
+    <section className="mb-8">
+      <h2 className="text-base font-display text-textSecondary px-4 mb-4 tracking-widest uppercase">
         {title}
       </h2>
-      <div className="scroll-x flex gap-3 px-4">
+      <div className="scroll-x flex gap-4 px-4">
         {tracks.map(t => <TrackCard key={t.id} track={t} />)}
       </div>
     </section>

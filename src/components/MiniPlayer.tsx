@@ -22,7 +22,7 @@ export function MiniPlayer() {
             <p className="text-xs text-textSecondary truncate">{currentTrack.artist}</p>
           </div>
         </button>
-        <button onClick={togglePlay} className="text-accent p-2 active:opacity-70">
+        <button onClick={togglePlay} className="text-accent min-w-[44px] min-h-[44px] flex items-center justify-center active:opacity-70">
           {isPlaying ? <PauseIcon /> : <PlayIcon />}
         </button>
       </div>

@@ -51,20 +51,18 @@ export function LibraryScreen() {
         ))}
       </div>
 
-      {/* ---- Playlists Tab (Upgrade 6) ---- */}
+      {/* ---- Playlists Tab (2-column grid) ---- */}
       {active === 'Playlists' && (
-        <div>
+        <div className="grid grid-cols-2 gap-4 px-4">
           {PLAYLISTS.map(pl => (
             <button
               key={pl.id}
               onClick={() => { play(TRACKS[0]); navigate('/player'); }}
-              className="flex items-center gap-3 w-full px-4 py-3 active:opacity-70 transition-opacity"
+              className="active:opacity-70 transition-opacity text-left"
             >
-              <img src={pl.coverUrl} alt={pl.name} className="w-[52px] h-[52px] rounded object-cover flex-shrink-0" />
-              <div className="text-left min-w-0">
-                <p className="text-sm text-textPrimary font-body font-bold truncate">{pl.name}</p>
-                <p className="text-xs text-textSecondary">{pl.trackCount} tracks</p>
-              </div>
+              <img src={pl.coverUrl} alt={pl.name} className="aspect-square rounded-lg object-cover w-full" />
+              <p className="text-sm text-textPrimary font-body font-bold mt-2 truncate">{pl.name}</p>
+              <p className="text-xs text-textSecondary">{pl.trackCount} tracks</p>
             </button>
           ))}
         </div>
@@ -116,7 +114,7 @@ export function LibraryScreen() {
 
       {/* ---- Downloaded Tab (Upgrade 8): 2-column grid ---- */}
       {active === 'Downloaded' && (
-        <div className="grid grid-cols-2 gap-3 p-4">
+        <div className="grid grid-cols-2 gap-4 px-4">
           {DOWNLOADED_ITEMS.map(item => (
             <button
               key={item.id}

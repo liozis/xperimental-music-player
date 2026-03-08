@@ -1,6 +1,6 @@
 import { usePlayer } from '../context/PlayerContext';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TRACKS } from '../data/mockData';
 
 const EQ_BANDS = [
@@ -19,8 +19,18 @@ export function PlayerScreen() {
   });
   const [shuffle, setShuffle] = useState(false);
   const [repeat, setRepeat] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  // Reset like state when track changes
+  useEffect(() => { setIsLiked(false); }, [currentTrack?.id]);
 
   if (!currentTrack) return null;
+
+  // Convert EQ 0-100 to dB string (-12 to +12)
+  const toDB = (v: number) => {
+    const db = ((v / 100) * 24 - 12).toFixed(0);
+    return Number(db) > 0 ? `+${db}` : db;
+  };
 
   // Up Next: next 4 tracks wrapping around
   const currentIdx = queue.findIndex(t => t.id === currentTrack.id);
@@ -39,8 +49,11 @@ export function PlayerScreen() {
           </svg>
         </button>
         <p className="text-xs font-mono text-textSecondary tracking-widest uppercase">Now Playing</p>
-        <button className="text-textSecondary active:text-accent p-2 -mr-2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <button
+          onClick={() => setIsLiked(l => !l)}
+          className={`p-2 -mr-2 transition-colors ${isLiked ? 'text-accent' : 'text-textSecondary active:text-accent'}`}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill={isLiked ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
         </button>
@@ -63,7 +76,7 @@ export function PlayerScreen() {
       </div>
 
       {/* Progress Bar */}
-      <div className="px-4 mt-3 flex-shrink-0">
+      <div className="px-4 mt-4 flex-shrink-0">
         <input
           type="range" min={0} max={100} value={progress}
           onChange={e => setProgress(Number(e.target.value))}
@@ -112,14 +125,12 @@ export function PlayerScreen() {
         </button>
       </div>
 
-      {/* EQ with frequency curve placeholder */}
-      <div className="px-4 mt-3 flex-shrink-0">
-        <div id="freq-curve-panel" className="w-full h-[60px] rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-2">
-          <span className="text-xs text-white/20">Frequency Response</span>
-        </div>
+      {/* Interactive EQ with dB readout */}
+      <div className="px-4 mt-4 flex-shrink-0">
         <div className="flex justify-between gap-1">
           {EQ_BANDS.map(band => (
             <div key={band.id} className="flex flex-col items-center gap-1 flex-1">
+              <span className="text-[10px] font-mono text-accent tabular-nums">{toDB(eqValues[band.id])}dB</span>
               <input
                 type="range" min={0} max={100}
                 id={band.id} name={band.id}
@@ -134,7 +145,7 @@ export function PlayerScreen() {
       </div>
 
       {/* Up Next queue */}
-      <div className="flex-1 flex flex-col px-4 mt-3 min-h-0">
+      <div className="flex-1 flex flex-col px-4 mt-4 min-h-0">
         <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-2 flex-shrink-0">
           Up Next
         </p>

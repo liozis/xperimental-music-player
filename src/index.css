@@ -120,17 +120,32 @@ body {
   scroll-snap-type: x mandatory;
 }
 .scroll-x::-webkit-scrollbar { display: none; }
-.scroll-x > * {
+/* Exclude aria-hidden spacer divs from snap so they don't create bogus snap targets */
+.scroll-x > *:not([aria-hidden]) {
   scroll-snap-align: start;
 }
 
 .scroll-y {
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  /* Firefox: thin scrollbar with skin-adaptive accent color */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
 }
-.scroll-y::-webkit-scrollbar { display: none; }
+
+/* WebKit: custom scrollbar with thick stroke border for a floating stroked look */
+.scroll-y::-webkit-scrollbar {
+  width: 14px;
+}
+.scroll-y::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-y::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border: 5px solid var(--color-bg);
+  border-radius: 999px;
+  background-clip: padding-box;
+}
 
 /* ============================================================
    MARQUEE ANIMATION (Upgrade 5)

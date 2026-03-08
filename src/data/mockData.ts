@@ -39,81 +39,78 @@ export interface Album {
 
 // ---------- ARTISTS (alphabetical) ----------
 export const ARTISTS: Artist[] = [
-  { id: 'ar1',  name: 'Chromatic',     imageUrl: 'https://picsum.photos/seed/chromatic/200/200',     trackCount: 5 },
-  { id: 'ar2',  name: 'Dissolve',      imageUrl: 'https://picsum.photos/seed/dissolve/200/200',      trackCount: 7 },
-  { id: 'ar3',  name: 'Echo Chamber',  imageUrl: 'https://picsum.photos/seed/echo-chamber/200/200',  trackCount: 4 },
-  { id: 'ar4',  name: 'Glass Phantom', imageUrl: 'https://picsum.photos/seed/glass-phantom/200/200', trackCount: 6 },
-  { id: 'ar5',  name: 'Neon Veil',     imageUrl: 'https://picsum.photos/seed/neon-veil/200/200',     trackCount: 8 },
-  { id: 'ar6',  name: 'Null Set',      imageUrl: 'https://picsum.photos/seed/null-set/200/200',      trackCount: 3 },
-  { id: 'ar7',  name: 'Obsidian Wave', imageUrl: 'https://picsum.photos/seed/obsidian-wave/200/200', trackCount: 5 },
-  { id: 'ar8',  name: 'Phase Drift',   imageUrl: 'https://picsum.photos/seed/phase-drift/200/200',   trackCount: 4 },
-  { id: 'ar9',  name: 'Prisma',        imageUrl: 'https://picsum.photos/seed/prisma/200/200',        trackCount: 6 },
-  { id: 'ar10', name: 'SABLE',         imageUrl: 'https://picsum.photos/seed/sable/200/200',         trackCount: 5 },
-  { id: 'ar11', name: 'Velvet Decay',  imageUrl: 'https://picsum.photos/seed/velvet-decay/200/200',  trackCount: 7 },
-  { id: 'ar12', name: 'Yūrei',         imageUrl: 'https://picsum.photos/seed/yurei/200/200',         trackCount: 4 },
+  { id: 'artist-1',  name: 'Air',            imageUrl: 'https://picsum.photos/seed/air/200/200',            trackCount: 1 },
+  { id: 'artist-2',  name: 'Aphex Twin',     imageUrl: 'https://picsum.photos/seed/aphextwin/200/200',     trackCount: 1 },
+  { id: 'artist-3',  name: 'Bent',           imageUrl: 'https://picsum.photos/seed/bent/200/200',           trackCount: 1 },
+  { id: 'artist-4',  name: 'Burial',         imageUrl: 'https://picsum.photos/seed/burial/200/200',         trackCount: 1 },
+  { id: 'artist-5',  name: 'Grimes',         imageUrl: 'https://picsum.photos/seed/grimes/200/200',         trackCount: 2 },
+  { id: 'artist-6',  name: 'Groove Armada',  imageUrl: 'https://picsum.photos/seed/groovearmada/200/200',  trackCount: 1 },
+  { id: 'artist-7',  name: 'Madonna',        imageUrl: 'https://picsum.photos/seed/madonna/200/200',        trackCount: 1 },
+  { id: 'artist-8',  name: 'Magdalena Bay',  imageUrl: 'https://picsum.photos/seed/magdalenabay/200/200',  trackCount: 1 },
+  { id: 'artist-9',  name: 'Massive Attack', imageUrl: 'https://picsum.photos/seed/massiveattack/200/200', trackCount: 2 },
+  { id: 'artist-10', name: 'Moby',           imageUrl: 'https://picsum.photos/seed/moby/200/200',           trackCount: 1 },
+  { id: 'artist-11', name: 'Röyksopp',       imageUrl: 'https://picsum.photos/seed/royksopp/200/200',       trackCount: 1 },
+  { id: 'artist-12', name: 'U96',            imageUrl: 'https://picsum.photos/seed/u96/200/200',            trackCount: 1 },
+  { id: 'artist-13', name: 'Underworld',     imageUrl: 'https://picsum.photos/seed/underworld/200/200',     trackCount: 2 },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
-// ---------- TRACKS (20) ----------
+// ---------- TRACKS (16) ----------
 export const TRACKS: Track[] = [
-  { id: 't1',  title: 'Midnight Protocol',      artist: 'Neon Veil',     album: 'Luminous Drift',       duration: '4:11', coverUrl: 'https://picsum.photos/seed/synthwave1/400/400',  audioSrc: '' },
-  { id: 't2',  title: 'Shattered Glass',         artist: 'Glass Phantom', album: 'Refracted Light',      duration: '3:42', coverUrl: 'https://picsum.photos/seed/darkwave2/400/400',   audioSrc: '' },
-  { id: 't3',  title: 'Electric Bloom',          artist: 'Prisma',        album: 'Spectral Garden',      duration: '5:18', coverUrl: 'https://picsum.photos/seed/ambient3/400/400',    audioSrc: '' },
-  { id: 't4',  title: 'Phantom Frequency',       artist: 'Phase Drift',   album: 'Signal Loss',          duration: '4:33', coverUrl: 'https://picsum.photos/seed/lofi4/400/400',      audioSrc: '' },
-  { id: 't5',  title: 'Dissolving Borders',      artist: 'Dissolve',      album: 'Entropy',              duration: '6:07', coverUrl: 'https://picsum.photos/seed/techno5/400/400',    audioSrc: '' },
-  { id: 't6',  title: 'Neon Baptism',            artist: 'Neon Veil',     album: 'Luminous Drift',       duration: '3:55', coverUrl: 'https://picsum.photos/seed/neon6/400/400',      audioSrc: '' },
-  { id: 't7',  title: 'Velvet Undertow',         artist: 'Velvet Decay',  album: 'Soft Collapse',        duration: '5:21', coverUrl: 'https://picsum.photos/seed/velvet7/400/400',    audioSrc: '' },
-  { id: 't8',  title: 'Obsidian Pulse',          artist: 'Obsidian Wave', album: 'Deep Current',         duration: '4:48', coverUrl: 'https://picsum.photos/seed/obsidian8/400/400',  audioSrc: '' },
-  { id: 't9',  title: 'Static Prayer',           artist: 'Yūrei',         album: 'Ghost Frequency',      duration: '3:29', coverUrl: 'https://picsum.photos/seed/ghost9/400/400',     audioSrc: '' },
-  { id: 't10', title: 'Chrome Cathedral',        artist: 'Chromatic',     album: 'Metallic Bloom',       duration: '4:15', coverUrl: 'https://picsum.photos/seed/chrome10/400/400',   audioSrc: '' },
-  { id: 't11', title: 'Hollow Signal',           artist: 'Null Set',      album: 'Zero State',           duration: '5:02', coverUrl: 'https://picsum.photos/seed/null11/400/400',     audioSrc: '' },
-  { id: 't12', title: 'Amber Drift',             artist: 'SABLE',         album: 'Desert Noir',          duration: '4:37', coverUrl: 'https://picsum.photos/seed/amber12/400/400',    audioSrc: '' },
-  { id: 't13', title: 'Fading Architecture',     artist: 'Echo Chamber',  album: 'Reverb City',          duration: '6:44', coverUrl: 'https://picsum.photos/seed/echo13/400/400',     audioSrc: '' },
-  { id: 't14', title: 'Liquid Mercury',          artist: 'Glass Phantom', album: 'Refracted Light',      duration: '3:58', coverUrl: 'https://picsum.photos/seed/mercury14/400/400',  audioSrc: '' },
-  { id: 't15', title: 'Subterranean Bloom',      artist: 'Dissolve',      album: 'Entropy',              duration: '7:12', coverUrl: 'https://picsum.photos/seed/sub15/400/400',      audioSrc: '' },
-  { id: 't16', title: 'Burning Periphery',       artist: 'Velvet Decay',  album: 'Soft Collapse',        duration: '4:05', coverUrl: 'https://picsum.photos/seed/burning16/400/400',  audioSrc: '' },
-  { id: 't17', title: 'Spectral Residue',        artist: 'Prisma',        album: 'Spectral Garden',      duration: '5:33', coverUrl: 'https://picsum.photos/seed/spectral17/400/400', audioSrc: '' },
-  { id: 't18', title: 'Terminal Glow',           artist: 'Neon Veil',     album: 'Luminous Drift',       duration: '4:22', coverUrl: 'https://picsum.photos/seed/terminal18/400/400', audioSrc: '' },
-  { id: 't19', title: 'Concrete Mirage',         artist: 'Obsidian Wave', album: 'Deep Current',         duration: '3:47', coverUrl: 'https://picsum.photos/seed/concrete19/400/400', audioSrc: '' },
-  { id: 't20', title: 'Phosphor Dreams',         artist: 'Phase Drift',   album: 'Signal Loss',          duration: '5:55', coverUrl: 'https://picsum.photos/seed/phosphor20/400/400', audioSrc: '' },
+  { id: 'track-1',  title: 'I Against I',             artist: 'Massive Attack ft. Mos Def',       album: '100th Window',                    duration: '4:06', coverUrl: 'https://picsum.photos/seed/massiveattack1/400/400',  audioSrc: '' },
+  { id: 'track-2',  title: 'Born Slippy',             artist: 'Underworld',                       album: 'Second Toughest in the Infants',  duration: '9:46', coverUrl: 'https://picsum.photos/seed/underworld2/400/400',    audioSrc: '' },
+  { id: 'track-3',  title: 'Xtal',                    artist: 'Aphex Twin',                       album: 'Selected Ambient Works 85-92',    duration: '4:54', coverUrl: 'https://picsum.photos/seed/aphextwin3/400/400',     audioSrc: '' },
+  { id: 'track-4',  title: 'The Spoils',              artist: 'Massive Attack ft. Hope Sandoval', album: 'Ritual Spirit',                   duration: '3:57', coverUrl: 'https://picsum.photos/seed/massiveattack4/400/400',  audioSrc: '' },
+  { id: 'track-5',  title: 'At the River',            artist: 'Groove Armada',                    album: 'Vertigo',                         duration: '4:48', coverUrl: 'https://picsum.photos/seed/groovearmada5/400/400',  audioSrc: '' },
+  { id: 'track-6',  title: 'Sola Sistim',             artist: 'Underworld',                       album: 'Dubnobasswithmyheadman',          duration: '5:24', coverUrl: 'https://picsum.photos/seed/underworld6/400/400',    audioSrc: '' },
+  { id: 'track-7',  title: 'Dark Room Rituals',       artist: 'U96',                              album: 'U96',                             duration: '5:11', coverUrl: 'https://picsum.photos/seed/u96dark7/400/400',       audioSrc: '' },
+  { id: 'track-8',  title: 'K.I.S.S.E.S',             artist: 'Bent',                             album: 'Programmed to Love',              duration: '4:32', coverUrl: 'https://picsum.photos/seed/bent8/400/400',          audioSrc: '' },
+  { id: 'track-9',  title: 'Lift Me Up',              artist: 'Moby',                             album: 'Hotel',                           duration: '4:19', coverUrl: 'https://picsum.photos/seed/moby9/400/400',          audioSrc: '' },
+  { id: 'track-10', title: 'Archangel',               artist: 'Burial',                           album: 'Untrue',                          duration: '3:58', coverUrl: 'https://picsum.photos/seed/burial10/400/400',       audioSrc: '' },
+  { id: 'track-11', title: 'Oblivion',                artist: 'Grimes',                           album: 'Visions',                         duration: '4:11', coverUrl: 'https://picsum.photos/seed/grimes11/400/400',       audioSrc: '' },
+  { id: 'track-12', title: 'Fear, Sex',               artist: 'Magdalena Bay',                    album: 'Imaginal Disk',                   duration: '3:44', coverUrl: 'https://picsum.photos/seed/magdalenabay12/400/400', audioSrc: '' },
+  { id: 'track-13', title: 'Be a Body',               artist: 'Grimes',                           album: 'Visions',                         duration: '5:02', coverUrl: 'https://picsum.photos/seed/grimes13/400/400',       audioSrc: '' },
+  { id: 'track-14', title: 'Nothing Really Matters',  artist: 'Madonna',                          album: 'Ray of Light',                    duration: '4:27', coverUrl: 'https://picsum.photos/seed/madonna14/400/400',      audioSrc: '' },
+  { id: 'track-15', title: "You Don't Have a Clue",   artist: 'Röyksopp',                         album: 'Junior',                          duration: '3:36', coverUrl: 'https://picsum.photos/seed/royksopp15/400/400',     audioSrc: '' },
+  { id: 'track-16', title: 'Sexy Boy',                artist: 'Air',                              album: 'Moon Safari',                     duration: '4:58', coverUrl: 'https://picsum.photos/seed/air16/400/400',          audioSrc: '' },
 ];
 
-// ---------- ALBUMS (6) ----------
+// ---------- ALBUMS (8) ----------
 export const ALBUMS: Album[] = [
-  { id: 'al1', title: 'Luminous Drift',   artist: 'Neon Veil',     coverUrl: 'https://picsum.photos/seed/album-luminous/400/400',   year: 2024, trackIds: ['t1','t6','t18'] },
-  { id: 'al2', title: 'Refracted Light',  artist: 'Glass Phantom', coverUrl: 'https://picsum.photos/seed/album-refracted/400/400',  year: 2023, trackIds: ['t2','t14'] },
-  { id: 'al3', title: 'Spectral Garden',  artist: 'Prisma',        coverUrl: 'https://picsum.photos/seed/album-spectral/400/400',   year: 2025, trackIds: ['t3','t17'] },
-  { id: 'al4', title: 'Entropy',          artist: 'Dissolve',      coverUrl: 'https://picsum.photos/seed/album-entropy/400/400',    year: 2024, trackIds: ['t5','t15'] },
-  { id: 'al5', title: 'Soft Collapse',    artist: 'Velvet Decay',  coverUrl: 'https://picsum.photos/seed/album-softcollapse/400/400', year: 2023, trackIds: ['t7','t16'] },
-  { id: 'al6', title: 'Deep Current',     artist: 'Obsidian Wave', coverUrl: 'https://picsum.photos/seed/album-deepcurrent/400/400',  year: 2025, trackIds: ['t8','t19'] },
+  { id: 'al1', title: '100th Window',                   artist: 'Massive Attack',  coverUrl: 'https://picsum.photos/seed/album-100thwindow/400/400',  year: 2003, trackIds: ['track-1'] },
+  { id: 'al2', title: 'Second Toughest in the Infants', artist: 'Underworld',      coverUrl: 'https://picsum.photos/seed/album-secondtoughest/400/400', year: 1996, trackIds: ['track-2'] },
+  { id: 'al3', title: 'Selected Ambient Works 85-92',   artist: 'Aphex Twin',      coverUrl: 'https://picsum.photos/seed/album-saw8592/400/400',     year: 1992, trackIds: ['track-3'] },
+  { id: 'al4', title: 'Untrue',                         artist: 'Burial',          coverUrl: 'https://picsum.photos/seed/album-untrue/400/400',      year: 2007, trackIds: ['track-10'] },
+  { id: 'al5', title: 'Visions',                        artist: 'Grimes',          coverUrl: 'https://picsum.photos/seed/album-visions/400/400',     year: 2012, trackIds: ['track-11', 'track-13'] },
+  { id: 'al6', title: 'Moon Safari',                    artist: 'Air',             coverUrl: 'https://picsum.photos/seed/album-moonsafari/400/400',  year: 1998, trackIds: ['track-16'] },
+  { id: 'al7', title: 'Ray of Light',                   artist: 'Madonna',         coverUrl: 'https://picsum.photos/seed/album-rayoflight/400/400',  year: 1998, trackIds: ['track-14'] },
+  { id: 'al8', title: 'Imaginal Disk',                  artist: 'Magdalena Bay',   coverUrl: 'https://picsum.photos/seed/album-imaginaldisk/400/400', year: 2024, trackIds: ['track-12'] },
 ];
 
-// ---------- PLAYLISTS (10) ----------
+// ---------- PLAYLISTS (8) ----------
 export const PLAYLISTS: Playlist[] = [
-  { id: 'pl1',  name: 'Late Night Drive',       description: 'Nocturnal electronics for empty highways',  coverUrl: 'https://picsum.photos/seed/playlist-latenight/400/400',  trackCount: 24, tracks: ['t1','t5','t7','t10','t15','t18'] },
-  { id: 'pl2',  name: 'Deep Focus',             description: 'Ambient textures for concentration',        coverUrl: 'https://picsum.photos/seed/playlist-deepfocus/400/400',  trackCount: 18, tracks: ['t3','t9','t11','t13','t20'] },
-  { id: 'pl3',  name: 'Dark Synthetics',        description: 'Industrial and darkwave essentials',        coverUrl: 'https://picsum.photos/seed/playlist-darksyn/400/400',    trackCount: 31, tracks: ['t2','t4','t8','t16','t19'] },
-  { id: 'pl4',  name: 'Morning Vapor',          description: 'Soft textures for waking up slow',          coverUrl: 'https://picsum.photos/seed/playlist-vapor/400/400',      trackCount: 16, tracks: ['t6','t12','t14','t17'] },
-  { id: 'pl5',  name: 'Ghost Frequencies',      description: 'Hauntological dub and static',              coverUrl: 'https://picsum.photos/seed/playlist-ghost/400/400',      trackCount: 22, tracks: ['t9','t11','t13','t15'] },
-  { id: 'pl6',  name: 'Concrete & Glass',       description: 'Brutalist electronics',                     coverUrl: 'https://picsum.photos/seed/playlist-concrete/400/400',   trackCount: 19, tracks: ['t8','t10','t19','t20'] },
-  { id: 'pl7',  name: 'Velvet Hours',           description: 'Downtempo warmth for slow evenings',        coverUrl: 'https://picsum.photos/seed/playlist-velvet/400/400',     trackCount: 27, tracks: ['t7','t12','t16','t3'] },
-  { id: 'pl8',  name: 'Signal & Noise',         description: 'Experimental electronic explorations',      coverUrl: 'https://picsum.photos/seed/playlist-signal/400/400',     trackCount: 14, tracks: ['t4','t11','t20'] },
-  { id: 'pl9',  name: 'Neon District',          description: 'Cyberpunk-adjacent night music',            coverUrl: 'https://picsum.photos/seed/playlist-neon/400/400',       trackCount: 21, tracks: ['t1','t2','t6','t18'] },
-  { id: 'pl10', name: 'Dissolved Boundaries',   description: 'Genre-fluid ambient and beyond',            coverUrl: 'https://picsum.photos/seed/playlist-dissolved/400/400',  trackCount: 15, tracks: ['t5','t9','t13','t17'] },
+  { id: 'pl1', name: 'Late Night Drive',     description: 'Nocturnal electronics for empty highways',       coverUrl: 'https://picsum.photos/seed/playlist-latenight/400/400',    trackCount: 24, tracks: ['track-1', 'track-2', 'track-6', 'track-10', 'track-16'] },
+  { id: 'pl2', name: '3AM Headphones',       description: 'When the world is asleep and the bass is deep',  coverUrl: 'https://picsum.photos/seed/playlist-3am/400/400',          trackCount: 18, tracks: ['track-3', 'track-10', 'track-7', 'track-6', 'track-9'] },
+  { id: 'pl3', name: 'Sunday Comedown',      description: 'Soft landings after long weekends',              coverUrl: 'https://picsum.photos/seed/playlist-sundaycomedown/400/400', trackCount: 16, tracks: ['track-5', 'track-8', 'track-16', 'track-9', 'track-15'] },
+  { id: 'pl4', name: 'Dark Electronics',     description: 'Industrial textures and shadowy beats',          coverUrl: 'https://picsum.photos/seed/playlist-darkelectronics/400/400', trackCount: 22, tracks: ['track-1', 'track-7', 'track-4', 'track-10', 'track-13'] },
+  { id: 'pl5', name: 'Trip Hop Essentials',  description: 'The pillars of downtempo and trip hop',          coverUrl: 'https://picsum.photos/seed/playlist-triphop/400/400',      trackCount: 31, tracks: ['track-1', 'track-4', 'track-5', 'track-10', 'track-14', 'track-16'] },
+  { id: 'pl6', name: 'Bedroom Chill',        description: 'Warm ambient for winding down',                  coverUrl: 'https://picsum.photos/seed/playlist-bedroomchill/400/400', trackCount: 19, tracks: ['track-3', 'track-8', 'track-12', 'track-15', 'track-16'] },
+  { id: 'pl7', name: '90s Underground',      description: 'Pre-millennium electronic gold',                 coverUrl: 'https://picsum.photos/seed/playlist-90sunderground/400/400', trackCount: 14, tracks: ['track-2', 'track-3', 'track-6', 'track-14', 'track-16'] },
+  { id: 'pl8', name: 'Melancholy Machine',   description: 'Bittersweet circuits and synthetic grief',       coverUrl: 'https://picsum.photos/seed/playlist-melancholy/400/400',   trackCount: 20, tracks: ['track-4', 'track-9', 'track-11', 'track-13', 'track-14', 'track-15'] },
 ];
 
 // ---------- CURATED LISTS ----------
-export const RECENTLY_PLAYED = TRACKS.filter(t => ['t2','t10','t16','t4','t11'].includes(t.id));
-export const JUMP_BACK_IN    = TRACKS.filter(t => ['t3','t8','t15','t1','t7'].includes(t.id));
-export const RECOMMENDED     = TRACKS.filter(t => ['t5','t9','t12','t13','t6','t14'].includes(t.id));
+export const RECENTLY_PLAYED = TRACKS.filter(t => ['track-1', 'track-10', 'track-3', 'track-14', 'track-7'].includes(t.id));
+export const JUMP_BACK_IN    = TRACKS.filter(t => ['track-2', 'track-5', 'track-11', 'track-16', 'track-8'].includes(t.id));
+export const RECOMMENDED     = TRACKS.filter(t => ['track-4', 'track-6', 'track-9', 'track-12', 'track-13', 'track-15'].includes(t.id));
 
 // ---------- DOWNLOADED (subset for grid gallery) ----------
 export const DOWNLOADED_ITEMS = [
-  { id: 'dl1', title: 'Luminous Drift',   artist: 'Neon Veil',     coverUrl: 'https://picsum.photos/seed/dl-luminous/400/400' },
-  { id: 'dl2', title: 'Entropy',          artist: 'Dissolve',      coverUrl: 'https://picsum.photos/seed/dl-entropy/400/400' },
-  { id: 'dl3', title: 'Soft Collapse',    artist: 'Velvet Decay',  coverUrl: 'https://picsum.photos/seed/dl-softcollapse/400/400' },
-  { id: 'dl4', title: 'Deep Current',     artist: 'Obsidian Wave', coverUrl: 'https://picsum.photos/seed/dl-deepcurrent/400/400' },
-  { id: 'dl5', title: 'Ghost Frequency',  artist: 'Yūrei',         coverUrl: 'https://picsum.photos/seed/dl-ghost/400/400' },
-  { id: 'dl6', title: 'Refracted Light',  artist: 'Glass Phantom', coverUrl: 'https://picsum.photos/seed/dl-refracted/400/400' },
-  { id: 'dl7', title: 'Signal Loss',      artist: 'Phase Drift',   coverUrl: 'https://picsum.photos/seed/dl-signal/400/400' },
-  { id: 'dl8', title: 'Spectral Garden',  artist: 'Prisma',        coverUrl: 'https://picsum.photos/seed/dl-spectral/400/400' },
+  { id: 'dl1', title: 'Untrue',                         artist: 'Burial',         coverUrl: 'https://picsum.photos/seed/dl-untrue/400/400' },
+  { id: 'dl2', title: 'Selected Ambient Works 85-92',   artist: 'Aphex Twin',     coverUrl: 'https://picsum.photos/seed/dl-saw/400/400' },
+  { id: 'dl3', title: 'Moon Safari',                    artist: 'Air',            coverUrl: 'https://picsum.photos/seed/dl-moonsafari/400/400' },
+  { id: 'dl4', title: 'Visions',                        artist: 'Grimes',         coverUrl: 'https://picsum.photos/seed/dl-visions/400/400' },
+  { id: 'dl5', title: 'Ray of Light',                   artist: 'Madonna',        coverUrl: 'https://picsum.photos/seed/dl-rayoflight/400/400' },
+  { id: 'dl6', title: 'Imaginal Disk',                  artist: 'Magdalena Bay',  coverUrl: 'https://picsum.photos/seed/dl-imaginaldisk/400/400' },
+  { id: 'dl7', title: 'Dubnobasswithmyheadman',         artist: 'Underworld',     coverUrl: 'https://picsum.photos/seed/dl-dubno/400/400' },
+  { id: 'dl8', title: 'Vertigo',                        artist: 'Groove Armada',  coverUrl: 'https://picsum.photos/seed/dl-vertigo/400/400' },
 ];

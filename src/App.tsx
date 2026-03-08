@@ -3,6 +3,7 @@ import { SkinProvider } from './context/SkinContext';
 import { PlayerProvider } from './context/PlayerContext';
 import { BottomNav } from './components/BottomNav';
 import { MiniPlayer } from './components/MiniPlayer';
+import { StatusBar } from './components/StatusBar';
 import { FloatingThemeSwitcher } from './components/FloatingThemeSwitcher';
 import { HomeScreen }    from './screens/HomeScreen';
 import { SearchScreen }  from './screens/SearchScreen';
@@ -14,15 +15,20 @@ function AppRoutes() {
   const showNav = pathname !== '/player';
 
   return (
-    <div className="relative h-full bg-bg overflow-hidden">
-      <Routes>
-        <Route path="/"        element={<HomeScreen />} />
-        <Route path="/search"  element={<SearchScreen />} />
-        <Route path="/library" element={<LibraryScreen />} />
-        <Route path="/player"  element={<PlayerScreen />} />
-      </Routes>
-      {showNav && <MiniPlayer />}
-      {showNav && <BottomNav />}
+    /* flex-col locks StatusBar at top, content area fills remaining height */
+    <div className="flex flex-col h-full bg-bg overflow-hidden">
+      <StatusBar />
+      {/* Routes container: relative + flex-1 so all screens get identical height */}
+      <div className="relative flex-1 min-h-0 overflow-hidden">
+        <Routes>
+          <Route path="/"        element={<HomeScreen />} />
+          <Route path="/search"  element={<SearchScreen />} />
+          <Route path="/library" element={<LibraryScreen />} />
+          <Route path="/player"  element={<PlayerScreen />} />
+        </Routes>
+        {showNav && <MiniPlayer />}
+        {showNav && <BottomNav />}
+      </div>
     </div>
   );
 }

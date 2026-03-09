@@ -11,45 +11,45 @@
    ============================================================ */
 :root,
 [data-skin="cassette"] {
-  /* ── Body chrome ──────────────────────────────────────── */
-  --color-body-bg:        #1a1916;
+  /* ── Body staging area — warm dark workspace ───────────── */
+  --color-body-bg:        #1e1a14;
 
-  /* ── App surface: cool industrial grey-khaki plastic ─── */
-  --color-bg:             #bdb6a6;
-  --color-surface:        #aaa398;
-  --color-border:         #6c6458;
+  /* ── App surface: warm industrial beige chassis ─────────── */
+  --color-bg:             #D9D2C5;
+  --color-surface:        #D9D2C5;
+  --color-border:         #C7B79D;
 
-  /* ── LED accents ───────────────────────────────────────── */
-  --color-accent:         #ff5500;
-  --color-accent2:        #ffc400;
+  /* ── Safety Orange play + Phosphor Green accents ────────── */
+  --color-accent:         #FF8C00;
+  --color-accent2:        #A4C639;
 
-  /* ── Text on grey-khaki ─────────────────────────────────── */
+  /* ── Dark text on warm chassis ──────────────────────────── */
   --color-text-primary:   #1a1614;
   --color-text-secondary: #4e4638;
 
-  /* ── LCD / VFD display colors ───────────────────────────── */
-  --color-lcd-bg:         #0e1206;
-  --color-lcd-text:       #b8d000;
+  /* ── Recessed LCD panel: Dark Olive + Phosphor Green ───── */
+  --color-lcd-bg:         #4D5D53;
+  --color-lcd-text:       #A4C639;
 
   /* ── Hardware typography ───────────────────────────────── */
   --font-display: 'VT323', 'Share Tech Mono', monospace;
   --font-body:    'Share Tech Mono', monospace;
   --font-mono:    'Share Tech Mono', monospace;
 
-  /* ── Geometry: angular, physical ───────────────────────── */
-  --radius-card: 3px;
+  /* ── Geometry: 8px chassis, 2px buttons, 4px cut-outs ─── */
+  --radius-card: 8px;
   --radius-btn:  2px;
 
-  /* ── Physical raised-panel card shadow ─────────────────── */
+  /* ── Exact emboss spec: bright top-left / shadow bottom-right ── */
   --shadow-card:
-    inset 1px 1px 0 rgba(255, 255, 255, 0.55),
-    inset -1px -1px 0 rgba(0, 0, 0, 0.12),
+    inset 2px 2px 0px #F3EFE0,
+    inset -2px -2px 0px #C7B79D,
     3px 5px 14px rgba(0, 0, 0, 0.45),
     1px 2px 4px rgba(0, 0, 0, 0.25);
 
-  /* ── LED glow values ───────────────────────────────────── */
-  --glow-accent:  0 0 10px #ff5500, 0 0 22px rgba(255, 85, 0, 0.55), 0 0 48px rgba(255, 50, 0, 0.2);
-  --glow-accent2: 0 0 8px #ffc400, 0 0 16px rgba(255, 196, 0, 0.4);
+  /* ── LED + phosphor glow values ─────────────────────────── */
+  --glow-accent:  0 0 10px #FF8C00, 0 0 22px rgba(255, 140, 0, 0.55), 0 0 48px rgba(255, 100, 0, 0.2);
+  --glow-accent2: 0 0 8px #A4C639, 0 0 16px rgba(164, 198, 57, 0.4);
 
   --visualizer-style: 'bars';
 }
@@ -290,61 +290,61 @@ input[type="range"].eq-slider::-moz-range-thumb {
   border: none;
 }
 
-/* Cassette: deep carved channel groove — industrial machined slot */
+/* Cassette: recessed LCD-panel channel — Dark Olive Drab groove */
 [data-skin="cassette"] input[type="range"].eq-slider::-webkit-slider-runnable-track {
-  background:
-    linear-gradient(to right,
-      rgba(0,0,0,0.55) 0%,
-      rgba(0,0,0,0.38) 100%
-    );
+  background: #4D5D53;
   box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.65),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.10),
-    0 1px 0 rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(0, 0, 0, 0.5);
+    inset 4px 4px 10px rgba(0, 0, 0, 0.40),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(0, 0, 0, 0.50);
+  border-radius: 2px;
   width: 5px;
 }
 [data-skin="cassette"] input[type="range"].eq-slider::-moz-range-track {
-  background: rgba(0, 0, 0, 0.42);
+  background: #4D5D53;
   box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.65),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(0, 0, 0, 0.5);
+    inset 4px 4px 10px rgba(0, 0, 0, 0.40),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(0, 0, 0, 0.50);
+  border-radius: 2px;
   width: 5px;
 }
 
-/* Cassette EQ thumb: metallic square hardware cap */
+/* Cassette EQ thumb: warm beige chassis knob cap — ribbed + emboss */
 [data-skin="cassette"] input[type="range"].eq-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 22px;
   height: 11px;
-  border-radius: 3px;
+  border-radius: 2px;
   background:
     repeating-linear-gradient(
       90deg,
-      rgba(255,255,255,0.22) 0px, rgba(255,255,255,0.22) 1px,
+      rgba(255,255,255,0.18) 0px, rgba(255,255,255,0.18) 1px,
       transparent 1px, transparent 3px
     ),
     linear-gradient(to bottom,
-      #d4cdc0 0%,
-      #a09890 40%,
-      #8a837c 60%,
-      #b0a89e 100%
+      #EDE6D8 0%,
+      #D9D2C5 40%,
+      #C0B8AA 65%,
+      #D4CCC0 100%
     );
-  border: 1px solid rgba(0,0,0,0.55);
+  border: 1px solid #C7B79D;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.5),
-    inset 0 -1px 0 rgba(0,0,0,0.3),
+    inset 2px 2px 0px #F3EFE0,
+    inset -1px -1px 0px #C7B79D,
     0 2px 5px rgba(0,0,0,0.45);
   cursor: grab;
 }
 [data-skin="cassette"] input[type="range"].eq-slider::-moz-range-thumb {
   width: 22px;
   height: 11px;
-  border-radius: 3px;
-  background: linear-gradient(to bottom, #d4cdc0 0%, #a09890 40%, #8a837c 60%, #b0a89e 100%);
-  border: 1px solid rgba(0,0,0,0.55);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 5px rgba(0,0,0,0.45);
+  border-radius: 2px;
+  background: linear-gradient(to bottom, #EDE6D8 0%, #D9D2C5 40%, #C0B8AA 65%, #D4CCC0 100%);
+  border: 1px solid #C7B79D;
+  box-shadow:
+    inset 2px 2px 0px #F3EFE0,
+    inset -1px -1px 0px #C7B79D,
+    0 2px 5px rgba(0,0,0,0.45);
 }
 
 /* ── MetalHeart EQ Slider: carved steel channel ───────────── */
@@ -701,14 +701,20 @@ input[type="range"].eq-slider::-moz-range-thumb {
    SKIN 1 · CASSETTE FUTURISM — Physical Hardware Reality
    ══════════════════════════════════════════════════════════ */
 
-/* Raised hardware label strip on screen headers */
+/* Chassis material header — warm beige panel with emboss + speaker grill edge */
 [data-skin="cassette"] .screen-header {
-  background-color: var(--color-surface);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.22);
+  background-color: #D9D2C5;
+  background-image: linear-gradient(180deg,
+    #EDE6D8 0%,
+    #D9D2C5 55%,
+    #C8C0B2 100%
+  );
+  border-bottom: 2px solid #C7B79D;
   box-shadow:
-    0 2px 0 rgba(255, 255, 255, 0.52),
-    0 4px 10px rgba(0, 0, 0, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.60);
+    inset 0 2px 0 #F3EFE0,
+    inset 0 1px 0 rgba(255,255,255,0.70),
+    0 3px 10px rgba(0, 0, 0, 0.18);
+  position: relative;
 }
 
 /* Engraved hardware label for section titles */
@@ -1116,14 +1122,22 @@ input[type="range"].eq-slider::-moz-range-thumb {
 
 /* ── SKIN 1 · CASSETTE — Nav + MiniPlayer ─────────────────── */
 
-/* Raised hardware panel feel on the nav bar */
+/* Warm chassis material nav bar — physical bottom hardware edge */
 [data-skin="cassette"] .nav-bar {
+  background-color: #D9D2C5;
+  background-image: linear-gradient(180deg,
+    #EDE6D8 0%,
+    #D9D2C5 35%,
+    #C8C0B2 100%
+  );
+  border-top: 2px solid #F3EFE0 !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    0 -2px 6px rgba(0, 0, 0, 0.14);
+    inset 0 2px 0 #F3EFE0,
+    inset 0 -1px 0 #C7B79D,
+    0 -4px 14px rgba(0, 0, 0, 0.28);
 }
 
-/* Glowing oval LED bulb indicator — physical panel lamp above active icon */
+/* Glowing oval LED bulb indicator — Old Red (#FF0000) panel lamp above active icon */
 [data-skin="cassette"] .nav-bar a.text-accent::before {
   content: '';
   position: absolute;
@@ -1135,23 +1149,31 @@ input[type="range"].eq-slider::-moz-range-thumb {
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center 30%,
-    #ffee88 0%,
-    #ffcc44 20%,
-    #ff7700 50%,
-    #ff4400 78%,
-    #cc2200 100%
+    #ffaaaa 0%,
+    #ff5555 20%,
+    #ff0000 50%,
+    #cc0000 78%,
+    #880000 100%
   );
   box-shadow:
-    0 0 3px 1px rgba(255, 160, 0, 1),
-    0 0 10px 4px rgba(255, 100, 0, 0.75),
-    0 0 22px 7px rgba(255, 60,  0, 0.35),
-    0 0 40px 10px rgba(255, 40, 0, 0.12);
+    0 0 3px 1px rgba(255,   0,   0, 1),
+    0 0 10px 4px rgba(255,   0,   0, 0.75),
+    0 0 22px 7px rgba(200,   0,   0, 0.38),
+    0 0 40px 10px rgba(150,  0,   0, 0.14);
 }
 
 [data-skin="cassette"] .mini-player {
+  background-color: #D9D2C5;
+  background-image: linear-gradient(180deg,
+    #EDE6D8 0%,
+    #D9D2C5 50%,
+    #C8C0B2 100%
+  );
+  border-top: 2px solid #F3EFE0 !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 -2px 8px rgba(0, 0, 0, 0.2);
+    inset 0 2px 0 #F3EFE0,
+    inset 0 -1px 0 #C7B79D,
+    0 -4px 12px rgba(0, 0, 0, 0.22);
 }
 
 /* ── SKIN 2 · ACIDGRAFIX — Nav + MiniPlayer ──────────────── */
@@ -1286,55 +1308,96 @@ input[type="range"].eq-slider::-moz-range-thumb {
    Industrial tactile depth: grill, ribbing, LCD, bevel
    ============================================================ */
 
-/* ── Deep multi-layer bevel on all surface panels ──────── */
-[data-skin="cassette"] .bg-surface {
+/* ── Warm Beige Chassis: molded plastic + exact emboss spec ─────────────
+   :not guards prevent position:relative / border-radius from
+   overriding nav-bar/mini-player's absolute positioning + sharp edges. */
+[data-skin="cassette"] .bg-surface:not(.nav-bar):not(.mini-player) {
+  background-color: #D9D2C5;
+  background-image:
+    /* Subtle warm plastic molded grain */
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px,
+      transparent 1px, transparent 6px
+    ),
+    /* Chassis gradient — warm highlight top-left, cool base */
+    linear-gradient(160deg,
+      #EDE6D8 0%,
+      #D9D2C5 50%,
+      #C8C0B2 100%
+    );
   box-shadow:
-    inset 1px 1px 0 rgba(255, 255, 255, 0.62),
-    inset -1px -1px 0 rgba(0, 0, 0, 0.20),
-    inset 2px 2px 0 rgba(255, 255, 255, 0.18),
-    inset -2px -2px 0 rgba(0, 0, 0, 0.10),
+    inset 2px 2px 0px #F3EFE0,
+    inset -2px -2px 0px #C7B79D,
     3px 6px 16px rgba(0, 0, 0, 0.50),
     1px 2px 4px rgba(0, 0, 0, 0.28);
-}
-
-/* ── Speaker grill strip on screen-header ───────────────── */
-[data-skin="cassette"] .screen-header {
+  border-radius: 8px;
   position: relative;
 }
+
+/* ── Speaker grill along the bottom edge of screen-header ── */
 [data-skin="cassette"] .screen-header::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
+  bottom: -1px;
+  left: 24px;
+  right: 24px;
+  height: 4px;
   background: repeating-linear-gradient(
     90deg,
-    rgba(0,0,0,0.35) 0px, rgba(0,0,0,0.35) 1px,
-    transparent 1px, transparent 3px
+    rgba(0,0,0,0.45) 0px, rgba(0,0,0,0.45) 2px,
+    rgba(255,255,255,0.12) 2px, rgba(255,255,255,0.12) 3px,
+    transparent 3px, transparent 6px
   );
+  border-radius: 1px;
   pointer-events: none;
 }
 
-/* ── Ribbed keycap texture on filter chips ──────────────── */
-[data-skin="cassette"] .filter-chip {
+/* ── Physical ribbed keycap buttons — exact emboss spec ────────────────────
+   Specificity (0,4,0) — equal to bg-surface rule, wins by document order.  */
+[data-skin="cassette"] .filter-chip:not(.nav-bar):not(.mini-player) {
   background:
+    /* Horizontal rib lines — tactile raised surface */
     repeating-linear-gradient(
-      135deg,
-      rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 1px,
+      90deg,
+      rgba(255,255,255,0.18) 0px, rgba(255,255,255,0.18) 1px,
       transparent 1px, transparent 4px
     ),
-    var(--color-surface);
+    /* Warm beige chassis base */
+    linear-gradient(160deg, #E2DAC8 0%, #D0C9BC 100%);
+  border: 1px solid #C7B79D;
+  border-radius: 2px;
   box-shadow:
-    inset 1px 1px 0 rgba(255,255,255,0.55),
-    inset -1px -1px 0 rgba(0,0,0,0.22),
+    inset 2px 2px 0px #F3EFE0,
+    inset -2px -2px 0px #C7B79D,
     0 2px 4px rgba(0,0,0,0.32);
+  color: #1a1614;
 }
+
+/* Active chip — Safety Orange lit keycap; specificity (0,5,0) beats chip rule */
+[data-skin="cassette"] .filter-chip.bg-accent:not(.nav-bar):not(.mini-player) {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.10) 0px, rgba(255,255,255,0.10) 1px,
+      transparent 1px, transparent 4px
+    ),
+    linear-gradient(160deg, #FF9F1A 0%, #FF8C00 60%, #E07800 100%);
+  color: #1a0a00;
+  box-shadow:
+    inset 2px 2px 0px rgba(255,220,150,0.60),
+    inset -2px -2px 0px rgba(140,60,0,0.45),
+    var(--glow-accent),
+    0 2px 4px rgba(0,0,0,0.35);
+  transform: translateY(1px);
+}
+
 [data-skin="cassette"] .filter-chip:active {
   transform: translateY(1px);
   box-shadow:
     inset 0 2px 3px rgba(0,0,0,0.40),
-    0 0 2px rgba(0,0,0,0.18);
+    inset 0 0 6px rgba(0,0,0,0.18),
+    0 0 1px rgba(0,0,0,0.15);
 }
 
 /* ── Track cover: sticker-on-hardware inset ─────────────── */
@@ -1381,21 +1444,56 @@ input[type="range"].eq-slider::-moz-range-thumb {
   color: var(--color-text-secondary);
 }
 
-/* ── LCD / VFD display card (PlayerScreen title area) ───── */
+/* ── LCD / VFD display: Dark Olive Drab panel + Phosphor Green ── */
 [data-skin="cassette"] .lcd-display {
-  background: var(--color-lcd-bg);
-  color: var(--color-lcd-text);
+  background: #4D5D53;
+  color: #A4C639;
   text-shadow:
-    0 0 6px rgba(184, 208, 0, 0.85),
-    0 0 14px rgba(184, 208, 0, 0.40),
-    0 0 28px rgba(184, 208, 0, 0.15);
+    0 0 6px rgba(164, 198, 57, 0.90),
+    0 0 14px rgba(164, 198, 57, 0.45),
+    0 0 28px rgba(164, 198, 57, 0.18);
   box-shadow:
-    inset 0 0 8px rgba(0,0,0,0.85),
-    inset 0 2px 6px rgba(0,0,0,0.55),
-    0 1px 0 rgba(255,255,255,0.18),
-    0 3px 8px rgba(0,0,0,0.45);
-  border: 1px solid rgba(0,0,0,0.75);
-  border-radius: 2px;
+    inset 4px 4px 10px rgba(0, 0, 0, 0.40),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.12),
+    inset 0 0 12px rgba(0, 0, 0, 0.55),
+    0 1px 0 rgba(255, 255, 255, 0.25),
+    0 3px 8px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-radius: 4px;
+}
+
+/* ── Search bar: recessed Line-In port ──────────────────────
+   Target: SearchScreen container (bg-surface border border-border px-3 py-2.5)
+   Higher specificity (0,5,0) overrides the bg-surface chassis rule (0,4,0). */
+[data-skin="cassette"] .bg-surface:not(.nav-bar):not(.mini-player).py-2\.5 {
+  background-color: #4D5D53 !important;
+  background-image:
+    /* Port rim dark shadow recess */
+    linear-gradient(180deg,
+      rgba(0,0,0,0.20) 0%,
+      rgba(0,0,0,0.06) 25%,
+      transparent 55%
+    ) !important;
+  border-color: rgba(0, 0, 0, 0.60) !important;
+  border-radius: 4px !important;
+  box-shadow:
+    inset 4px 4px 10px rgba(0, 0, 0, 0.40),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Phosphor green text inside Line-In port */
+[data-skin="cassette"] .py-2\.5.bg-surface input {
+  color: #A4C639 !important;
+  caret-color: #A4C639;
+}
+[data-skin="cassette"] .py-2\.5.bg-surface input::placeholder {
+  color: rgba(164, 198, 57, 0.42) !important;
+}
+
+/* Search icon inside port */
+[data-skin="cassette"] .py-2\.5.bg-surface svg {
+  color: rgba(164, 198, 57, 0.60) !important;
 }
 
 /* ── Global breathing room: section spacing ─────────────── */

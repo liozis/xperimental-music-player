@@ -93,7 +93,7 @@ export function MainPlayerCard({
       </div>
 
       {/* Playback Controls */}
-      <div className="flex items-center justify-between px-8 mt-1 pb-3">
+      <div className="flex items-center justify-between px-8 mt-1 pb-5">
         <button
           onClick={onToggleShuffle}
           className={`p-2 transition-colors ${shuffle ? 'text-accent' : 'text-textSecondary'}`}

@@ -2514,10 +2514,7 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   box-shadow: 0 0 6px #FF00FF, 0 0 14px rgba(255, 0, 255, 0.90), 0 0 28px rgba(255, 0, 255, 0.45) !important;
 }
 
-/* ── Now Playing: lift play button away from container edge ── */
-[data-skin="acidgrafix"] .bg-surface.flex.flex-col .pb-3 {
-  padding-bottom: 1.25rem !important;
-}
+/* ── Now Playing: extra lift on acidgrafix play button ── */
 [data-skin="acidgrafix"] .play-pause-btn {
   transform: translateY(-3px);
 }

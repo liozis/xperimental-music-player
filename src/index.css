@@ -92,55 +92,55 @@
 
 /* ============================================================
    SKIN 3 · METALHEART
-   Vibe: 1998–2004 Depthcore / Y2K Chrome. The Attik.
-   Brainreactor. Synthetix. Glossy radial chrome. Techno-organic.
+   Vibe: Hyper-skeuomorphic polished steel. Sapphire light source.
+   Blindingly metallic. Every pixel forged from heavy chrome.
    ============================================================ */
 [data-skin="metalheart"] {
-  /* ── Body chrome ──────────────────────────────────────────── */
-  --color-body-bg:        #000205;
+  /* ── Body: deep sapphire space around the device ─────────── */
+  --color-body-bg:        #000820;
 
-  /* ── App surface: deep navy chrome panels ────────────────── */
-  --color-bg:             #05091a;
-  --color-surface:        #0b1028;
-  --color-border:         rgba(100, 160, 240, 0.45);
+  /* ── App surface: brushed chrome silver panels ───────────── */
+  --color-bg:             #bec8d6;
+  --color-surface:        #cdd6e4;
+  --color-border:         rgba(80, 110, 160, 0.55);
 
-  /* ── Electric chrome accents ─────────────────────────────── */
-  --color-accent:         #29b6f6;
-  --color-accent2:        #90caf9;
+  /* ── Sapphire blue light source ──────────────────────────── */
+  --color-accent:         #0057b8;
+  --color-accent2:        #3a8fe8;
 
-  /* ── Chrome specular token ───────────────────────────────── */
-  --color-chrome-hi:      rgba(200, 230, 255, 0.85);
+  /* ── Chrome specular and glare tokens ────────────────────── */
+  --color-chrome-hi:      rgba(255, 255, 255, 0.95);
+  --color-chrome-mid:     rgba(210, 220, 235, 0.80);
+  --color-chrome-shadow:  rgba(30, 45, 80, 0.50);
 
-  /* ── Text ────────────────────────────────────────────────── */
-  --color-text-primary:   #e2f0ff;
-  --color-text-secondary: #3d5a80;
+  /* ── Dark steel text on silver chrome ────────────────────── */
+  --color-text-primary:   #0d1828;
+  --color-text-secondary: #4a5c78;
 
   /* ── Typography ──────────────────────────────────────────── */
   --font-display: 'Orbitron', sans-serif;
   --font-body:    'Rajdhani', sans-serif;
   --font-mono:    'Share Tech Mono', monospace;
 
-  /* ── Geometry: sleek with subtle rounding ────────────────── */
-  --radius-card: 5px;
+  /* ── Geometry ────────────────────────────────────────────── */
+  --radius-card: 6px;
   --radius-btn:  999px;
 
-  /* ── 4-way chrome bevel shadow ───────────────────────────── */
+  /* ── Hyper-skeuomorphic 4-layer chrome bevel ─────────────── */
   --shadow-card:
-    inset 0  1px 0 rgba(160, 210, 255, 0.30),
-    inset 0 -1px 0 rgba(0,   0,   0,   0.60),
-    inset  1px 0 0 rgba(120, 180, 255, 0.14),
-    inset -1px 0 0 rgba(0,   0,   0,   0.40),
-    0 4px 28px rgba(0, 4, 30, 0.92),
-    0 0 60px rgba(41, 182, 246, 0.06);
+    inset  2px  2px 5px rgba(255, 255, 255, 0.80),
+    inset -2px -2px 5px rgba(0,   0,   0,   0.35),
+    5px 5px 15px rgba(0, 0, 0, 0.45),
+    0 0 12px rgba(0, 87, 184, 0.25);
 
-  /* ── Intense 3-layer neon glow ───────────────────────────── */
+  /* ── Sapphire glow ───────────────────────────────────────── */
   --glow-accent:
-    0 0  6px #29b6f6,
-    0 0 18px rgba(41, 182, 246, 0.75),
-    0 0 40px rgba(41, 182, 246, 0.30);
+    0 0  8px rgba(0,  87, 184, 0.90),
+    0 0 20px rgba(0,  87, 184, 0.55),
+    0 0 42px rgba(0,  87, 184, 0.25);
   --glow-accent2:
-    0 0 6px #90caf9,
-    0 0 14px rgba(144, 202, 249, 0.40);
+    0 0 6px rgba(58, 143, 232, 0.80),
+    0 0 16px rgba(58, 143, 232, 0.40);
 
   --visualizer-style: 'wave';
 }
@@ -347,63 +347,65 @@ input[type="range"].eq-slider::-moz-range-thumb {
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 5px rgba(0,0,0,0.45);
 }
 
-/* ── MetalHeart EQ Slider: chrome deep-channel fader ─────── */
+/* ── MetalHeart EQ Slider: carved steel channel ───────────── */
 [data-skin="metalheart"] input[type="range"].eq-slider::-webkit-slider-runnable-track {
   background: linear-gradient(to right,
-    rgba(0, 10, 40, 0.85) 0%,
-    rgba(5, 20, 65, 0.65) 100%
+    rgba(30, 45, 80, 0.70) 0%,
+    rgba(50, 70, 110, 0.50) 100%
   );
   box-shadow:
-    inset 0 2px 5px rgba(0, 0, 0, 0.80),
-    inset 0 -1px 0 rgba(100, 180, 255, 0.14),
-    0 1px 0 rgba(100, 180, 255, 0.10);
-  border: 1px solid rgba(41, 182, 246, 0.28);
+    inset 0 2px 5px rgba(0, 0, 0, 0.55),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.50);
+  border: 1px solid rgba(60, 90, 140, 0.65);
   border-radius: 3px;
-  width: 4px;
+  width: 5px;
 }
 [data-skin="metalheart"] input[type="range"].eq-slider::-moz-range-track {
-  background: rgba(0, 10, 40, 0.80);
+  background: rgba(40, 60, 100, 0.60);
   box-shadow:
-    inset 0 2px 5px rgba(0, 0, 0, 0.80),
-    inset 0 -1px 0 rgba(100, 180, 255, 0.12);
-  border: 1px solid rgba(41, 182, 246, 0.25);
+    inset 0 2px 5px rgba(0, 0, 0, 0.55),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.30);
+  border: 1px solid rgba(60, 90, 140, 0.60);
   border-radius: 3px;
-  width: 4px;
+  width: 5px;
 }
 
-/* MetalHeart EQ thumb: silver chrome capsule with specular crown */
+/* MetalHeart EQ thumb: chrome dome sphere */
 [data-skin="metalheart"] input[type="range"].eq-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px;
-  height: 9px;
-  border-radius: 4px;
-  background: linear-gradient(180deg,
-    rgba(220, 240, 255, 0.92) 0%,
-    rgba(100, 165, 225, 0.80) 45%,
-    rgba(20,  75, 160, 0.95) 100%
+  width: 20px;
+  height: 10px;
+  border-radius: 5px;
+  background: radial-gradient(circle at 35% 28%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(200, 215, 235, 0.85) 30%,
+    rgba(130, 155, 195, 0.90) 65%,
+    rgba(55,  80, 130, 0.95) 100%
   );
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.65),
-    inset 0 -1px 0 rgba(0, 30, 90, 0.50),
-    0 0 8px rgba(41, 182, 246, 0.55),
-    0 2px 6px rgba(0, 0, 0, 0.70);
-  border: 1px solid rgba(41, 182, 246, 0.55);
+    inset  1px  1px 3px rgba(255, 255, 255, 0.85),
+    inset -1px -1px 2px rgba(0,   0,   0,   0.30),
+    0 0 8px rgba(0, 87, 184, 0.50),
+    0 2px 8px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(70, 100, 160, 0.65);
   margin-left: -7px;
   cursor: grab;
 }
 [data-skin="metalheart"] input[type="range"].eq-slider::-moz-range-thumb {
-  width: 18px;
-  height: 9px;
-  border-radius: 4px;
-  background: linear-gradient(180deg,
-    rgba(220, 240, 255, 0.92) 0%,
-    rgba(100, 165, 225, 0.80) 45%,
-    rgba(20,  75, 160, 0.95) 100%
+  width: 20px;
+  height: 10px;
+  border-radius: 5px;
+  background: radial-gradient(circle at 35% 28%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(200, 215, 235, 0.85) 30%,
+    rgba(130, 155, 195, 0.90) 65%,
+    rgba(55,  80, 130, 0.95) 100%
   );
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.65),
-    0 0 8px rgba(41, 182, 246, 0.55);
-  border: 1px solid rgba(41, 182, 246, 0.55);
+    inset 1px 1px 3px rgba(255, 255, 255, 0.85),
+    0 0 8px rgba(0, 87, 184, 0.50);
+  border: 1px solid rgba(70, 100, 160, 0.65);
 }
 
 /* ============================================================
@@ -514,54 +516,80 @@ input[type="range"].eq-slider::-moz-range-thumb {
    SKIN 3 · METALHEART — Surface & effect overrides
    ============================================================ */
 
-/* Wet chrome 3-radial highlight on every surface panel */
+/* Brushed chrome surface — sapphire light source top-left */
 [data-skin="metalheart"] .bg-surface {
   background-color: var(--color-surface);
   background-image:
-    radial-gradient(ellipse at 18% 10%, rgba(180, 220, 255, 0.14) 0%, transparent 45%),
-    radial-gradient(ellipse at 85% 50%, rgba(41, 182, 246, 0.06) 0%, transparent 55%),
-    radial-gradient(ellipse at 0% 100%, rgba(0, 0, 0, 0.50) 0%, transparent 60%);
+    /* Sapphire light source — top-left corner */
+    radial-gradient(ellipse at 12% 8%, rgba(0, 100, 220, 0.14) 0%, transparent 50%),
+    /* Specular crown strip */
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.10) 6%,
+      transparent 28%
+    ),
+    /* Brushed horizontal micro-lines */
+    repeating-linear-gradient(
+      180deg,
+      transparent            0px,
+      transparent            1px,
+      rgba(255,255,255,0.045) 1px,
+      rgba(255,255,255,0.045) 2px,
+      transparent            2px,
+      transparent            3px,
+      rgba(0,0,0,0.018)      3px,
+      rgba(0,0,0,0.018)      4px
+    ),
+    /* Chrome gradient base */
+    linear-gradient(145deg,
+      #e8ecf4 0%,
+      #ffffff 15%,
+      #d0d8e8 32%,
+      #e4eaf6 50%,
+      #c4cede 68%,
+      #dce4f2 85%,
+      #ccd4e4 100%
+    );
   box-shadow: var(--shadow-card);
+  position: relative;
 }
 
-/* Icy blue text glow */
+/* Sapphire accent text — deep blue on chrome */
 [data-skin="metalheart"] .text-accent {
   text-shadow: var(--glow-accent);
 }
 
-/* Chrome play button — aggressive studio-lit specular */
+/* Chrome dome play button — spherical radial with sapphire glow */
 [data-skin="metalheart"] .bg-accent {
-  background-color: var(--color-accent);
-  background-image:
-    radial-gradient(ellipse at 35% 22%, rgba(255, 255, 255, 0.32) 0%, transparent 55%),
-    radial-gradient(ellipse at 65% 75%, rgba(0, 60, 120, 0.35) 0%, transparent 60%);
+  background: radial-gradient(circle at 30% 30%,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(120, 175, 240, 0.85) 28%,
+    rgba(0,   87, 184, 0.95) 62%,
+    rgba(0,   30,  90, 1.00) 100%
+  );
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 0 rgba(0, 40, 100, 0.50),
-    0 0 12px rgba(41, 182, 246, 0.80),
-    0 0 32px rgba(41, 182, 246, 0.35),
-    0 6px 18px rgba(0, 0, 0, 0.80);
+    inset  2px  2px 5px rgba(255, 255, 255, 0.75),
+    inset -2px -2px 5px rgba(0,   0,   0,   0.45),
+    0 0 15px rgba(0, 87, 184, 0.85),
+    0 0 40px rgba(0, 87, 184, 0.40),
+    5px 5px 15px rgba(0, 0, 0, 0.55);
 }
 
-/* ── Dual-density PCB circuit board grid ──────────────────── */
+/* ── SVG noise grain — forged steel micro-texture ──────────── */
 [data-skin="metalheart"] body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 99990;
-  background-image:
-    /* Fine grid — 20px PCB traces */
-    linear-gradient(rgba(41, 182, 246, 0.50) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(41, 182, 246, 0.50) 1px, transparent 1px),
-    /* Coarse grid — 100px module boundaries */
-    linear-gradient(rgba(41, 182, 246, 0.28) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(41, 182, 246, 0.28) 1px, transparent 1px);
-  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
-  opacity: 0.05;
+  opacity: 0.065;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  background-repeat: repeat;
 }
 
-/* ── Deep space vignette + ambient blue-chrome halo ────────── */
+/* ── Sapphire ambient + chrome edge vignette ───────────────── */
 [data-skin="metalheart"] body::after {
   content: '';
   position: fixed;
@@ -569,7 +597,9 @@ input[type="range"].eq-slider::-moz-range-thumb {
   pointer-events: none;
   z-index: 99991;
   background:
-    radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0, 2, 20, 0.70) 100%);
+    radial-gradient(ellipse at 15% 10%, rgba(0, 60, 180, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 90%, rgba(0, 40, 140, 0.10) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0, 8, 40, 0.45) 100%);
 }
 
 /* ============================================================
@@ -828,109 +858,139 @@ input[type="range"].eq-slider::-moz-range-thumb {
 }
 
 /* ══════════════════════════════════════════════════════════
-   SKIN 3 · METALHEART — Y2K Chrome + Icy Glass
+   SKIN 3 · METALHEART — Hyper-Skeuomorphic Chrome Hardware
    ══════════════════════════════════════════════════════════ */
 
-/* Chrome embossed screen headers — bright top-edge specular */
+/* Brushed chrome screen headers — polished steel top bar */
 [data-skin="metalheart"] .screen-header {
   background-image:
+    /* Sapphire light from top-left */
+    radial-gradient(ellipse at 10% 40%, rgba(0, 80, 200, 0.10) 0%, transparent 55%),
+    /* Specular crown */
     linear-gradient(180deg,
-      rgba(41, 182, 246, 0.08) 0%,
-      rgba(41, 182, 246, 0.02) 60%,
-      transparent 100%
-    ),
-    radial-gradient(ellipse at 0% 55%, rgba(130, 180, 255, 0.08) 0%, transparent 55%);
-  border-bottom: 1px solid rgba(41, 182, 246, 0.35);
+      rgba(255, 255, 255, 0.65) 0%,
+      rgba(255, 255, 255, 0.15) 8%,
+      rgba(220, 228, 242, 0.60) 100%
+    );
+  border-bottom: 1px solid rgba(80, 110, 160, 0.55);
   box-shadow:
-    inset 0 1px 0 rgba(160, 210, 255, 0.18),
-    0 1px 0 rgba(41, 182, 246, 0.22),
-    0 6px 28px rgba(0, 4, 30, 0.60);
+    inset 0 1px 0 rgba(255, 255, 255, 0.90),
+    inset 0 -1px 0 rgba(60, 80, 130, 0.30),
+    0 3px 12px rgba(0, 0, 0, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.60);
 }
 
-/* Chrome gradient h1 — pure white crown to electric blue base */
+/* Engraved metallic h1 — silver-to-dark-steel gradient */
 [data-skin="metalheart"] .screen-header h1 {
-  background: linear-gradient(180deg, #ffffff 0%, #c8e6ff 45%, #29b6f6 100%);
+  background: linear-gradient(180deg,
+    #ffffff   0%,
+    #d0d8e8  30%,
+    #707888  65%,
+    #303848 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 12px rgba(41, 182, 246, 0.55));
+  filter:
+    drop-shadow(0  1px 1px rgba(255, 255, 255, 0.90))
+    drop-shadow(0 -1px 0   rgba(0, 30, 80, 0.25));
 }
 
-/* Section titles: bold data-telemetry labels */
+/* Section titles: engraved dark steel label */
 [data-skin="metalheart"] .section-title {
-  color: var(--color-accent);
-  text-shadow:
-    0 0 6px #29b6f6,
-    0 0 16px rgba(41, 182, 246, 0.80),
-    0 0 36px rgba(41, 182, 246, 0.35);
+  background: linear-gradient(180deg, #3a4a60 0%, #0d1828 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.75));
   font-family: var(--font-mono);
   letter-spacing: 0.22em;
 }
 
-/* Filter chips: deep 4-way chrome emboss */
+/* Filter chips: chrome dome buttons with 4-way bevel */
 [data-skin="metalheart"] .filter-chip {
-  background-image:
-    linear-gradient(160deg, rgba(150, 200, 255, 0.12) 0%, rgba(0, 20, 60, 0.30) 100%);
+  background: radial-gradient(ellipse at 40% 25%,
+    rgba(255, 255, 255, 0.80) 0%,
+    rgba(210, 220, 238, 0.70) 45%,
+    rgba(160, 175, 210, 0.80) 100%
+  );
   box-shadow:
-    inset 0  1px 0 rgba(160, 215, 255, 0.28),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
-    inset  1px 0 0 rgba(120, 180, 255, 0.10),
-    inset -1px 0 0 rgba(0, 0, 0, 0.25),
-    0 2px 10px rgba(0, 4, 30, 0.65);
+    inset  2px  2px 4px rgba(255, 255, 255, 0.80),
+    inset -1px -1px 3px rgba(0,   0,   0,   0.25),
+    2px 3px 8px rgba(0, 0, 0, 0.28),
+    0 0 6px rgba(0, 87, 184, 0.12);
+  border: 1px solid rgba(100, 130, 180, 0.55);
+  color: #1a2a40;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.12em;
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
 }
 
-/* Active chip: bright lit chrome panel */
+/* Active chip: sapphire-lit chrome dome */
 [data-skin="metalheart"] .filter-chip.bg-accent {
-  background-image:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.20) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(0, 50, 100, 0.40) 0%, transparent 70%),
-    linear-gradient(180deg, rgba(41, 182, 246, 0.15) 0%, transparent 100%);
+  background: radial-gradient(circle at 30% 28%,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(100, 165, 240, 0.80) 35%,
+    rgba(0,   87, 184, 0.95) 70%,
+    rgba(0,   30,  90, 1.00) 100%
+  );
+  color: #ffffff;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -1px 0 rgba(0, 40, 100, 0.45),
-    0 0 10px rgba(41, 182, 246, 0.70),
-    0 0 24px rgba(41, 182, 246, 0.30),
-    0 4px 14px rgba(0, 4, 30, 0.70);
+    inset  2px  2px 4px rgba(255, 255, 255, 0.65),
+    inset -1px -1px 3px rgba(0,   0,   0,   0.45),
+    0 0 12px rgba(0, 87, 184, 0.75),
+    0 0 28px rgba(0, 87, 184, 0.35),
+    3px 4px 10px rgba(0, 0, 0, 0.40);
 }
 
-/* Track covers: chrome-framed thumbnail with glow on hover */
+/* Filter chip press: physical key depression */
+[data-skin="metalheart"] .filter-chip:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset  2px  2px 6px rgba(0, 0, 0, 0.25),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.40),
+    1px 1px 4px rgba(0, 0, 0, 0.20);
+}
+
+/* Track covers: chrome-framed with sapphire glow on hover */
 [data-skin="metalheart"] .track-cover {
   box-shadow:
-    0 2px 12px rgba(0, 4, 30, 0.65),
-    0 0 0 1px rgba(41, 182, 246, 0.18);
+    inset  1px  1px 2px rgba(255, 255, 255, 0.60),
+    inset -1px -1px 2px rgba(0,   0,   0,   0.20),
+    3px 4px 10px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(80, 110, 160, 0.35);
   transition:
-    box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    filter 0.35s ease,
-    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.32s ease,
+    transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 [data-skin="metalheart"] .track-cover:hover {
   box-shadow:
-    0 6px 24px rgba(0, 4, 30, 0.80),
-    0 0 0 2px rgba(41, 182, 246, 0.70),
-    0 0 16px rgba(41, 182, 246, 0.55),
-    0 0 40px rgba(41, 182, 246, 0.20);
-  filter: saturate(1.30) brightness(1.10);
+    inset  1px  1px 2px rgba(255, 255, 255, 0.70),
+    inset -1px -1px 2px rgba(0,   0,   0,   0.25),
+    5px 6px 18px rgba(0, 0, 0, 0.45),
+    0 0 0 2px rgba(0, 87, 184, 0.60),
+    0 0 16px rgba(0, 87, 184, 0.40);
+  filter: saturate(1.20) brightness(1.06);
   transform: scale(1.03);
 }
 
-/* Track list rows: blue left-edge indicator + icy hover fade */
+/* Track list rows: chrome groove on hover */
 [data-skin="metalheart"] .track-list-row {
-  border-left: 2px solid transparent;
+  border-left: 3px solid transparent;
   transition:
-    background 0.18s ease,
-    border-left-color 0.18s ease;
+    background 0.16s ease,
+    border-left-color 0.16s ease;
 }
 [data-skin="metalheart"] .track-list-row:hover {
   background: linear-gradient(90deg,
-    rgba(41, 182, 246, 0.10) 0%,
-    rgba(41, 182, 246, 0.03) 50%,
+    rgba(0, 87, 184, 0.08) 0%,
+    rgba(0, 87, 184, 0.02) 55%,
     transparent 100%
   );
-  border-left-color: rgba(41, 182, 246, 0.55);
+  border-left-color: rgba(0, 87, 184, 0.60);
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -1121,18 +1181,24 @@ input[type="range"].eq-slider::-moz-range-thumb {
 
 /* ── SKIN 3 · METALHEART — Nav + MiniPlayer ──────────────── */
 
-/* Chrome nav bar — bright top border + deep atmosphere shadow */
+/* Chrome nav bar — polished steel plate with sapphire glow */
 [data-skin="metalheart"] .nav-bar {
   background-image:
-    linear-gradient(to bottom, rgba(41, 182, 246, 0.07) 0%, transparent 100%);
-  border-top: 1px solid rgba(41, 182, 246, 0.50) !important;
+    /* Specular crown on top edge */
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.70) 0%,
+      rgba(255, 255, 255, 0.15) 5%,
+      rgba(210, 220, 238, 0.95) 100%
+    );
+  border-top: 1px solid rgba(255, 255, 255, 0.80) !important;
   box-shadow:
-    0 -1px 0 rgba(41, 182, 246, 0.35),
-    0 -12px 32px rgba(0, 4, 30, 0.80),
-    inset 0 1px 0 rgba(100, 180, 255, 0.12);
+    inset 0  1px 0 rgba(255, 255, 255, 0.90),
+    inset 0 -1px 0 rgba(60, 80, 130, 0.20),
+    0 -4px 20px rgba(0, 20, 80, 0.20),
+    0 -1px 0 rgba(80, 110, 160, 0.40);
 }
 
-/* Wide chrome sweep line above active icon */
+/* Sapphire sweep line above active nav icon */
 [data-skin="metalheart"] .nav-bar a.text-accent::before {
   content: '';
   position: absolute;
@@ -1140,18 +1206,28 @@ input[type="range"].eq-slider::-moz-range-thumb {
   left: 50%;
   transform: translateX(-50%);
   width: 60%;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-  box-shadow:
-    0 0 6px #29b6f6,
-    0 0 14px rgba(41, 182, 246, 0.75);
+  box-shadow: var(--glow-accent);
+}
+
+/* Nav icon labels: force dark text on chrome */
+[data-skin="metalheart"] .nav-bar span {
+  color: var(--color-text-secondary);
 }
 
 [data-skin="metalheart"] .mini-player {
-  border-top: 1px solid rgba(41, 182, 246, 0.35) !important;
+  background-image:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.10) 8%,
+      rgba(200, 212, 232, 0.95) 100%
+    );
+  border-top: 1px solid rgba(255, 255, 255, 0.75) !important;
   box-shadow:
-    0 -1px 0 rgba(41, 182, 246, 0.25),
-    0 -10px 24px rgba(0, 4, 30, 0.75);
+    inset 0  1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(60, 80, 130, 0.15),
+    0 -4px 16px rgba(0, 20, 80, 0.18);
 }
 
 /* ── SKIN 4 · MEDIEVAL — Nav + MiniPlayer ────────────────── */
@@ -1575,12 +1651,17 @@ input[type="range"].pitch-slider::-moz-range-thumb {
 [data-skin="metalheart"] .info-hub-card,
 [data-skin="metalheart"] .pitch-card {
   box-shadow:
-    inset 0  1px 0 rgba(160, 210, 255, 0.28),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
-    inset  1px 0 0 rgba(100, 170, 255, 0.12),
-    inset -1px 0 0 rgba(0, 0, 0, 0.35),
-    0 4px 24px rgba(0, 4, 30, 0.85),
-    0 0 40px rgba(41, 182, 246, 0.08);
+    inset  2px  2px 5px rgba(255, 255, 255, 0.80),
+    inset -2px -2px 5px rgba(0,   0,   0,   0.30),
+    5px 5px 15px rgba(0, 0, 0, 0.40),
+    0 0 12px rgba(0, 87, 184, 0.20);
+}
+
+/* Physical button press — all chrome buttons sink on :active */
+[data-skin="metalheart"] button:active:not(.filter-chip) {
+  transform: translateY(1px);
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+  filter: brightness(0.94);
 }
 
 /* ============================================================

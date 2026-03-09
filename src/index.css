@@ -919,6 +919,15 @@ input[type="range"].eq-slider::-moz-range-thumb {
    GLOBAL SKIN CHROME — BottomNav, MiniPlayer
    ============================================================ */
 
+/* ── Nav bar global guard ──
+   Explicit visibility + z-index ensures no skin rule can hide the tab bar.
+   Visibility is controlled ONLY by the React showNav conditional in App.tsx. */
+.nav-bar {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* Nav links need relative positioning for ::before indicator pseudo-elements */
 .nav-bar a {
   position: relative;
@@ -1204,14 +1213,12 @@ input[type="range"].eq-slider::-moz-range-thumb {
 
 /* ============================================================
    GLOBAL — AppBar Standardization
-   All .screen-header instances share consistent height & font
+   .screen-header sets display:flex only — flex-direction is
+   left to each screen's own Tailwind classes (row or column)
    ============================================================ */
 
-/* Enforce consistent internal alignment across all skins */
 .screen-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 /* ============================================================
@@ -1404,7 +1411,8 @@ input[type="range"].pitch-slider::-moz-range-thumb {
    Applied to the main player card body via ::before
    ============================================================ */
 
-[data-skin="cassette"] .bg-surface::before {
+/* Exclude .nav-bar and .mini-player which have their own ::before pseudo-elements */
+[data-skin="cassette"] .bg-surface:not(.nav-bar):not(.mini-player)::before {
   content: '';
   position: absolute;
   bottom: 3px;

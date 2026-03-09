@@ -35,8 +35,8 @@ export function SearchScreen() {
   return (
     <div className="scroll-y h-full pb-28">
 
-      {/* ── Sticky app bar — standardised height + search input ── */}
-      <div className="screen-header sticky top-0 bg-bg z-10 px-4 pt-5 pb-4 min-h-[72px]">
+      {/* ── Sticky app bar + search input ── */}
+      <div className="screen-header flex-col sticky top-0 bg-bg z-10 px-4 pt-5 pb-3">
         <h1 className="text-2xl font-display text-textPrimary mb-3">Search</h1>
         <div className="flex items-center gap-2 bg-surface border border-border px-3 py-2.5" style={{ borderRadius: 'var(--radius-card)' }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-textSecondary flex-shrink-0">

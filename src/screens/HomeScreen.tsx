@@ -33,8 +33,8 @@ function HorizontalSection({ title, tracks }: SectionProps) {
 export function HomeScreen() {
   return (
     <div className="scroll-y h-full pb-28">
-      {/* Sticky app bar — standardised 72px height across all screens */}
-      <div className="screen-header sticky top-0 bg-bg z-10 px-4 pt-5 pb-4 min-h-[72px] flex flex-col justify-center">
+      {/* Sticky app bar */}
+      <div className="screen-header sticky top-0 bg-bg z-10 px-4 pt-5 pb-3 flex flex-col">
         <h1 className="text-2xl font-display text-textPrimary">Home</h1>
         <p className="text-xs text-textSecondary font-mono tracking-widest uppercase mt-1">
           {greeting()}

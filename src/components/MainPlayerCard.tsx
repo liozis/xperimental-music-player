@@ -1,4 +1,5 @@
 import type { Track } from '../data/mockData';
+import { CassetteWindow } from './CassetteWindow';
 
 interface MainPlayerCardProps {
   currentTrack: Track;
@@ -6,6 +7,7 @@ interface MainPlayerCardProps {
   progress: number;
   shuffle: boolean;
   repeat: boolean;
+  pitch: number;
   onTogglePlay: () => void;
   onNext: () => void;
   onPrev: () => void;
@@ -21,6 +23,7 @@ export function MainPlayerCard({
   progress,
   shuffle,
   repeat,
+  pitch,
   onTogglePlay,
   onNext,
   onPrev,
@@ -35,65 +38,97 @@ export function MainPlayerCard({
   }
   const totalSecs  = parseDuration(currentTrack.duration);
   const elapsedSec = Math.floor((progress / 100) * totalSecs);
-  const elapsed = `${Math.floor(elapsedSec / 60)}:${String(elapsedSec % 60).padStart(2, '0')}`;
+  const elapsed    = `${Math.floor(elapsedSec / 60)}:${String(elapsedSec % 60).padStart(2, '0')}`;
 
   return (
     <div
       className={`bg-surface border border-border shadow-[0_4px_20px_rgba(0,0,0,0.6)] flex flex-col ${className}`}
       style={{ borderRadius: 'var(--radius-card)' }}
     >
-      {/* Card label bar */}
+      {/* ── Card label bar ─────────────────────────────────── */}
       <div
-        className="flex items-center justify-between px-3 py-2 border-b border-border"
+        className="flex items-center justify-between px-3 py-2 border-b border-border flex-shrink-0"
         style={{ borderRadius: `var(--radius-card) var(--radius-card) 0 0` }}
       >
-        <span className="text-[10px] font-mono uppercase tracking-widest text-textSecondary">Main Player</span>
-        <span className="text-[10px] font-mono text-accent">▶</span>
-      </div>
-
-      {/* Cover Art + Track Info */}
-      <div className="flex items-center gap-3 px-3 pt-3">
-        <img
-          src={currentTrack.coverUrl}
-          alt={currentTrack.title}
-          className="w-[72px] h-[72px] object-cover flex-shrink-0"
-          style={{ borderRadius: 'var(--radius-card)' }}
-        />
-        <div className="flex-1 min-w-0">
-          <h2 className="text-base font-display text-textPrimary leading-tight truncate">
-            {currentTrack.title}
-          </h2>
-          <p className="text-sm text-textSecondary font-body truncate">{currentTrack.artist}</p>
-        </div>
-      </div>
-
-      {/* ── Audio Visualizer Placeholder ────────────────────────── */}
-      <div
-        id="visualizer-container"
-        aria-label="Audio Visualizer"
-        className="mx-3 mt-3 flex-1 min-h-[80px] border border-dashed border-border bg-bg/60 flex items-center justify-center"
-        style={{ borderRadius: 'var(--radius-card)' }}
-      >
-        <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-textSecondary/40 select-none">
-          [ Audio Visualizer ]
+        <span className="text-[10px] font-mono uppercase tracking-widest text-textSecondary">
+          Main Player
+        </span>
+        <span className="text-[10px] font-mono text-accent">
+          {isPlaying ? '● PLAY' : '○ STOP'}
         </span>
       </div>
 
-      {/* Progress Bar */}
-      <div className="px-3 mt-3">
+      {/* ── Cover Art + Track Info + LCD Readout ───────────── */}
+      <div className="flex items-center gap-3 px-3 pt-3 flex-shrink-0">
+        <img
+          src={currentTrack.coverUrl}
+          alt={currentTrack.title}
+          className="w-[64px] h-[64px] object-cover flex-shrink-0 track-cover"
+          style={{ borderRadius: 'var(--radius-card)' }}
+        />
+        {/* Title / artist / album */}
+        <div className="flex-1 min-w-0">
+          <h2 className="text-sm font-display text-textPrimary leading-tight truncate">
+            {currentTrack.title}
+          </h2>
+          <p className="text-xs text-textSecondary font-body truncate mt-0.5">
+            {currentTrack.artist}
+          </p>
+          <p className="text-[10px] font-mono text-textSecondary/55 truncate mt-0.5">
+            {currentTrack.album} · {currentTrack.year}
+          </p>
+        </div>
+        {/* LCD readout panel — technical metadata */}
+        <div
+          className="lcd-display flex-shrink-0 flex flex-col items-end gap-[2px] px-2 py-1.5"
+          style={{ borderRadius: 'var(--radius-card)' }}
+        >
+          <span className="data-readout text-[9px] font-mono tabular-nums text-[var(--color-lcd-text,#b8d000)] leading-tight">
+            320 KBPS
+          </span>
+          <span className="data-readout text-[9px] font-mono tabular-nums text-[var(--color-lcd-text,#b8d000)] leading-tight">
+            44.1 KHZ
+          </span>
+          <span className="data-readout text-[9px] font-mono tabular-nums text-[var(--color-lcd-text,#b8d000)] leading-tight">
+            STEREO
+          </span>
+        </div>
+      </div>
+
+      {/* ── Information Display Hub: Tape Deck Window ──────── */}
+      {/* flex-1 min-h-0 fills the remaining card height naturally */}
+      <div
+        id="visualizer-container"
+        aria-label="Tape Deck Visualizer"
+        className="mx-3 mt-2 flex-1 min-h-0 overflow-hidden"
+        style={{ borderRadius: 'var(--radius-card)' }}
+      >
+        <CassetteWindow isPlaying={isPlaying} pitch={pitch} className="h-full" />
+      </div>
+
+      {/* ── Progress + time + pitch readout ────────────────── */}
+      <div className="px-3 mt-2 flex-shrink-0">
         <input
           type="range" min={0} max={100} value={progress}
           onChange={e => onSeek(Number(e.target.value))}
           className="w-full accent-[var(--color-accent)] h-1"
         />
-        <div className="flex justify-between mt-1">
-          <span className="text-[10px] font-mono text-textSecondary tabular-nums">{elapsed}</span>
-          <span className="text-[10px] font-mono text-textSecondary tabular-nums">{currentTrack.duration}</span>
+        <div className="flex justify-between mt-0.5">
+          <span className="text-[10px] font-mono text-textSecondary tabular-nums">
+            {elapsed}
+          </span>
+          {/* Pitch live readout in centre — context for tape speed */}
+          <span className="text-[9px] font-mono text-accent tabular-nums">
+            TAPE {pitch}%
+          </span>
+          <span className="text-[10px] font-mono text-textSecondary tabular-nums">
+            {currentTrack.duration}
+          </span>
         </div>
       </div>
 
-      {/* Playback Controls */}
-      <div className="flex items-center justify-between px-8 mt-1 pb-3">
+      {/* ── Playback Controls ───────────────────────────────── */}
+      <div className="flex items-center justify-between px-8 mt-1 pb-3 flex-shrink-0">
         <button
           onClick={onToggleShuffle}
           className={`p-2 transition-colors ${shuffle ? 'text-accent' : 'text-textSecondary'}`}
@@ -118,8 +153,13 @@ export function MainPlayerCard({
           className="w-14 h-14 rounded-full bg-accent flex items-center justify-center active:opacity-80 transition-opacity"
         >
           {isPlaying
-            ? <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-bg)"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-            : <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-bg)"><polygon points="5,3 19,12 5,21"/></svg>
+            ? <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-bg)">
+                <rect x="6" y="4" width="4" height="16"/>
+                <rect x="14" y="4" width="4" height="16"/>
+              </svg>
+            : <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-bg)">
+                <polygon points="5,3 19,12 5,21"/>
+              </svg>
           }
         </button>
 

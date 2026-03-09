@@ -4,8 +4,6 @@ import { TRACKS } from '../data/mockData';
 import { MainPlayerCard } from '../components/MainPlayerCard';
 import { EqualizerCard }  from '../components/EqualizerCard';
 import { QueueCard }      from '../components/QueueCard';
-import { InfoHubCard }    from '../components/InfoHubCard';
-import { PitchCard }      from '../components/PitchCard';
 
 export function PlayerScreen() {
   const {
@@ -45,7 +43,7 @@ export function PlayerScreen() {
   if (!showPlayer && !visible) return null;
   if (!currentTrack) return null;
 
-  // Up Next — 4 tracks wrapping around queue
+  // Up Next: next 4 tracks wrapping around queue
   const currentIdx = queue.findIndex(t => t.id === currentTrack.id);
   const upNext = Array.from({ length: 4 }, (_, i) => {
     const idx = (currentIdx + 1 + i) % TRACKS.length;
@@ -61,7 +59,7 @@ export function PlayerScreen() {
       }}
     >
 
-      {/* ── Screen chrome: dismiss bar ────────────────────────── */}
+      {/* ── Screen chrome: dismiss + title + like ──────────── */}
       <div className="flex items-center justify-between px-4 pt-5 pb-3 flex-shrink-0">
         <button
           onClick={dismiss}
@@ -88,43 +86,40 @@ export function PlayerScreen() {
         </button>
       </div>
 
-      {/* ── Scrollable card stack ─────────────────────────────── */}
-      {/* overflow-y-auto lets all four cards render at natural height */}
-      <div className="flex-1 min-h-0 overflow-y-auto px-3 pb-6 flex flex-col gap-3">
+      {/* ── Three-card vertical stack — fills remaining height ─ */}
+      {/* overflow-hidden preserves the original layout balance  */}
+      <div className="flex-1 min-h-0 overflow-hidden px-3 pb-4 flex flex-col gap-3">
 
-        {/* CARD 1 — Main Player */}
+        {/* CARD 1 — Main Player: flex-1 fills dead space, Info Hub embedded inside */}
         <MainPlayerCard
           currentTrack={currentTrack}
           isPlaying={isPlaying}
           progress={progress}
           shuffle={shuffle}
           repeat={repeat}
+          pitch={pitch}
           onTogglePlay={togglePlay}
           onNext={next}
           onPrev={prev}
           onSeek={setProgress}
           onToggleShuffle={() => setShuffle(s => !s)}
           onToggleRepeat={() => setRepeat(r => !r)}
+          className="flex-1 min-h-0"
         />
 
-        {/* CARD 2 — Information Display Hub */}
-        <InfoHubCard
-          currentTrack={currentTrack}
-          isPlaying={isPlaying}
-          pitch={pitch}
-        />
-
-        {/* CARD 3 — Equalizer */}
+        {/* CARD 2 — Equalizer + Pitch / Speed slider */}
         <EqualizerCard
           eqValues={eqValues}
           onEqChange={(id, value) => setEqValues(v => ({ ...v, [id]: value }))}
+          pitch={pitch}
+          onPitchChange={setPitch}
         />
 
-        {/* CARD 4 — Pitch / Speed */}
-        <PitchCard pitch={pitch} onPitchChange={setPitch} />
-
-        {/* CARD 5 — Queue / Up Next */}
-        <QueueCard tracks={upNext} onPlay={play} />
+        {/* CARD 3 — Queue / Up Next */}
+        <QueueCard
+          tracks={upNext}
+          onPlay={play}
+        />
 
       </div>
     </div>

@@ -2,14 +2,17 @@ import { useState, useEffect } from 'react';
 import { usePlayer } from '../context/PlayerContext';
 import { TRACKS } from '../data/mockData';
 import { MainPlayerCard } from '../components/MainPlayerCard';
-import { EqualizerCard } from '../components/EqualizerCard';
-import { QueueCard } from '../components/QueueCard';
+import { EqualizerCard }  from '../components/EqualizerCard';
+import { QueueCard }      from '../components/QueueCard';
+import { InfoHubCard }    from '../components/InfoHubCard';
+import { PitchCard }      from '../components/PitchCard';
 
 export function PlayerScreen() {
   const {
     currentTrack, isPlaying, togglePlay, next, prev,
     progress, setProgress, play, queue,
     showPlayer, closePlayer,
+    pitch, setPitch,
   } = usePlayer();
 
   const [eqValues, setEqValues] = useState<Record<string, number>>({
@@ -19,12 +22,11 @@ export function PlayerScreen() {
   const [repeat, setRepeat]   = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
-  // Drive slide-in/out via showPlayer from context (no routing dependency)
+  // Drive slide-in / out via showPlayer from context (no routing dependency)
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (showPlayer) {
-      // RAF ensures component is in DOM at translateY(100%) before animating to 0
       const raf = requestAnimationFrame(() => setVisible(true));
       return () => cancelAnimationFrame(raf);
     } else {
@@ -37,15 +39,13 @@ export function PlayerScreen() {
 
   const dismiss = () => {
     setVisible(false);
-    // Wait for slide-out animation before unmounting
     setTimeout(() => closePlayer(), 300);
   };
 
-  // Not shown and not mid-animation — stay out of DOM
   if (!showPlayer && !visible) return null;
   if (!currentTrack) return null;
 
-  // Up Next: next 4 tracks wrapping around queue
+  // Up Next — 4 tracks wrapping around queue
   const currentIdx = queue.findIndex(t => t.id === currentTrack.id);
   const upNext = Array.from({ length: 4 }, (_, i) => {
     const idx = (currentIdx + 1 + i) % TRACKS.length;
@@ -61,19 +61,20 @@ export function PlayerScreen() {
       }}
     >
 
-      {/* ── Screen chrome: dismiss + title + like ────────────── */}
-      <div className="flex items-center justify-between px-4 pt-6 pb-3 flex-shrink-0">
+      {/* ── Screen chrome: dismiss bar ────────────────────────── */}
+      <div className="flex items-center justify-between px-4 pt-5 pb-3 flex-shrink-0">
         <button
           onClick={dismiss}
           className="text-textSecondary active:text-accent min-w-[44px] min-h-[44px] flex items-center justify-center -ml-2"
         >
-          {/* Down chevron — mimics Spotify dismiss gesture */}
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6,9 12,15 18,9"/>
           </svg>
         </button>
 
-        <p className="text-[10px] font-mono text-textSecondary tracking-widest uppercase">Now Playing</p>
+        <p className="text-[10px] font-mono text-textSecondary tracking-widest uppercase">
+          Now Playing
+        </p>
 
         <button
           onClick={() => setIsLiked(l => !l)}
@@ -87,10 +88,11 @@ export function PlayerScreen() {
         </button>
       </div>
 
-      {/* ── Three-card vertical stack — fills remaining height exactly ── */}
-      <div className="flex-1 min-h-0 overflow-hidden px-3 pb-4 flex flex-col gap-3">
+      {/* ── Scrollable card stack ─────────────────────────────── */}
+      {/* overflow-y-auto lets all four cards render at natural height */}
+      <div className="flex-1 min-h-0 overflow-y-auto px-3 pb-6 flex flex-col gap-3">
 
-        {/* CARD 1 — Main Player: flex-1 so its visualizer fills dead space */}
+        {/* CARD 1 — Main Player */}
         <MainPlayerCard
           currentTrack={currentTrack}
           isPlaying={isPlaying}
@@ -103,20 +105,26 @@ export function PlayerScreen() {
           onSeek={setProgress}
           onToggleShuffle={() => setShuffle(s => !s)}
           onToggleRepeat={() => setRepeat(r => !r)}
-          className="flex-1 min-h-0"
         />
 
-        {/* CARD 2 — Equalizer */}
+        {/* CARD 2 — Information Display Hub */}
+        <InfoHubCard
+          currentTrack={currentTrack}
+          isPlaying={isPlaying}
+          pitch={pitch}
+        />
+
+        {/* CARD 3 — Equalizer */}
         <EqualizerCard
           eqValues={eqValues}
           onEqChange={(id, value) => setEqValues(v => ({ ...v, [id]: value }))}
         />
 
-        {/* CARD 3 — Queue / Up Next */}
-        <QueueCard
-          tracks={upNext}
-          onPlay={play}
-        />
+        {/* CARD 4 — Pitch / Speed */}
+        <PitchCard pitch={pitch} onPitchChange={setPitch} />
+
+        {/* CARD 5 — Queue / Up Next */}
+        <QueueCard tracks={upNext} onPlay={play} />
 
       </div>
     </div>

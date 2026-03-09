@@ -1201,3 +1201,259 @@ input[type="range"].eq-slider::-moz-range-thumb {
 [data-skin="cassette"] .pb-6 {
   padding-bottom: 1.75rem;
 }
+
+/* ============================================================
+   GLOBAL — AppBar Standardization
+   All .screen-header instances share consistent height & font
+   ============================================================ */
+
+/* Enforce consistent internal alignment across all skins */
+.screen-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ============================================================
+   GLOBAL — Cassette Reel Animation
+   Used by InfoHubCard's CassetteWindow SVG
+   ============================================================ */
+
+@keyframes reel-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   GLOBAL — Pitch Slider Base Styles
+   Horizontal tape-speed control — all skins fallback
+   ============================================================ */
+
+/* Track — horizontal deep channel */
+input[type="range"].pitch-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.22);
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"].pitch-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.22);
+}
+input[type="range"].pitch-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+  margin-top: -7px;
+}
+input[type="range"].pitch-slider::-moz-range-track {
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.22);
+}
+input[type="range"].pitch-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   SKIN 1 · CASSETTE — Pitch Slider Hardware Override
+   Deep machined channel + square metallic knob
+   ============================================================ */
+
+[data-skin="cassette"] input[type="range"].pitch-slider::-webkit-slider-runnable-track {
+  height: 7px;
+  border-radius: 2px;
+  background:
+    linear-gradient(to bottom,
+      rgba(0,0,0,0.60) 0%,
+      rgba(0,0,0,0.40) 100%
+    );
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.70),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(0, 0, 0, 0.55);
+}
+[data-skin="cassette"] input[type="range"].pitch-slider::-moz-range-track {
+  height: 7px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.50);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.70);
+  border: 1px solid rgba(0, 0, 0, 0.55);
+}
+
+/* Square metallic knob cap — horizontal slider */
+[data-skin="cassette"] input[type="range"].pitch-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px;
+  height: 16px;
+  border-radius: 3px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.20) 0px, rgba(255,255,255,0.20) 1px,
+      transparent 1px, transparent 3px
+    ),
+    linear-gradient(to bottom,
+      #d8d0c4 0%,
+      #aea69a 35%,
+      #908880 60%,
+      #bab2a6 100%
+    );
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+    0 3px 6px rgba(0, 0, 0, 0.50);
+  cursor: grab;
+  margin-top: -4.5px;
+}
+[data-skin="cassette"] input[type="range"].pitch-slider::-moz-range-thumb {
+  width: 26px;
+  height: 16px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #d8d0c4 0%, #aea69a 35%, #908880 60%, #bab2a6 100%);
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 3px 6px rgba(0, 0, 0, 0.50);
+}
+
+/* ============================================================
+   SKIN 1 · CASSETTE — Info Hub Card
+   ============================================================ */
+
+[data-skin="cassette"] .info-hub-card {
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.60),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.18),
+    3px 6px 16px rgba(0, 0, 0, 0.48),
+    1px 2px 4px rgba(0, 0, 0, 0.26);
+}
+
+/* Cassette window container — recessed viewport bezel */
+[data-skin="cassette"] .info-hub-card .cassette-window {
+  border: 1px solid rgba(0, 0, 0, 0.65);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.80),
+    inset 0 0 12px rgba(0, 0, 0, 0.60),
+    0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+/* ============================================================
+   SKIN 1 · CASSETTE — Pitch Card
+   ============================================================ */
+
+[data-skin="cassette"] .pitch-card {
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.60),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.18),
+    3px 6px 16px rgba(0, 0, 0, 0.48),
+    1px 2px 4px rgba(0, 0, 0, 0.26);
+}
+
+/* Preset buttons — small keycap style */
+[data-skin="cassette"] .pitch-preset-btn {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 1px 3px rgba(0, 0, 0, 0.28);
+}
+[data-skin="cassette"] .pitch-preset-btn:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.40);
+}
+
+/* ============================================================
+   SKIN 1 · CASSETTE — Screw Head Styling
+   The SVG screw fills inherit current color when needed
+   ============================================================ */
+
+[data-skin="cassette"] .screw-head {
+  opacity: 0.80;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.45));
+}
+
+/* ============================================================
+   SKIN 1 · CASSETTE — Hardware Panel shared rules
+   Any element with .hardware-panel gets consistent corner screws
+   ============================================================ */
+
+[data-skin="cassette"] .hardware-panel {
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.58),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.18),
+    2px 5px 14px rgba(0, 0, 0, 0.44);
+}
+
+/* ============================================================
+   SKIN 1 · CASSETTE — Cooling Vent Pattern (chassis detail)
+   Applied to the main player card body via ::before
+   ============================================================ */
+
+[data-skin="cassette"] .bg-surface::before {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  right: 18px;
+  width: 40px;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.30) 0px, rgba(0, 0, 0, 0.30) 2px,
+    rgba(255, 255, 255, 0.08) 2px, rgba(255, 255, 255, 0.08) 3px,
+    transparent 3px, transparent 5px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================
+   SKIN 2 · ACIDGRAFIX — Info Hub + Pitch (neon accent pass)
+   ============================================================ */
+
+[data-skin="acidgrafix"] .info-hub-card {
+  border-color: rgba(0, 255, 65, 0.35);
+  box-shadow:
+    0 0 12px rgba(0, 255, 65, 0.08),
+    0 4px 20px rgba(0, 0, 0, 0.75);
+}
+[data-skin="acidgrafix"] .pitch-card {
+  border-color: rgba(0, 255, 65, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
+}
+
+/* ============================================================
+   SKIN 3 · METALHEART — Info Hub + Pitch
+   ============================================================ */
+
+[data-skin="metalheart"] .info-hub-card,
+[data-skin="metalheart"] .pitch-card {
+  box-shadow:
+    inset 0 1px 0 rgba(79, 195, 247, 0.18),
+    0 4px 20px rgba(0, 8, 40, 0.65);
+}
+
+/* ============================================================
+   SKIN 4 · MEDIEVAL — Info Hub + Pitch
+   ============================================================ */
+
+[data-skin="medieval"] .info-hub-card,
+[data-skin="medieval"] .pitch-card {
+  box-shadow:
+    inset 0 1px 0 rgba(212, 160, 23, 0.12),
+    0 4px 20px rgba(0, 0, 0, 0.80);
+}

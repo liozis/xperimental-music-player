@@ -18,8 +18,8 @@ export function LibraryScreen() {
 
   return (
     <div className="scroll-y h-full pb-28">
-      {/* App Bar */}
-      <div className="screen-header flex items-center justify-between px-4 pt-6 pb-3 sticky top-0 bg-bg z-10">
+      {/* App Bar — standardised 72px height matching Home and Search */}
+      <div className="screen-header flex items-center justify-between px-4 pt-5 pb-4 min-h-[72px] sticky top-0 bg-bg z-10">
         <h1 className="text-2xl font-display text-textPrimary">Library</h1>
         <div className="flex gap-3">
           <button className="text-textSecondary active:text-accent transition-colors">
@@ -38,8 +38,8 @@ export function LibraryScreen() {
         </div>
       </div>
 
-      {/* Filter Chips */}
-      <div className="scroll-x flex gap-2 px-4 pb-4">
+      {/* Filter Chips — 24px top margin from AppBar */}
+      <div className="scroll-x flex gap-2 px-4 pt-6 pb-4">
         {FILTERS.map(f => (
           <button
             key={f}

@@ -35,9 +35,9 @@ export function SearchScreen() {
   return (
     <div className="scroll-y h-full pb-28">
 
-      {/* ── Sticky header ──────────────────────────────────── */}
-      <div className="screen-header px-4 pt-6 pb-4 sticky top-0 bg-bg z-10">
-        <h1 className="text-2xl font-display text-textPrimary mb-4">Search</h1>
+      {/* ── Sticky app bar — standardised height + search input ── */}
+      <div className="screen-header sticky top-0 bg-bg z-10 px-4 pt-5 pb-4 min-h-[72px]">
+        <h1 className="text-2xl font-display text-textPrimary mb-3">Search</h1>
         <div className="flex items-center gap-2 bg-surface border border-border px-3 py-2.5" style={{ borderRadius: 'var(--radius-card)' }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-textSecondary flex-shrink-0">
             <circle cx="11" cy="11" r="8"/>
@@ -74,7 +74,7 @@ export function SearchScreen() {
 
       {/* ── Browse mode ────────────────────────────────────── */}
       {showBrowse && (
-        <>
+        <div className="pt-6">
           {/* Recent Searches — no trailing icons */}
           <section className="mb-6">
             <h2 className="section-title text-[10px] font-mono uppercase tracking-widest text-textSecondary px-4 mb-1">
@@ -130,7 +130,7 @@ export function SearchScreen() {
               ))}
             </div>
           </section>
-        </>
+        </div>
       )}
     </div>
   );

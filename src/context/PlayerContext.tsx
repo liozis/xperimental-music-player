@@ -8,11 +8,13 @@ interface PlayerContextType {
   queue: Track[];
   progress: number;
   showPlayer: boolean;
+  pitch: number;
   play: (track: Track) => void;
   togglePlay: () => void;
   next: () => void;
   prev: () => void;
   setProgress: (p: number) => void;
+  setPitch: (p: number) => void;
   audioRef: React.RefObject<HTMLAudioElement>;
   openPlayer: () => void;
   closePlayer: () => void;
@@ -25,7 +27,15 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showPlayer, setShowPlayer] = useState(false);
+  // Pitch/Speed — 50 = 0.5x (slow), 100 = 1.0x (normal), 200 = 2.0x (fast)
+  const [pitch, setPitchState] = useState(100);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  const setPitch = (p: number) => {
+    const clamped = Math.min(200, Math.max(50, p));
+    setPitchState(clamped);
+    if (audioRef.current) audioRef.current.playbackRate = clamped / 100;
+  };
   const queue = TRACKS;
 
   const openPlayer  = () => setShowPlayer(true);
@@ -68,8 +78,8 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
 
   return (
     <PlayerContext.Provider value={{
-      currentTrack, isPlaying, queue, progress, showPlayer,
-      play, togglePlay, next, prev, setProgress, audioRef,
+      currentTrack, isPlaying, queue, progress, showPlayer, pitch,
+      play, togglePlay, next, prev, setProgress, setPitch, audioRef,
       openPlayer, closePlayer,
     }}>
       <audio ref={audioRef} />

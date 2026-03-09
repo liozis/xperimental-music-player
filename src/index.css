@@ -772,11 +772,15 @@ input[type="range"].eq-slider::-moz-range-thumb {
     var(--shadow-card),
     inset 0 2px 8px rgba(0, 0, 0, 0.65),
     inset 0 -1px 4px rgba(0, 0, 0, 0.45);
+}
+/* position:relative only on non-positioned surfaces — mini-player & nav-bar use absolute/fixed */
+[data-skin="medieval"] .bg-surface:not(.mini-player):not(.nav-bar) {
   position: relative;
 }
 
 /* ── Glowing #b2ed32 pixel rune motifs (cross + sword) ──── */
-[data-skin="medieval"] .bg-surface:not(.nav-bar):not(.mini-player)::before {
+/* Exclude: nav-bar, mini-player, search-bar wrapper (.py-2\.5), filter-chips */
+[data-skin="medieval"] .bg-surface:not(.nav-bar):not(.mini-player):not(.py-2\.5):not(.filter-chip)::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -1274,21 +1278,22 @@ input[type="range"].eq-slider::-moz-range-thumb {
   transition: transform 0.06s ease, box-shadow 0.06s ease;
 }
 
-/* Active chip: sapphire-lit chrome dome */
+/* Active chip: sapphire-lit chrome dome — lighter for legibility */
 [data-skin="metalheart"] .filter-chip.bg-accent {
   background: radial-gradient(circle at 30% 28%,
-    rgba(255, 255, 255, 0.85) 0%,
-    rgba(100, 165, 240, 0.80) 35%,
-    rgba(0,   87, 184, 0.95) 70%,
-    rgba(0,   30,  90, 1.00) 100%
+    rgba(255, 255, 255, 0.90) 0%,
+    rgba(140, 195, 255, 0.85) 30%,
+    rgba(60,  130, 220, 0.90) 60%,
+    rgba(20,   80, 170, 0.95) 100%
   );
   color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 20, 70, 0.70);
   box-shadow:
-    inset  2px  2px 4px rgba(255, 255, 255, 0.65),
-    inset -1px -1px 3px rgba(0,   0,   0,   0.45),
-    0 0 12px rgba(0, 87, 184, 0.75),
-    0 0 28px rgba(0, 87, 184, 0.35),
-    3px 4px 10px rgba(0, 0, 0, 0.40);
+    inset  2px  2px 4px rgba(255, 255, 255, 0.70),
+    inset -1px -1px 3px rgba(0,   0,   0,   0.30),
+    0 0 8px rgba(60, 130, 220, 0.55),
+    0 0 18px rgba(60, 130, 220, 0.25),
+    3px 4px 10px rgba(0, 0, 0, 0.35);
 }
 
 /* Filter chip press: physical key depression */
@@ -1468,51 +1473,31 @@ input[type="range"].eq-slider::-moz-range-thumb {
 
 /* ── SKIN 1 · CASSETTE — Nav + MiniPlayer ─────────────────── */
 
-/* Matte dark gray cassette deck chassis nav bar */
+/* ── Warm beige unified cassette tape deck chassis nav bar ── */
 [data-skin="cassette"] .nav-bar {
-  background: #2A2B2A !important;
-  border-top: 2px solid #3D3E3D !important;
+  background: linear-gradient(180deg, #D4CCB8 0%, #D9D2C5 50%, #D2CBC0 100%) !important;
+  border-top: 1px solid #C4BDB0 !important;
   box-shadow:
-    inset 0 3px 10px rgba(0, 0, 0, 0.70),
-    inset 0 1px 0 rgba(80, 82, 80, 0.55),
-    0 -3px 10px rgba(0, 0, 0, 0.50) !important;
+    inset 0 2px 6px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.60),
+    0 -2px 8px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Physical cassette deck key — active = pressed inset */
+/* Active tab icon — warm orange on beige */
 [data-skin="cassette"] .nav-bar a.text-accent {
-  background: #1E1F1E;
-  box-shadow:
-    inset 0 3px 6px rgba(0, 0, 0, 0.75),
-    inset 0 1px 3px rgba(0, 0, 0, 0.60),
-    0 1px 0 rgba(80, 82, 80, 0.40);
-  border-radius: 4px;
+  color: #CC6600 !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.50) !important;
+  filter: none !important;
 }
 
-/* Physical cassette deck key — inactive = raised popped out */
-[data-skin="cassette"] .nav-bar a:not(.text-accent) {
-  background: linear-gradient(180deg, #3E3F3E 0%, #2E2F2E 50%, #252625 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(80, 82, 80, 0.55),
-    0 3px 6px rgba(0, 0, 0, 0.60),
-    0 1px 2px rgba(0, 0, 0, 0.45);
-  border-radius: 4px;
-  border: 1px solid #1A1B1A;
-}
-
-/* Cassette active icon — engraved deep orange */
-[data-skin="cassette"] .nav-bar a.text-accent {
-  color: #FF7300 !important;
-  text-shadow: 0 0 8px rgba(255, 115, 0, 0.60);
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.80));
-}
-
+/* ── Mini-player: same warm beige chassis ─────────────────── */
 [data-skin="cassette"] .mini-player {
-  background: #2A2B2A !important;
-  border-top: 2px solid #3D3E3D !important;
+  background: linear-gradient(180deg, #D4CCB8 0%, #D9D2C5 100%) !important;
+  border-top: 1px solid #C4BDB0 !important;
   box-shadow:
-    inset 0 3px 8px rgba(0, 0, 0, 0.65),
-    inset 0 1px 0 rgba(80, 82, 80, 0.45),
-    0 -3px 8px rgba(0, 0, 0, 0.45) !important;
+    inset 0 2px 5px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 -2px 6px rgba(0, 0, 0, 0.10) !important;
 }
 
 /* ── SKIN 2 · ACIDGRAFIX — Nav + MiniPlayer ──────────────── */
@@ -2213,25 +2198,9 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   display: none; /* hidden for all skins by default */
 }
 
-[data-skin="cassette"] .home-greeting {
-  display: none; /* hide standard "Good Evening" text for cassette */
-}
-
-[data-skin="cassette"] .cassette-lcd-screen {
-  display: flex;
-  overflow: hidden;
-  background: #8b9c84;
-  color: #1e2b18;
-  border: 2px solid #5a6b54;
-  border-radius: 3px;
-  padding: 4px 6px;
-  margin-top: 6px;
-  box-shadow:
-    inset 2px 2px 6px rgba(0, 0, 0, 0.40),
-    inset -1px -1px 2px rgba(255, 255, 255, 0.20),
-    0 1px 0 rgba(255, 255, 255, 0.30);
-  max-width: 100%;
-}
+/* Cassette home: show standard greeting, hide LCD marquee (reverted to plain text) */
+/* .home-greeting is shown by default — no override needed */
+/* .cassette-lcd-screen remains display:none for cassette too */
 
 /* 14-segment font scrolling marquee */
 [data-skin="cassette"] .cassette-lcd-marquee {
@@ -2252,34 +2221,36 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   100% { transform: translateX(-100%); }
 }
 
-/* ── DSEG14 font for EQ dB readouts (cassette only) ─────── */
+/* ── DSEG14 font for EQ dB readouts — colors match Search Bar ── */
 [data-skin="cassette"] .eq-db-value {
   font-family: 'DSEG14 Classic', monospace !important;
   font-size: 9px !important;
-  background: #8b9c84;
-  color: #1e2b18 !important;
+  background: #4D5D53 !important;
+  color: #A4C639 !important;
   padding: 1px 3px;
   border-radius: 2px;
-  border: 1px solid #5a6b54;
+  border: 1px solid #3d4d43 !important;
   box-shadow:
-    inset 1px 1px 3px rgba(0, 0, 0, 0.35),
-    0 1px 0 rgba(255, 255, 255, 0.25);
+    inset 1px 1px 3px rgba(0, 0, 0, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.15);
   letter-spacing: 0.02em;
-  min-width: 32px;
+  width: 36px !important;   /* fixed width — no layout shift when digits change */
+  min-width: unset !important;
   text-align: center;
+  transform: translateZ(0); /* GPU layer — prevents repaint jitter on drag */
 }
 
-/* ── Library LED chips — matte dark gray + colored LED window ── */
+/* ── Library chips — vintage retro PC-case gray + colored LED ── */
 
-/* Base: matte dark gray chassis button for all cassette chips */
+/* Base: warm PC-case gray (one tone darker than main cassette UI #D9D2C5) */
 [data-skin="cassette"] .filter-chip {
-  background: linear-gradient(180deg, #353635 0%, #2A2B2A 60%, #222322 100%) !important;
-  border: 1px solid #1A1B1A !important;
-  color: #9A9B9A !important;
+  background: linear-gradient(180deg, #C5BDB0 0%, #B8B0A4 60%, #ADA590 100%) !important;
+  border: 1px solid #9E9688 !important;
+  color: #3A3028 !important;
   box-shadow:
-    inset 0 1px 0 rgba(80, 82, 80, 0.40),
-    0 3px 6px rgba(0, 0, 0, 0.55),
-    0 1px 2px rgba(0, 0, 0, 0.40) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 2px 5px rgba(0, 0, 0, 0.28),
+    0 1px 2px rgba(0, 0, 0, 0.20) !important;
   padding-bottom: 10px !important; /* room for LED at bottom */
   position: relative;
   overflow: hidden;
@@ -2288,14 +2259,15 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   transition: box-shadow 0.06s ease !important;
 }
 
-/* Active chip: pressed inset */
+/* Active chip: pressed inset + warm orange accent text */
 [data-skin="cassette"] .filter-chip.bg-accent {
-  background: linear-gradient(180deg, #1E1F1E 0%, #222322 100%) !important;
-  color: #FFFFFF !important;
+  background: linear-gradient(180deg, #A8A090 0%, #B0A898 100%) !important;
+  color: #CC6600 !important;
+  font-weight: 700 !important;
   box-shadow:
-    inset 0 3px 8px rgba(0, 0, 0, 0.75),
-    inset 0 1px 3px rgba(0, 0, 0, 0.60),
-    0 1px 0 rgba(80, 82, 80, 0.30) !important;
+    inset 0 3px 7px rgba(0, 0, 0, 0.30),
+    inset 0 1px 3px rgba(0, 0, 0, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.40) !important;
   transform: translateY(1px) !important;
 }
 
@@ -2408,6 +2380,31 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   background: linear-gradient(160deg, #AA4800 0%, #8A3800 50%, #7A3000 100%);
 }
 
+/* Orange LED window at bottom of each deck button */
+[data-skin="cassette"] .cassette-deck-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 5px;
+  border-radius: 2px;
+  background: #CC5000;
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.50),
+    0 0 3px rgba(200, 80, 0, 0.40);
+  transition: background 0.06s ease, box-shadow 0.06s ease;
+}
+
+/* Active deck button: LED lit bright orange */
+[data-skin="cassette"] .cassette-deck-btn.is-active::after {
+  background: #FF7300;
+  box-shadow:
+    0 0 4px #FF7300,
+    0 0 10px rgba(255, 115, 0, 0.75);
+}
+
 /* ── EQ slider grip handles — centered + 3 carved lines ─── */
 
 [data-skin="cassette"] input[type="range"].eq-slider {
@@ -2420,18 +2417,19 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   cursor: grab;
 }
 
+/* EQ track: very dark orange fill — matches deck button palette */
 [data-skin="cassette"] input[type="range"].eq-slider::-webkit-slider-runnable-track {
   width: 7px;
   border-radius: 2px;
-  background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 100%);
+  background: linear-gradient(to right, rgba(90, 32, 0, 0.90) 0%, rgba(110, 45, 0, 0.75) 100%);
   box-shadow:
     inset 2px 0 5px rgba(0, 0, 0, 0.65),
-    inset -1px 0 0 rgba(255, 255, 255, 0.08),
-    -1px 0 0 rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(0, 0, 0, 0.55);
+    inset -1px 0 0 rgba(255, 150, 50, 0.10),
+    -1px 0 0 rgba(255, 150, 50, 0.08);
+  border: 1px solid rgba(80, 30, 0, 0.70);
 }
 
-/* EQ slider thumb: centered, 3 horizontal carved grip lines */
+/* EQ slider thumb: orange deck button color + carved grip lines */
 [data-skin="cassette"] input[type="range"].eq-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 28px;
@@ -2443,16 +2441,16 @@ input[type="range"].pitch-slider::-moz-range-thumb {
     /* 3 horizontal grip lines */
     repeating-linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.50) 0px, rgba(0, 0, 0, 0.50) 2px,
-      rgba(255, 255, 255, 0.18) 2px, rgba(255, 255, 255, 0.18) 3px,
+      rgba(0, 0, 0, 0.45) 0px, rgba(0, 0, 0, 0.45) 2px,
+      rgba(255, 200, 100, 0.22) 2px, rgba(255, 200, 100, 0.22) 3px,
       transparent 3px, transparent 6px
     ),
-    linear-gradient(to bottom, #d8d0c4 0%, #aea69a 35%, #908880 60%, #bab2a6 100%);
-  border: 1px solid rgba(0, 0, 0, 0.55);
+    linear-gradient(to bottom, #E07000 0%, #CC5C00 40%, #A84800 65%, #C86800 100%);
+  border: 1px solid #7A3400;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-    0 3px 6px rgba(0, 0, 0, 0.50);
+    inset 0 1px 0 rgba(255, 200, 100, 0.50),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.40),
+    0 3px 6px rgba(0, 0, 0, 0.55);
 }
 
 [data-skin="cassette"] input[type="range"].eq-slider::-moz-range-thumb {
@@ -2462,45 +2460,35 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   background:
     repeating-linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.50) 0px, rgba(0, 0, 0, 0.50) 2px,
-      rgba(255, 255, 255, 0.18) 2px, rgba(255, 255, 255, 0.18) 3px,
+      rgba(0, 0, 0, 0.45) 0px, rgba(0, 0, 0, 0.45) 2px,
+      rgba(255, 200, 100, 0.22) 2px, rgba(255, 200, 100, 0.22) 3px,
       transparent 3px, transparent 6px
     ),
-    linear-gradient(to bottom, #d8d0c4 0%, #aea69a 35%, #908880 60%, #bab2a6 100%);
-  border: 1px solid rgba(0, 0, 0, 0.55);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 3px 6px rgba(0, 0, 0, 0.50);
+    linear-gradient(to bottom, #E07000 0%, #CC5C00 40%, #A84800 65%, #C86800 100%);
+  border: 1px solid #7A3400;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 200, 100, 0.50),
+    0 3px 6px rgba(0, 0, 0, 0.55);
 }
 
 /* ============================================================
    ACIDGRAFIX — MULTI-SKIN OVERHAUL
    ============================================================ */
 
-/* ── Pilowlava liquid metal headers ─────────────────────── */
+/* ── Acidgrafix headers: flat toxic green, no effects ──── */
 [data-skin="acidgrafix"] .screen-header h1 {
-  font-family: 'Pilowlava', 'Orbitron', monospace !important;
-  font-weight: 400 !important;
-  background: linear-gradient(
-    135deg,
-    #FFFFFF 0%,
-    #C8D8E8 10%,
-    #B2ED32 22%,
-    #E8F0F8 35%,
-    #FFFFFF 45%,
-    #A0B0C0 55%,
-    #B2ED32 65%,
-    #D0E0F0 78%,
-    #FFFFFF 88%,
-    #90A0B0 100%
-  ) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  filter:
-    drop-shadow(0 0 6px rgba(178, 237, 50, 0.60))
-    drop-shadow(0 2px 8px rgba(0, 0, 0, 0.90)) !important;
-  font-size: 2rem !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #B2ED32 !important;
+  background-clip: unset !important;
+  color: #B2ED32 !important;
+  filter: none !important;
+  font-size: 1.5rem !important;
   letter-spacing: 0.04em !important;
   text-transform: none !important;
+  text-shadow: none !important;
 }
 
 /* ── Active library chip: maximum contrast — black text, max weight ── */
@@ -2526,53 +2514,28 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   padding-bottom: 1.25rem !important;
 }
 
-/* ── Spiky chrome cyberpunk corner elements on main containers ── */
-[data-skin="acidgrafix"] .bg-surface:not(.nav-bar):not(.mini-player) {
-  position: relative;
-  overflow: visible;
-}
-
-[data-skin="acidgrafix"] .bg-surface:not(.nav-bar):not(.mini-player)::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    /* Top-left spike */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3ClinearGradient id='m' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23FFFFFF'/%3E%3Cstop offset='30%25' stop-color='%23D1D5DA'/%3E%3Cstop offset='60%25' stop-color='%238A9198'/%3E%3Cstop offset='100%25' stop-color='%2324272B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='0,0 18,0 0,18' fill='url(%23m)'/%3E%3Cpolygon points='0,0 8,0 0,8' fill='%23FFFFFF' opacity='0.6'/%3E%3C/svg%3E"),
-    /* Top-right spike */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3ClinearGradient id='m' x1='1' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23FFFFFF'/%3E%3Cstop offset='30%25' stop-color='%23D1D5DA'/%3E%3Cstop offset='60%25' stop-color='%238A9198'/%3E%3Cstop offset='100%25' stop-color='%2324272B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='28,0 10,0 28,18' fill='url(%23m)'/%3E%3C/svg%3E"),
-    /* Bottom-left spike */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3ClinearGradient id='m' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%23FFFFFF'/%3E%3Cstop offset='30%25' stop-color='%23D1D5DA'/%3E%3Cstop offset='60%25' stop-color='%238A9198'/%3E%3Cstop offset='100%25' stop-color='%2324272B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='0,28 0,10 18,28' fill='url(%23m)'/%3E%3C/svg%3E"),
-    /* Bottom-right spike */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3ClinearGradient id='m' x1='1' y1='1' x2='0' y2='0'%3E%3Cstop offset='0%25' stop-color='%23FFFFFF'/%3E%3Cstop offset='30%25' stop-color='%23D1D5DA'/%3E%3Cstop offset='60%25' stop-color='%238A9198'/%3E%3Cstop offset='100%25' stop-color='%2324272B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='28,28 10,28 28,10' fill='url(%23m)'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: top left, top right, bottom left, bottom right;
-  background-size: 28px 28px;
-  filter: drop-shadow(0 0 4px rgba(178, 237, 50, 0.55));
-}
+/* ── Spiky chrome corners: removed — clean look ──────────── */
+/* Corner ornaments removed per design revision */
 
 /* ============================================================
    METALHEART — MULTI-SKIN OVERHAUL
    ============================================================ */
 
-/* ── Engraved headers: bold + deep inset shadow ────────────── */
+/* ── Chrome headers: gradient text, softened depth ────────────── */
 [data-skin="metalheart"] .screen-header h1 {
-  font-weight: 900 !important;
+  font-weight: 800 !important;
   background: linear-gradient(180deg,
-    #8A9198 0%,
-    #4a5260 40%,
-    #1a2030 70%,
-    #0a1020 100%
+    #c0c8d4 0%,
+    #8A9198 35%,
+    #4a5260 65%,
+    #1a2030 100%
   ) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
   filter:
-    drop-shadow(0  2px 0   rgba(255, 255, 255, 0.75))
-    drop-shadow(0 -1px 0   rgba(0, 20, 60, 0.60))
-    drop-shadow(0  3px 4px rgba(0, 0, 0, 0.80)) !important;
+    drop-shadow(0  1px 0   rgba(255, 255, 255, 0.45))
+    drop-shadow(0  2px 3px rgba(0, 0, 0, 0.55)) !important;
   letter-spacing: 0.02em !important;
 }
 
@@ -2603,11 +2566,11 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   font-weight: 700 !important;
 }
 
-/* ── Chrome plate play/pause — flat rigid 6-stop metallic plate ── */
+/* ── Chrome sphere play/pause — full circle with chrome gradient ── */
 [data-skin="metalheart"] .play-pause-btn {
   width: 64px !important;
   height: 64px !important;
-  border-radius: 6px !important;
+  border-radius: 50% !important;
   background: linear-gradient(180deg,
     #FFFFFF 0%,
     #D1D5DA 18%,
@@ -2683,6 +2646,23 @@ input[type="range"].pitch-slider::-moz-range-thumb {
     0 3px 8px rgba(0, 0, 0, 0.65) !important;
 }
 
+/* ── Metalheart: deeply recessed search bar ─────────────── */
+[data-skin="metalheart"] .bg-surface.py-2\.5,
+[data-skin="metalheart"] .bg-surface.rounded-xl {
+  background: rgba(0, 4, 20, 0.92) !important;
+  box-shadow:
+    inset 0 3px 14px rgba(0, 0, 0, 0.90),
+    inset 0 1px 5px rgba(0, 0, 0, 0.75),
+    inset 0 -1px 0 rgba(41, 182, 246, 0.10),
+    0 1px 0 rgba(100, 150, 220, 0.18) !important;
+  border: 1px solid rgba(41, 182, 246, 0.18) !important;
+}
+
+/* ── Metalheart: genre/popular tile cover art opacity boost ── */
+[data-skin="metalheart"] img.opacity-50 {
+  opacity: 0.80 !important;
+}
+
 /* ============================================================
    FUTURE MEDIEVAL — MULTI-SKIN OVERHAUL
    ============================================================ */
@@ -2707,7 +2687,12 @@ input[type="range"].pitch-slider::-moz-range-thumb {
 }
 
 /* ── Medieval rune motifs excluded from PlayerScreen full-screen bg ── */
-[data-skin="medieval"] .bg-surface:not(.nav-bar):not(.mini-player)::before {
+[data-skin="medieval"] .bg-surface:not(.nav-bar):not(.mini-player):not(.py-2\.5):not(.filter-chip)::before {
   z-index: 0;
+}
+
+/* ── Cassette: search/genre tile cover art opacity boost ────── */
+[data-skin="cassette"] img.opacity-50 {
+  opacity: 0.80 !important;
 }
 

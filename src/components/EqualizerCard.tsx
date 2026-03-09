@@ -39,7 +39,7 @@ export function EqualizerCard({ eqValues, onEqChange }: EqualizerCardProps) {
       style={{ borderRadius: 'var(--radius-card)' }}
     >
       {/* Card label bar */}
-      <div className="flex items-center justify-between px-3 py-2 border-b border-border">
+      <div className="card-title-bar flex items-center justify-between px-3 py-2 border-b border-border">
         <span className="text-[10px] font-mono uppercase tracking-widest text-textSecondary">Equalizer</span>
         <span className="text-[10px] font-mono text-accent">EQ</span>
       </div>

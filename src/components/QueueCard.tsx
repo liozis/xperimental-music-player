@@ -12,7 +12,7 @@ export function QueueCard({ tracks, onPlay }: QueueCardProps) {
       style={{ borderRadius: 'var(--radius-card)' }}
     >
       {/* Card label bar */}
-      <div className="flex items-center justify-between px-3 py-2 border-b border-border flex-shrink-0">
+      <div className="card-title-bar flex items-center justify-between px-3 py-2 border-b border-border flex-shrink-0">
         <span className="text-[10px] font-mono uppercase tracking-widest text-textSecondary">Up Next</span>
         <span className="text-[10px] font-mono text-textSecondary">{tracks.length} tracks</span>
       </div>

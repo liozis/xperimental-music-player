@@ -35,15 +35,20 @@ function LibraryIcon() {
 
 export function BottomNav() {
   return (
-    <nav className="nav-bar absolute bottom-0 left-0 right-0 bg-surface border-t border-border z-50">
-      <div className="flex justify-around items-center h-14">
+    /* position: fixed + max z-index — Tab Bar always visible above all overlays.
+       transform: translateZ(0) on iphone-shell makes fixed relative to device shell. */
+    <nav className="nav-bar fixed bottom-0 left-0 right-0 bg-surface border-t border-border z-[99999]">
+      <div
+        className="flex justify-around items-center h-14"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      >
         {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
           <NavLink
             key={to}
             to={to}
             end={to === '/'}
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center gap-1 min-w-[44px] min-h-[44px] px-4 py-2 transition-colors ${
+              `relative flex flex-col items-center justify-center gap-1 min-w-[44px] min-h-[44px] px-4 py-2 transition-colors ${
                 isActive ? 'text-accent' : 'text-textSecondary'
               }`
             }

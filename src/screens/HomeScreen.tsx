@@ -30,16 +30,30 @@ function HorizontalSection({ title, tracks }: SectionProps) {
   );
 }
 
+/* Cassette marquee text pool — cycles through cheerful US English messages */
+const MARQUEE_TEXT =
+  'Sunny day today  ·  Hope you have a great morning  ·  Vibe check passed  ·  Ready for some tunes  ·  Press play and relax  ·  ';
+
 export function HomeScreen() {
   return (
     <div className="scroll-y h-full pb-28">
       {/* Sticky app bar */}
       <div className="screen-header sticky top-0 bg-bg z-10 px-4 pt-5 pb-3 flex flex-col">
         <h1 className="text-2xl font-display text-textPrimary">Home</h1>
-        <p className="text-xs text-textSecondary font-mono tracking-widest uppercase mt-1">
+
+        {/* Standard greeting — shown for all skins except cassette (cassette hides this via CSS) */}
+        <p className="home-greeting text-xs text-textSecondary font-mono tracking-widest uppercase mt-1">
           {greeting()}
         </p>
+
+        {/* Cassette LCD screen — hidden by default, shown only for cassette skin via CSS */}
+        <div className="cassette-lcd-screen" aria-hidden="true">
+          <span className="cassette-lcd-marquee">
+            {MARQUEE_TEXT}{MARQUEE_TEXT}
+          </span>
+        </div>
       </div>
+
       {/* 24px gap between AppBar and first content section */}
       <div className="pt-6">
         <HorizontalSection title="Recently Played" tracks={RECENTLY_PLAYED} />

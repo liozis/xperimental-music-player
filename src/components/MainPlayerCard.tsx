@@ -44,7 +44,7 @@ export function MainPlayerCard({
     >
       {/* Card label bar */}
       <div
-        className="flex items-center justify-between px-3 py-2 border-b border-border"
+        className="card-title-bar flex items-center justify-between px-3 py-2 border-b border-border"
         style={{ borderRadius: `var(--radius-card) var(--radius-card) 0 0` }}
       >
         <span className="text-[10px] font-mono uppercase tracking-widest text-textSecondary">Main Player</span>
@@ -113,15 +113,43 @@ export function MainPlayerCard({
           </svg>
         </button>
 
+        {/* Standard play/pause — hidden for Cassette skin via CSS (.cassette-dual-controls visible instead) */}
         <button
           onClick={onTogglePlay}
-          className="w-14 h-14 rounded-full bg-accent flex items-center justify-center active:opacity-80 transition-opacity"
+          className="play-pause-btn w-14 h-14 rounded-full bg-accent flex items-center justify-center active:opacity-80 transition-opacity"
         >
           {isPlaying
             ? <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-bg)"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
             : <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-bg)"><polygon points="5,3 19,12 5,21"/></svg>
           }
         </button>
+
+        {/* Cassette dual Play + Pause physical buttons — hidden by default, shown for cassette skin via CSS */}
+        <div className="cassette-dual-controls">
+          {/* Play: pressed inset when isPlaying, raised when paused */}
+          <button
+            onClick={() => { if (!isPlaying) onTogglePlay(); }}
+            className={`cassette-deck-btn cassette-play-btn${isPlaying ? ' is-active' : ''}`}
+            aria-label="Play"
+          >
+            <span className="deck-grip" aria-hidden="true"/>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5,3 19,12 5,21"/>
+            </svg>
+          </button>
+          {/* Pause: pressed inset when paused, raised when playing */}
+          <button
+            onClick={() => { if (isPlaying) onTogglePlay(); }}
+            className={`cassette-deck-btn cassette-pause-btn${!isPlaying ? ' is-active' : ''}`}
+            aria-label="Pause"
+          >
+            <span className="deck-grip" aria-hidden="true"/>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="6" y="4" width="4" height="16"/>
+              <rect x="14" y="4" width="4" height="16"/>
+            </svg>
+          </button>
+        </div>
 
         <button onClick={onNext} className="text-textPrimary active:text-accent p-2">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">

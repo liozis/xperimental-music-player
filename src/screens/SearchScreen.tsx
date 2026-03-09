@@ -36,7 +36,7 @@ export function SearchScreen() {
     <div className="scroll-y h-full pb-28">
 
       {/* ── Sticky header ──────────────────────────────────── */}
-      <div className="px-4 pt-6 pb-4 sticky top-0 bg-bg z-10">
+      <div className="screen-header px-4 pt-6 pb-4 sticky top-0 bg-bg z-10">
         <h1 className="text-2xl font-display text-textPrimary mb-4">Search</h1>
         <div className="flex items-center gap-2 bg-surface border border-border px-3 py-2.5" style={{ borderRadius: 'var(--radius-card)' }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-textSecondary flex-shrink-0">
@@ -77,7 +77,7 @@ export function SearchScreen() {
         <>
           {/* Recent Searches — no trailing icons */}
           <section className="mb-6">
-            <h2 className="text-[10px] font-mono uppercase tracking-widest text-textSecondary px-4 mb-1">
+            <h2 className="section-title text-[10px] font-mono uppercase tracking-widest text-textSecondary px-4 mb-1">
               Recent Searches
             </h2>
             {RECENT_SEARCHES.map(item => (
@@ -94,12 +94,12 @@ export function SearchScreen() {
                 <img
                   src={item.img}
                   alt={item.label}
-                  className="w-11 h-11 object-cover flex-shrink-0"
+                  className="track-cover w-11 h-11 object-cover flex-shrink-0"
                   style={{ borderRadius: item.round ? '50%' : 'var(--radius-card)' }}
                 />
                 <div className="flex-1 text-left min-w-0">
                   <p className="text-sm text-textPrimary font-body truncate">{item.label}</p>
-                  <p className="text-xs text-textSecondary truncate capitalize">{item.sub}</p>
+                  <p className="data-readout text-xs text-textSecondary truncate capitalize">{item.sub}</p>
                 </div>
               </button>
             ))}
@@ -107,7 +107,7 @@ export function SearchScreen() {
 
           {/* Popular — uniform bg-surface color, adapts to active skin */}
           <section className="px-4">
-            <h2 className="text-[10px] font-mono uppercase tracking-widest text-textSecondary mb-3">
+            <h2 className="section-title text-[10px] font-mono uppercase tracking-widest text-textSecondary mb-3">
               Popular
             </h2>
             <div className="grid grid-cols-2 gap-3">

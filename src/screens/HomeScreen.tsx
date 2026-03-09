@@ -17,7 +17,7 @@ interface SectionProps {
 function HorizontalSection({ title, tracks }: SectionProps) {
   return (
     <section className="mb-8">
-      <h2 className="text-base font-display text-textSecondary px-4 mb-4 tracking-widest uppercase">
+      <h2 className="section-title text-base font-display text-textSecondary px-4 mb-4 tracking-widest uppercase">
         {title}
       </h2>
       {/* scroll-pl-4 aligns snap port with pl-4 padding so first card snaps flush with title */}
@@ -33,7 +33,7 @@ function HorizontalSection({ title, tracks }: SectionProps) {
 export function HomeScreen() {
   return (
     <div className="scroll-y h-full pb-28">
-      <div className="px-4 pt-6 pb-6">
+      <div className="screen-header px-4 pt-6 pb-6">
         <h1 className="text-2xl font-display text-textPrimary">Home</h1>
         <p className="text-xs text-textSecondary font-mono tracking-widest uppercase mt-1.5">
           {greeting()}

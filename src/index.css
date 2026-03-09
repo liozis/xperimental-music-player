@@ -509,6 +509,357 @@ input[type="range"].eq-slider::-moz-range-thumb {
 }
 
 /* ============================================================
+   DEEP SKIN TEXTURES — Tactile Density Expansion
+   Targets: .screen-header  .section-title  .filter-chip
+            .track-cover    .track-list-row  .data-readout
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════
+   SKIN 1 · CASSETTE FUTURISM — Physical Hardware Reality
+   ══════════════════════════════════════════════════════════ */
+
+/* Raised hardware label strip on screen headers */
+[data-skin="cassette"] .screen-header {
+  background-color: var(--color-surface);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.22);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.52),
+    0 4px 10px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.60);
+}
+
+/* Engraved hardware label for section titles */
+[data-skin="cassette"] .section-title {
+  color: var(--color-text-secondary);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65), 0 -1px 0 rgba(0, 0, 0, 0.12);
+  letter-spacing: 0.22em;
+}
+
+/* Filter chips: physical raised keycaps */
+[data-skin="cassette"] .filter-chip {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+    1px 3px 6px rgba(0, 0, 0, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.30);
+  font-family: var(--font-mono);
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
+
+/* Active chip: LED orange illumination + physical depression */
+[data-skin="cassette"] .filter-chip.bg-accent {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 200, 120, 0.45),
+    inset 0 -2px 0 rgba(80, 25, 0, 0.45),
+    var(--glow-accent),
+    0 2px 0 rgba(0, 0, 0, 0.45);
+  transform: translateY(1px);
+}
+
+/* Filter chip click: physical key depression */
+[data-skin="cassette"] .filter-chip:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(0, 0, 0, 0.10);
+}
+
+/* Track covers: physical label-sticker feel */
+[data-skin="cassette"] .track-cover {
+  outline: 2px solid rgba(0, 0, 0, 0.14);
+  outline-offset: -1px;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.32), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+/* Track list rows: hairline bevel panel divider */
+[data-skin="cassette"] .track-list-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+/* Air-vent stripe at scroll-y foot */
+[data-skin="cassette"] .scroll-y::after {
+  content: '';
+  display: block;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.10) 0px, rgba(0, 0, 0, 0.10) 1.5px,
+    transparent 1.5px, transparent 7px
+  );
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SKIN 2 · ACIDGRAFIX — Obsidian Brutalism + Data Grid
+   ══════════════════════════════════════════════════════════ */
+
+/* Neon left-bar data-strip on screen headers */
+[data-skin="acidgrafix"] .screen-header {
+  border-left: 3px solid var(--color-accent);
+  box-shadow:
+    inset 3px 0 18px rgba(0, 255, 65, 0.06),
+    0 4px 0 rgba(0, 255, 65, 0.30),
+    0 5px 18px rgba(0, 255, 65, 0.07);
+}
+
+/* Section titles: neon uppercase data header */
+[data-skin="acidgrafix"] .section-title {
+  font-family: var(--font-display);
+  color: var(--color-accent);
+  text-shadow: var(--glow-accent);
+  letter-spacing: 0.28em;
+}
+
+/* Filter chips: asymmetric neon border */
+[data-skin="acidgrafix"] .filter-chip {
+  border-left-width: 2px;
+  border-right-width: 1px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+/* Active chip: neon glow box + inner radiation */
+[data-skin="acidgrafix"] .filter-chip.bg-accent {
+  box-shadow: var(--glow-accent), inset 0 0 12px rgba(0, 255, 65, 0.08);
+}
+
+/* Track covers: octagonal clip-path shard cut */
+[data-skin="acidgrafix"] .track-cover {
+  clip-path: polygon(
+    0 8px, 8px 0,
+    calc(100% - 8px) 0, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 0 calc(100% - 8px)
+  );
+}
+
+/* Data readouts: periodic liquid glitch burst */
+[data-skin="acidgrafix"] .data-readout {
+  font-family: var(--font-mono);
+  display: inline-block;
+  animation: data-glitch 14s 2s infinite;
+}
+
+@keyframes data-glitch {
+  0%, 87%, 100% {
+    transform: translateX(0) skewX(0deg);
+    color: var(--color-text-secondary);
+    text-shadow: none;
+    clip-path: none;
+  }
+  88% {
+    transform: translateX(-3px) skewX(-6deg);
+    color: #ff2d78;
+    text-shadow: 2px 0 #00ff41, -1px 0 #ff2d78;
+    clip-path: inset(20% 0 60% 0);
+  }
+  89.5% {
+    transform: translateX(3px) skewX(4deg);
+    color: #00ff41;
+    text-shadow: -2px 0 #ff2d78, 1px 0 #00ff41;
+    clip-path: inset(55% 0 15% 0);
+  }
+  91% {
+    transform: translateX(-1px) skewX(-2deg);
+    color: #ffffff;
+    text-shadow: 1px 0 #00ff41, -1px 0 #ff2d78;
+    clip-path: none;
+  }
+  92% {
+    transform: translateX(0) skewX(0deg);
+    color: var(--color-text-secondary);
+    text-shadow: none;
+    clip-path: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SKIN 3 · METALHEART — Y2K Chrome + Icy Glass
+   ══════════════════════════════════════════════════════════ */
+
+/* Chrome embossed screen headers */
+[data-skin="metalheart"] .screen-header {
+  background-image:
+    linear-gradient(180deg, rgba(79, 195, 247, 0.04) 0%, transparent 100%),
+    radial-gradient(ellipse at 0% 60%, rgba(130, 180, 255, 0.06) 0%, transparent 55%);
+  border-bottom: 1px solid rgba(79, 195, 247, 0.18);
+  box-shadow:
+    0 4px 24px rgba(0, 8, 40, 0.45),
+    0 1px 0 rgba(79, 195, 247, 0.12),
+    inset 0 -1px 0 rgba(0, 8, 40, 0.20);
+}
+
+/* Chrome gradient on h1 text inside screen header */
+[data-skin="metalheart"] .screen-header h1 {
+  background: linear-gradient(180deg, #e8f4ff 0%, #9fc8e8 50%, #4fc3f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(79, 195, 247, 0.35));
+}
+
+/* Section titles: icy telemetry labels */
+[data-skin="metalheart"] .section-title {
+  color: var(--color-accent);
+  text-shadow: var(--glow-accent);
+  font-family: var(--font-mono);
+  letter-spacing: 0.20em;
+}
+
+/* Filter chips: glassy embossed pills */
+[data-skin="metalheart"] .filter-chip {
+  background-image: linear-gradient(180deg, rgba(140, 190, 255, 0.08) 0%, transparent 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(140, 190, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.30),
+    0 2px 8px rgba(0, 8, 40, 0.55);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+}
+
+/* Active chip: chrome radial highlight */
+[data-skin="metalheart"] .filter-chip.bg-accent {
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(79, 195, 247, 0.28) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, transparent 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    var(--glow-accent),
+    0 4px 14px rgba(0, 8, 40, 0.65);
+}
+
+/* Track covers: liquid chrome hover morph */
+[data-skin="metalheart"] .track-cover {
+  box-shadow: 0 2px 10px rgba(0, 8, 40, 0.55), 0 0 0 1px rgba(79, 195, 247, 0.08);
+  transition:
+    box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.35s ease,
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-skin="metalheart"] .track-cover:hover {
+  box-shadow:
+    0 6px 24px rgba(0, 8, 40, 0.75),
+    0 0 0 1.5px rgba(79, 195, 247, 0.50),
+    var(--glow-accent);
+  filter: saturate(1.25) brightness(1.08);
+  transform: scale(1.03);
+}
+
+/* Track list rows: icy radial hover state */
+[data-skin="metalheart"] .track-list-row {
+  transition: background 0.20s ease;
+}
+[data-skin="metalheart"] .track-list-row:hover {
+  background: linear-gradient(90deg, rgba(79, 195, 247, 0.05) 0%, transparent 70%);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SKIN 4 · FUTURE MEDIEVAL — Parchment Manuscript Hardware
+   ══════════════════════════════════════════════════════════ */
+
+/* Parchment header with amber candle bleed */
+[data-skin="medieval"] .screen-header {
+  background-color: var(--color-surface);
+  background-image:
+    radial-gradient(ellipse at 0% 60%, rgba(212, 160, 23, 0.07) 0%, transparent 55%);
+  box-shadow:
+    0 3px 0 rgba(0, 0, 0, 0.65),
+    inset 0 -1px 0 rgba(122, 92, 20, 0.35);
+  position: relative;
+}
+
+/* Torn / wax-seal impressed dashed ink border */
+[data-skin="medieval"] .screen-header::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 1rem;
+  right: 1rem;
+  height: 3px;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(122, 92, 20, 0.80) 0px,  rgba(122, 92, 20, 0.80) 3px,
+    transparent                3px,  transparent                5px,
+    rgba(212, 160, 23, 0.50) 5px,  rgba(212, 160, 23, 0.50) 6px,
+    transparent                6px,  transparent               10px,
+    rgba(122, 92, 20, 0.65) 10px, rgba(122, 92, 20, 0.65) 12px,
+    transparent               12px, transparent               18px
+  );
+}
+
+/* Gothic UnifrakturMaguntia on screen header h1 */
+[data-skin="medieval"] .screen-header h1 {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 2rem;
+  color: var(--color-accent2);
+  text-shadow: var(--glow-accent2), 1px 1px 0 rgba(0, 0, 0, 0.75);
+  letter-spacing: 0.03em;
+  -webkit-text-fill-color: initial;
+}
+
+/* Section titles: illuminated manuscript caps */
+[data-skin="medieval"] .section-title {
+  color: var(--color-accent2);
+  text-shadow: var(--glow-accent2);
+  font-family: var(--font-body);
+  letter-spacing: 0.18em;
+}
+
+/* Filter chips: stiff mechanical key press */
+[data-skin="medieval"] .filter-chip {
+  border: 1px solid rgba(122, 92, 20, 0.65);
+  box-shadow:
+    inset 0 1px 0 rgba(212, 160, 23, 0.10),
+    2px 3px 8px rgba(0, 0, 0, 0.65);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+/* Active chip: blood-red illumination + depression */
+[data-skin="medieval"] .filter-chip.bg-accent {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.45),
+    1px 1px 0 rgba(0, 0, 0, 0.60),
+    var(--glow-accent);
+  transform: translateY(1px);
+}
+
+/* Data readouts: Courier Prime typewriter mono */
+[data-skin="medieval"] .data-readout {
+  font-family: 'Courier Prime', monospace;
+  color: var(--color-accent2);
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 4px rgba(212, 160, 23, 0.30);
+}
+
+/* Track covers: aged vellum border */
+[data-skin="medieval"] .track-cover {
+  outline: 1px solid rgba(122, 92, 20, 0.50);
+  outline-offset: 1px;
+  box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.80), inset 0 0 0 1px rgba(212, 160, 23, 0.06);
+}
+
+/* Track list rows: candlelight hover bloom */
+[data-skin="medieval"] .track-list-row {
+  transition: background 0.25s ease;
+}
+[data-skin="medieval"] .track-list-row:hover {
+  background: radial-gradient(ellipse at left, rgba(122, 92, 20, 0.10) 0%, transparent 60%);
+}
+
+/* Stiff mechanical clack on all Medieval buttons */
+[data-skin="medieval"] button:active {
+  transform: translateY(2px) scale(0.985);
+  filter: brightness(0.82);
+  transition: transform 0.04s, filter 0.04s;
+}
+
+/* ============================================================
    GLOBAL SKIN CHROME — BottomNav, MiniPlayer
    ============================================================ */
 

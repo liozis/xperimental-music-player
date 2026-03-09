@@ -19,7 +19,7 @@ export function LibraryScreen() {
   return (
     <div className="scroll-y h-full pb-28">
       {/* App Bar */}
-      <div className="flex items-center justify-between px-4 pt-6 pb-3 sticky top-0 bg-bg z-10">
+      <div className="screen-header flex items-center justify-between px-4 pt-6 pb-3 sticky top-0 bg-bg z-10">
         <h1 className="text-2xl font-display text-textPrimary">Library</h1>
         <div className="flex gap-3">
           <button className="text-textSecondary active:text-accent transition-colors">
@@ -44,7 +44,7 @@ export function LibraryScreen() {
           <button
             key={f}
             onClick={() => setActive(f)}
-            className={`flex-shrink-0 text-xs font-mono px-3 py-1.5 rounded-btn border transition-colors ${
+            className={`filter-chip flex-shrink-0 text-xs font-mono px-3 py-1.5 rounded-btn border transition-colors ${
               active === f
                 ? 'bg-accent text-bg border-accent'
                 : 'bg-surface text-textSecondary border-border'
@@ -64,7 +64,7 @@ export function LibraryScreen() {
               onClick={() => { play(TRACKS[0]); openPlayer(); }}
               className="active:opacity-70 transition-opacity text-left"
             >
-              <img src={pl.coverUrl} alt={pl.name} className="aspect-square rounded-lg object-cover w-full" />
+              <img src={pl.coverUrl} alt={pl.name} className="track-cover aspect-square rounded-lg object-cover w-full" />
               <p className="text-sm text-textPrimary font-body font-bold mt-2 truncate">{pl.name}</p>
               <p className="text-xs text-textSecondary">{pl.trackCount} tracks</p>
             </button>
@@ -81,7 +81,7 @@ export function LibraryScreen() {
               onClick={() => { play(TRACKS[0]); openPlayer(); }}
               className="flex items-center gap-3 w-full px-4 py-3 active:opacity-70 transition-opacity"
             >
-              <img src={album.coverUrl} alt={album.title} className="w-[52px] h-[52px] rounded object-cover flex-shrink-0" />
+              <img src={album.coverUrl} alt={album.title} className="track-cover w-[52px] h-[52px] rounded object-cover flex-shrink-0" />
               <div className="text-left min-w-0">
                 <p className="text-sm text-textPrimary font-body truncate">{album.title}</p>
                 <p className="text-xs text-textSecondary">

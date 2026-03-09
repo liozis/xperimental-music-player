@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Big+Shoulders+Display:wght@400;700;900&family=Electrolize&family=Share+Tech+Mono&family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&family=UnifrakturMaguntia&family=Special+Elite&family=Courier+Prime&family=Exo+2:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Big+Shoulders+Display:wght@400;700;900&family=Electrolize&family=Share+Tech+Mono&family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&family=UnifrakturMaguntia&family=Special+Elite&family=Courier+Prime&family=Exo+2:wght@300;400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -60,32 +60,54 @@
    Liquid mercury metallic. Blinding neon. Dense data.
    ============================================================ */
 [data-skin="acidgrafix"] {
+  /* ── Void chassis ───────────────────────────────────────── */
   --color-body-bg:        #000000;
+  --color-bg:             #080808;
+  --color-surface:        #0a0a0c;
+  --color-border:         #39FF14;
 
-  --color-bg:             #000000;
-  --color-surface:        #050507;
-  --color-border:         #00ff41;
+  /* ── Bio-luminescent primaries ──────────────────────────── */
+  --color-accent:         #39FF14;
+  --color-accent2:        #FF00FF;
 
-  --color-accent:         #00ff41;
-  --color-accent2:        #ff2d78;
+  /* ── Terminal readout typography ────────────────────────── */
+  --color-text-primary:   #e8ecef;
+  --color-text-secondary: #39FF14;
 
-  --color-text-primary:   #ffffff;
-  --color-text-secondary: #3dcc5a;
+  /* ── Military data terminal fonts ──────────────────────── */
+  --font-display: 'Orbitron', 'Space Mono', monospace;
+  --font-body:    'Space Mono', 'Share Tech Mono', monospace;
+  --font-mono:    'Space Mono', 'Share Tech Mono', monospace;
 
-  --font-display: 'Big Shoulders Display', 'Bebas Neue', sans-serif;
-  --font-body:    'Share Tech Mono', monospace;
-  --font-mono:    'Share Tech Mono', monospace;
-
+  /* ── Zero-radius: hard industrial geometry ──────────────── */
   --radius-card: 0px;
   --radius-btn:  0px;
 
-  --shadow-card:
-    0 0 0 1px #00ff41,
-    0 0 18px rgba(0, 255, 65, 0.14),
-    inset 0 0 28px rgba(0, 255, 65, 0.03);
+  /* ── Liquid chrome 6-stop gradient (exact spec) ─────────── */
+  --chrome-border: linear-gradient(135deg,
+    #050505  0%,
+    #FFFFFF  20%,
+    #A0A5AA  40%,
+    #2A2D34  60%,
+    #E8ECEF  80%,
+    #050505 100%
+  );
 
-  --glow-accent:  0 0 8px #00ff41, 0 0 18px rgba(0, 255, 65, 0.65), 0 0 40px rgba(0, 255, 65, 0.25);
-  --glow-accent2: 0 0 8px #ff2d78, 0 0 18px rgba(255, 45, 120, 0.5);
+  /* ── Shadow: liquid metal frame + toxic green bleed ─────── */
+  --shadow-card:
+    0 0 8px  #39FF14,
+    0 0 22px rgba(57, 255, 20, 0.35),
+    inset 0 0 20px rgba(0, 0, 0, 0.95);
+
+  /* ── Bio-luminescent glow stacks ────────────────────────── */
+  --glow-accent:
+    0 0  8px #39FF14,
+    0 0 20px rgba(57, 255, 20, 0.80),
+    0 0 45px rgba(57, 255, 20, 0.35);
+  --glow-accent2:
+    0 0  8px #FF00FF,
+    0 0 22px rgba(255, 0, 255, 0.70),
+    0 0 48px rgba(255, 0, 255, 0.30);
 
   --visualizer-style: 'peaks';
 }
@@ -408,6 +430,65 @@ input[type="range"].eq-slider::-moz-range-thumb {
   border: 1px solid rgba(70, 100, 160, 0.65);
 }
 
+/* ── Acidgrafix EQ slider: liquid chrome fader + toxic green thumb ── */
+[data-skin="acidgrafix"] input[type="range"].eq-slider::-webkit-slider-runnable-track {
+  background: #050508;
+  box-shadow:
+    inset 0 3px 8px rgba(0, 0, 0, 0.90),
+    inset 0 -1px 0 rgba(57, 255, 20, 0.15),
+    0 1px 0 rgba(57, 255, 20, 0.08);
+  border: 1px solid rgba(57, 255, 20, 0.30);
+  border-radius: 0;
+  width: 4px;
+}
+[data-skin="acidgrafix"] input[type="range"].eq-slider::-moz-range-track {
+  background: #050508;
+  box-shadow:
+    inset 0 3px 8px rgba(0, 0, 0, 0.90),
+    inset 0 -1px 0 rgba(57, 255, 20, 0.15);
+  border: 1px solid rgba(57, 255, 20, 0.30);
+  border-radius: 0;
+  width: 4px;
+}
+
+/* Thumb: liquid chrome capsule with toxic green glow */
+[data-skin="acidgrafix"] input[type="range"].eq-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 8px;
+  border-radius: 0;
+  background: linear-gradient(180deg,
+    #050505  0%,
+    #FFFFFF  20%,
+    #A0A5AA  50%,
+    #2A2D34  80%,
+    #050505 100%
+  );
+  border: 1px solid rgba(57, 255, 20, 0.60);
+  box-shadow:
+    0 0  6px rgba(57, 255, 20, 0.80),
+    0 0 14px rgba(57, 255, 20, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.50);
+  margin-left: -8px;
+  cursor: grab;
+}
+[data-skin="acidgrafix"] input[type="range"].eq-slider::-moz-range-thumb {
+  width: 20px;
+  height: 8px;
+  border-radius: 0;
+  background: linear-gradient(180deg,
+    #050505  0%,
+    #FFFFFF  20%,
+    #A0A5AA  50%,
+    #2A2D34  80%,
+    #050505 100%
+  );
+  border: 1px solid rgba(57, 255, 20, 0.60);
+  box-shadow:
+    0 0  6px rgba(57, 255, 20, 0.80),
+    0 0 14px rgba(57, 255, 20, 0.40);
+}
+
 /* ============================================================
    SKIN 1 · CASSETTE — Surface & effect overrides
    ============================================================ */
@@ -472,43 +553,118 @@ input[type="range"].eq-slider::-moz-range-thumb {
    SKIN 2 · ACIDGRAFIX — Surface & effect overrides
    ============================================================ */
 
-/* Neon green border glow + asymmetric thickness */
+/* ── LIQUID CHROME gradient border on all surfaces ──────────
+   Uses background-clip padding-box/border-box trick:
+   Inner layer (padding-box) = void dark fill
+   Outer layer (border-box)  = 6-stop liquid chrome gradient  */
 [data-skin="acidgrafix"] .bg-surface {
-  box-shadow: var(--shadow-card);
-  border-width: 1px 2px 1px 1px;
+  background:
+    linear-gradient(#0a0a0c, #0a0a0c) padding-box,
+    var(--chrome-border) border-box;
+  border: 5px solid transparent;
+  box-shadow:
+    0 0  8px rgba(57, 255, 20, 0.55),
+    0 0 22px rgba(57, 255, 20, 0.22),
+    inset 0 0 20px rgba(0, 0, 0, 0.95);
 }
 
-/* Acid green text glow */
+/* ── Data injection port — search bar as biometric scan terminal ─ */
+[data-skin="acidgrafix"] .bg-surface.py-2\.5 {
+  background:
+    linear-gradient(#060608, #060608) padding-box,
+    var(--chrome-border) border-box !important;
+  border: 4px solid transparent !important;
+  border-radius: 0 !important;
+  box-shadow:
+    0 0 10px rgba(57, 255, 20, 0.40),
+    0 0 24px rgba(57, 255, 20, 0.16),
+    inset 0 0 20px rgba(0, 0, 0, 0.98) !important;
+}
+[data-skin="acidgrafix"] .py-2\.5.bg-surface input {
+  color: #39FF14 !important;
+  caret-color: #39FF14;
+  font-family: 'Space Mono', monospace !important;
+  font-size: 12px !important;
+  letter-spacing: 0.06em;
+}
+[data-skin="acidgrafix"] .py-2\.5.bg-surface input::placeholder {
+  color: rgba(57, 255, 20, 0.38) !important;
+  font-family: 'Space Mono', monospace !important;
+  letter-spacing: 0.08em;
+}
+[data-skin="acidgrafix"] .py-2\.5.bg-surface svg {
+  color: rgba(57, 255, 20, 0.55) !important;
+  filter: drop-shadow(0 0 4px rgba(57, 255, 20, 0.70));
+}
+
+/* Toxic neon text glow */
 [data-skin="acidgrafix"] .text-accent {
   text-shadow: var(--glow-accent);
+  color: #39FF14;
 }
 
-/* Neon fill glow on accent buttons */
+/* Mini-player track name: chromatic aberration on the playing track title */
+[data-skin="acidgrafix"] .mini-player .font-body {
+  font-family: 'Orbitron', monospace !important;
+  font-weight: 700;
+  font-size: 10px !important;
+  letter-spacing: 0.06em;
+  color: #e8ecef !important;
+  text-shadow:
+    2px  0 #FF00FF,
+    -2px 0 #39FF14,
+    0 0 10px rgba(57, 255, 20, 0.50);
+  animation: chroma-shift 5s 1.5s ease-in-out infinite;
+}
+
+/* Bio-luminescent play button — chrome-framed toxic green dome */
 [data-skin="acidgrafix"] .bg-accent {
+  background:
+    linear-gradient(var(--color-accent), var(--color-accent)) padding-box,
+    var(--chrome-border) border-box;
+  border: 3px solid transparent;
   box-shadow:
-    inset 0 1px 0 rgba(180, 255, 200, 0.22),
-    var(--glow-accent),
-    0 4px 10px rgba(0, 0, 0, 0.85);
+    0 0 15px rgba(57, 255, 20, 0.90),
+    0 0 40px rgba(57, 255, 20, 0.50),
+    0 0 80px rgba(57, 255, 20, 0.20),
+    inset 0 0 12px rgba(0, 0, 0, 0.65);
 }
 
-/* Hot pink glow on accent2 */
+/* Electric magenta glow on accent2 */
 [data-skin="acidgrafix"] .text-accent2 {
   text-shadow: var(--glow-accent2);
+  color: #FF00FF;
 }
 
-/* ── CRT scanline overlay ─────────────────────────────────── */
+/* ── Corrupted hardware noise + CRT burn ─────────────────── */
 [data-skin="acidgrafix"] body::before {
+  content: '';
+  position: fixed;
+  inset: -60%;
+  width: 220%;
+  height: 220%;
+  pointer-events: none;
+  z-index: 99990;
+  opacity: 0.048;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.90' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.22  0 0 0 0 1.0  0 0 0 0 0.08  0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  animation: acid-static 0.07s steps(1) infinite;
+}
+
+/* ── CRT phosphor scanlines over the void ─────────────────── */
+[data-skin="acidgrafix"] body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 99990;
+  z-index: 99991;
   background: repeating-linear-gradient(
     0deg,
-    transparent    0px,
-    transparent    3px,
-    rgba(0, 255, 65, 0.016) 3px,
-    rgba(0, 255, 65, 0.016) 4px
+    transparent          0px,
+    transparent          2px,
+    rgba(0, 0, 0, 0.38)  2px,
+    rgba(0, 0, 0, 0.38)  4px
   );
 }
 
@@ -664,10 +820,10 @@ input[type="range"].eq-slider::-moz-range-thumb {
   animation: glitch-flash 0.13s steps(4, end) forwards;
 }
 @keyframes glitch-flash {
-  0%   { color: #ff2d78; text-shadow: 2px 0 #00ff41, -2px 0 #ff2d78; transform: skewX(-8deg);  }
-  25%  { color: #00ff41; text-shadow: -2px 0 #ff2d78, 2px 0 #00ff41; transform: skewX( 4deg);  }
-  50%  { color: #ffffff; text-shadow: 1px 0 #00ff41, -1px 0 #ff2d78; transform: skewX( 0deg);  }
-  75%  { color: #00ff41; text-shadow: 0 0 6px #00ff41;               transform: skewX( 0deg);  }
+  0%   { color: #FF00FF; text-shadow: 2px 0 #39FF14, -2px 0 #FF00FF; transform: skewX(-8deg);  }
+  25%  { color: #39FF14; text-shadow: -2px 0 #FF00FF, 2px 0 #39FF14; transform: skewX( 4deg);  }
+  50%  { color: #ffffff; text-shadow: 1px 0 #39FF14, -1px 0 #FF00FF; transform: skewX( 0deg);  }
+  75%  { color: #39FF14; text-shadow: 0 0 8px #39FF14, 0 0 20px rgba(57,255,20,0.8); transform: skewX(0deg); }
   100% { color: var(--color-accent); text-shadow: var(--glow-accent); transform: skewX( 0deg);  }
 }
 
@@ -784,37 +940,94 @@ input[type="range"].eq-slider::-moz-range-thumb {
    SKIN 2 · ACIDGRAFIX — Obsidian Brutalism + Data Grid
    ══════════════════════════════════════════════════════════ */
 
-/* Neon left-bar data-strip on screen headers */
+/* ── Bio-digital terminal header — liquid chrome bottom rail ── */
 [data-skin="acidgrafix"] .screen-header {
-  border-left: 3px solid var(--color-accent);
+  background-color: #080808;
+  background-image:
+    /* Toxic green left-edge plasma bleed */
+    linear-gradient(90deg, rgba(57,255,20,0.10) 0%, transparent 25%),
+    /* Magenta corner ambient */
+    radial-gradient(ellipse at 95% 50%, rgba(255,0,255,0.07) 0%, transparent 45%);
+  border-left: 5px solid transparent;
+  border-bottom: 4px solid transparent;
+  background:
+    linear-gradient(#080808, #080808) padding-box,
+    linear-gradient(180deg,
+      #39FF14 0%, #39FF14 3px,
+      #0a0a0c 3px, #0a0a0c calc(100% - 4px),
+      #39FF14 calc(100% - 4px), #39FF14 100%
+    ) border-box;
+  border-top: 3px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 0;
+  border-right: 0;
   box-shadow:
-    inset 3px 0 18px rgba(0, 255, 65, 0.06),
-    0 4px 0 rgba(0, 255, 65, 0.30),
-    0 5px 18px rgba(0, 255, 65, 0.07);
+    0 4px 0 rgba(57, 255, 20, 0.40),
+    0 6px 20px rgba(57, 255, 20, 0.15),
+    inset 0 0 30px rgba(0, 0, 0, 0.90);
 }
 
-/* Section titles: neon uppercase data header */
+/* Bio-digital h1 — Orbitron 900, chromatic aberration always on */
+[data-skin="acidgrafix"] .screen-header h1 {
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e8ecef;
+  text-shadow:
+    2px  0 #FF00FF,
+    -2px 0 #39FF14,
+    0 0 12px rgba(57, 255, 20, 0.45);
+}
+
+/* Section titles: toxic green military data header */
 [data-skin="acidgrafix"] .section-title {
-  font-family: var(--font-display);
-  color: var(--color-accent);
+  font-family: 'Orbitron', monospace;
+  font-weight: 800;
+  color: #39FF14;
   text-shadow: var(--glow-accent);
-  letter-spacing: 0.28em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
-/* Filter chips: asymmetric neon border */
+/* Filter chips: bio-mechanical industrial switches with liquid chrome */
 [data-skin="acidgrafix"] .filter-chip {
-  border-left-width: 2px;
-  border-right-width: 1px;
-  font-family: var(--font-mono);
-  letter-spacing: 0.08em;
+  background:
+    linear-gradient(#111114, #111114) padding-box,
+    var(--chrome-border) border-box;
+  border: 4px solid transparent;
+  font-family: 'Orbitron', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #39FF14;
+  text-shadow: 0 0 6px rgba(57,255,20,0.7);
+  box-shadow:
+    0 0 6px rgba(57, 255, 20, 0.20),
+    inset 0 0 10px rgba(0, 0, 0, 0.90);
+  transition: filter 0.05s steps(2);
 }
 
-/* Active chip: neon glow box + inner radiation */
+/* Chip hover: violent glitch displacement */
+[data-skin="acidgrafix"] .filter-chip:hover {
+  animation: acid-hover-glitch 0.35s steps(3) infinite;
+  filter: brightness(1.6) saturate(2);
+}
+
+/* Active chip: fully lit toxic green switch */
 [data-skin="acidgrafix"] .filter-chip.bg-accent {
-  box-shadow: var(--glow-accent), inset 0 0 12px rgba(0, 255, 65, 0.08);
+  background:
+    linear-gradient(rgba(57,255,20,0.18), rgba(57,255,20,0.08)) padding-box,
+    var(--chrome-border) border-box;
+  color: #39FF14;
+  box-shadow:
+    0 0 10px rgba(57, 255, 20, 0.80),
+    0 0 28px rgba(57, 255, 20, 0.45),
+    inset 0 0 15px rgba(57, 255, 20, 0.12);
+  text-shadow: var(--glow-accent);
 }
 
-/* Track covers: octagonal clip-path shard cut */
+/* Track covers: octagonal shard cut + chrome glow frame */
 [data-skin="acidgrafix"] .track-cover {
   clip-path: polygon(
     0 8px, 8px 0,
@@ -822,11 +1035,30 @@ input[type="range"].eq-slider::-moz-range-thumb {
     100% calc(100% - 8px), calc(100% - 8px) 100%,
     8px 100%, 0 calc(100% - 8px)
   );
+  filter:
+    drop-shadow(0 0 4px rgba(57, 255, 20, 0.60))
+    drop-shadow(0 0 12px rgba(57, 255, 20, 0.25));
 }
 
-/* Data readouts: periodic liquid glitch burst */
+/* Track rows: terminal data grid line */
+[data-skin="acidgrafix"] .track-list-row {
+  border-bottom: 1px solid rgba(57, 255, 20, 0.12);
+  transition: background 0.05s steps(1);
+}
+[data-skin="acidgrafix"] .track-list-row:hover {
+  background: linear-gradient(90deg,
+    rgba(57, 255, 20, 0.06) 0%,
+    rgba(57, 255, 20, 0.02) 50%,
+    transparent 100%
+  );
+}
+
+/* Data readouts: phosphor terminal with chroma burst */
 [data-skin="acidgrafix"] .data-readout {
-  font-family: var(--font-mono);
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #39FF14;
+  text-shadow: 0 0 8px rgba(57,255,20,0.85), 0 0 20px rgba(57,255,20,0.40);
   display: inline-block;
   animation: data-glitch 14s 2s infinite;
 }
@@ -834,33 +1066,105 @@ input[type="range"].eq-slider::-moz-range-thumb {
 @keyframes data-glitch {
   0%, 87%, 100% {
     transform: translateX(0) skewX(0deg);
-    color: var(--color-text-secondary);
-    text-shadow: none;
+    color: #39FF14;
+    text-shadow: 0 0 8px rgba(57,255,20,0.85);
     clip-path: none;
   }
   88% {
     transform: translateX(-3px) skewX(-6deg);
-    color: #ff2d78;
-    text-shadow: 2px 0 #00ff41, -1px 0 #ff2d78;
+    color: #FF00FF;
+    text-shadow: 2px 0 #39FF14, -1px 0 #FF00FF, 0 0 12px #FF00FF;
     clip-path: inset(20% 0 60% 0);
   }
   89.5% {
     transform: translateX(3px) skewX(4deg);
-    color: #00ff41;
-    text-shadow: -2px 0 #ff2d78, 1px 0 #00ff41;
+    color: #39FF14;
+    text-shadow: -2px 0 #FF00FF, 1px 0 #39FF14, 0 0 15px #39FF14;
     clip-path: inset(55% 0 15% 0);
   }
   91% {
     transform: translateX(-1px) skewX(-2deg);
     color: #ffffff;
-    text-shadow: 1px 0 #00ff41, -1px 0 #ff2d78;
+    text-shadow: 3px 0 #FF00FF, -3px 0 #39FF14;
     clip-path: none;
   }
   92% {
     transform: translateX(0) skewX(0deg);
-    color: var(--color-text-secondary);
-    text-shadow: none;
+    color: #39FF14;
+    text-shadow: 0 0 8px rgba(57,255,20,0.85);
     clip-path: none;
+  }
+}
+
+/* ── Acidgrafix keyframes ─────────────────────────────────── */
+
+/* Corrupted hardware static: random translation jitter for noise layer */
+@keyframes acid-static {
+  0%   { transform: translate(0,    0);    }
+  10%  { transform: translate(-4%,  2%);   }
+  20%  { transform: translate( 3%, -3%);   }
+  30%  { transform: translate(-2%,  5%);   }
+  40%  { transform: translate( 5%, -1%);   }
+  50%  { transform: translate(-3%,  3%);   }
+  60%  { transform: translate( 2%, -5%);   }
+  70%  { transform: translate(-5%,  2%);   }
+  80%  { transform: translate( 4%, -2%);   }
+  90%  { transform: translate(-1%,  4%);   }
+  100% { transform: translate( 0,   0);    }
+}
+
+/* Hover glitch: bio-mechanical displacement spike */
+@keyframes acid-hover-glitch {
+  0%   {
+    transform: translate(0, 0) skewX(0deg);
+    filter: brightness(1.6) saturate(2);
+  }
+  33%  {
+    transform: translate(-3px, 0) skewX(-4deg);
+    filter: brightness(2) saturate(3) hue-rotate(-20deg);
+  }
+  66%  {
+    transform: translate(4px, 1px) skewX(3deg);
+    filter: brightness(1.8) saturate(2.5) hue-rotate(15deg);
+  }
+  100% {
+    transform: translate(0, 0) skewX(0deg);
+    filter: brightness(1.6) saturate(2);
+  }
+}
+
+/* Chromatic aberration burst: periodic RGB split + settle */
+@keyframes chroma-shift {
+  0%, 78%, 100% {
+    text-shadow:
+      2px  0 #FF00FF,
+      -2px 0 #39FF14,
+      0 0 10px rgba(57, 255, 20, 0.50);
+  }
+  80% {
+    text-shadow:
+      6px  0 #FF00FF,
+      -6px 0 #39FF14,
+      0 0 20px rgba(57, 255, 20, 0.80),
+      0 0 40px rgba(255,  0, 255, 0.50);
+  }
+  82% {
+    text-shadow:
+      -4px 0 #FF00FF,
+      4px  0 #39FF14,
+      0 0 15px rgba(255, 255, 255, 0.70);
+  }
+  84% {
+    text-shadow:
+      8px  0 rgba(255, 0, 255, 0.80),
+      -8px 0 rgba(57, 255, 20, 0.80),
+      0 0  5px rgba(255, 255, 255, 0.40);
+  }
+  86% {
+    text-shadow:
+      2px  0 #FF00FF,
+      -2px 0 #39FF14,
+      0 0 10px rgba(57, 255, 20, 0.50);
   }
 }
 
@@ -1178,28 +1482,57 @@ input[type="range"].eq-slider::-moz-range-thumb {
 
 /* ── SKIN 2 · ACIDGRAFIX — Nav + MiniPlayer ──────────────── */
 
-/* Neon green full-width border top + ambient radiation */
+/* ── Bio-rig bottom containment unit — void black + liquid chrome rail ── */
 [data-skin="acidgrafix"] .nav-bar {
-  border-top: 1px solid var(--color-accent);
-  box-shadow: 0 -4px 18px rgba(0, 255, 65, 0.14);
+  background: #000000 !important;
+  /* Liquid Chrome top border via padding-box/border-box trick */
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(90deg,
+      #050505 0%, #FFFFFF 20%, #A0A5AA 40%,
+      #2A2D34 60%, #E8ECEF 80%, #050505 100%
+    ) border-box !important;
+  border-top: 5px solid transparent !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow:
+    0 -10px 40px rgba(57, 255, 20, 0.28),
+    0 -4px  16px rgba(57, 255, 20, 0.14),
+    inset 0 0 30px rgba(0, 0, 0, 1);
 }
 
-/* Neon underline bar centered below active icon */
+/* Active icon: toxic green sweep line at top + full icon neon bloom */
 [data-skin="acidgrafix"] .nav-bar a.text-accent::before {
   content: '';
   position: absolute;
-  bottom: 2px;
+  top: -5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 55%;
-  height: 2px;
-  background: var(--color-accent);
-  box-shadow: var(--glow-accent);
+  width: 70%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #39FF14 40%, #39FF14 60%, transparent);
+  box-shadow:
+    0 0  6px #39FF14,
+    0 0 14px rgba(57, 255, 20, 0.90),
+    0 0 28px rgba(57, 255, 20, 0.45);
 }
 
+/* ── Mini-player: same void + chrome top rail ──────────────── */
 [data-skin="acidgrafix"] .mini-player {
-  border-top: 1px solid var(--color-accent);
-  box-shadow: 0 -4px 14px rgba(0, 255, 65, 0.16);
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(90deg,
+      #050505 0%, #FFFFFF 20%, #A0A5AA 40%,
+      #2A2D34 60%, #E8ECEF 80%, #050505 100%
+    ) border-box !important;
+  border-top: 5px solid transparent !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow:
+    0 -8px 30px rgba(57, 255, 20, 0.22),
+    inset 0 0 25px rgba(0, 0, 0, 1);
 }
 
 /* ── SKIN 3 · METALHEART — Nav + MiniPlayer ──────────────── */
@@ -1732,15 +2065,35 @@ input[type="range"].pitch-slider::-moz-range-thumb {
    SKIN 2 · ACIDGRAFIX — Info Hub + Pitch (neon accent pass)
    ============================================================ */
 
+/* ── Info Hub cards: liquid chrome frames + bio-luminescent bleed ── */
 [data-skin="acidgrafix"] .info-hub-card {
-  border-color: rgba(0, 255, 65, 0.35);
+  background:
+    linear-gradient(#0a0a0c, #0a0a0c) padding-box,
+    var(--chrome-border) border-box;
+  border: 4px solid transparent;
   box-shadow:
-    0 0 12px rgba(0, 255, 65, 0.08),
-    0 4px 20px rgba(0, 0, 0, 0.75);
+    0 0 12px rgba(57, 255, 20, 0.35),
+    0 0 30px rgba(57, 255, 20, 0.12),
+    inset 0 0 18px rgba(0, 0, 0, 0.98);
 }
+
+/* ── Pitch card: chrome framed terminal panel ────────────── */
 [data-skin="acidgrafix"] .pitch-card {
-  border-color: rgba(0, 255, 65, 0.25);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
+  background:
+    linear-gradient(#0a0a0c, #0a0a0c) padding-box,
+    var(--chrome-border) border-box;
+  border: 4px solid transparent;
+  box-shadow:
+    0 0 10px rgba(57, 255, 20, 0.22),
+    0 0 22px rgba(255, 0, 255, 0.08),
+    inset 0 0 18px rgba(0, 0, 0, 0.98);
+}
+
+/* ── Acidgrafix button:active — glitch spike press ─────────── */
+[data-skin="acidgrafix"] button:active {
+  transform: translateY(1px) skewX(-1deg);
+  filter: brightness(1.4) saturate(2) contrast(1.2);
+  transition: transform 0.03s steps(1), filter 0.03s steps(1);
 }
 
 /* ============================================================

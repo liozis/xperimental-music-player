@@ -1169,9 +1169,7 @@ input[type="range"].eq-slider::-moz-range-thumb {
   );
   pointer-events: none;
 }
-[data-skin="cassette"] .nav-bar {
-  position: relative;
-}
+/* position: absolute (from Tailwind) already creates a containing block for ::before */
 
 /* ── Data readout: mono phosphor style ──────────────────── */
 [data-skin="cassette"] .data-readout {

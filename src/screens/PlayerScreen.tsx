@@ -2,15 +2,14 @@ import { useState, useEffect } from 'react';
 import { usePlayer } from '../context/PlayerContext';
 import { TRACKS } from '../data/mockData';
 import { MainPlayerCard } from '../components/MainPlayerCard';
-import { EqualizerCard }  from '../components/EqualizerCard';
-import { QueueCard }      from '../components/QueueCard';
+import { EqualizerCard } from '../components/EqualizerCard';
+import { QueueCard } from '../components/QueueCard';
 
 export function PlayerScreen() {
   const {
     currentTrack, isPlaying, togglePlay, next, prev,
     progress, setProgress, play, queue,
     showPlayer, closePlayer,
-    pitch, setPitch,
   } = usePlayer();
 
   const [eqValues, setEqValues] = useState<Record<string, number>>({
@@ -20,11 +19,12 @@ export function PlayerScreen() {
   const [repeat, setRepeat]   = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
-  // Drive slide-in / out via showPlayer from context (no routing dependency)
+  // Drive slide-in/out via showPlayer from context (no routing dependency)
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (showPlayer) {
+      // RAF ensures component is in DOM at translateY(100%) before animating to 0
       const raf = requestAnimationFrame(() => setVisible(true));
       return () => cancelAnimationFrame(raf);
     } else {
@@ -37,9 +37,11 @@ export function PlayerScreen() {
 
   const dismiss = () => {
     setVisible(false);
+    // Wait for slide-out animation before unmounting
     setTimeout(() => closePlayer(), 300);
   };
 
+  // Not shown and not mid-animation — stay out of DOM
   if (!showPlayer && !visible) return null;
   if (!currentTrack) return null;
 
@@ -59,20 +61,19 @@ export function PlayerScreen() {
       }}
     >
 
-      {/* ── Screen chrome: dismiss + title + like ──────────── */}
-      <div className="flex items-center justify-between px-4 pt-5 pb-3 flex-shrink-0">
+      {/* ── Screen chrome: dismiss + title + like ────────────── */}
+      <div className="flex items-center justify-between px-4 pt-6 pb-3 flex-shrink-0">
         <button
           onClick={dismiss}
           className="text-textSecondary active:text-accent min-w-[44px] min-h-[44px] flex items-center justify-center -ml-2"
         >
+          {/* Down chevron — mimics Spotify dismiss gesture */}
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6,9 12,15 18,9"/>
           </svg>
         </button>
 
-        <p className="text-[10px] font-mono text-textSecondary tracking-widest uppercase">
-          Now Playing
-        </p>
+        <p className="text-[10px] font-mono text-textSecondary tracking-widest uppercase">Now Playing</p>
 
         <button
           onClick={() => setIsLiked(l => !l)}
@@ -86,18 +87,16 @@ export function PlayerScreen() {
         </button>
       </div>
 
-      {/* ── Three-card vertical stack — fills remaining height ─ */}
-      {/* overflow-hidden preserves the original layout balance  */}
+      {/* ── Three-card vertical stack — fills remaining height exactly ── */}
       <div className="flex-1 min-h-0 overflow-hidden px-3 pb-4 flex flex-col gap-3">
 
-        {/* CARD 1 — Main Player: flex-1 fills dead space, Info Hub embedded inside */}
+        {/* CARD 1 — Main Player: flex-1 so its visualizer fills dead space */}
         <MainPlayerCard
           currentTrack={currentTrack}
           isPlaying={isPlaying}
           progress={progress}
           shuffle={shuffle}
           repeat={repeat}
-          pitch={pitch}
           onTogglePlay={togglePlay}
           onNext={next}
           onPrev={prev}
@@ -107,12 +106,10 @@ export function PlayerScreen() {
           className="flex-1 min-h-0"
         />
 
-        {/* CARD 2 — Equalizer + Pitch / Speed slider */}
+        {/* CARD 2 — Equalizer */}
         <EqualizerCard
           eqValues={eqValues}
           onEqChange={(id, value) => setEqValues(v => ({ ...v, [id]: value }))}
-          pitch={pitch}
-          onPitchChange={setPitch}
         />
 
         {/* CARD 3 — Queue / Up Next */}

@@ -93,36 +93,54 @@
 /* ============================================================
    SKIN 3 · METALHEART
    Vibe: 1998–2004 Depthcore / Y2K Chrome. The Attik.
-   Brainreactor. Glossy radial chrome. Techno-organic.
+   Brainreactor. Synthetix. Glossy radial chrome. Techno-organic.
    ============================================================ */
 [data-skin="metalheart"] {
-  --color-body-bg:        #000308;
+  /* ── Body chrome ──────────────────────────────────────────── */
+  --color-body-bg:        #000205;
 
-  --color-bg:             #060a14;
-  --color-surface:        #0c1120;
-  --color-border:         rgba(90, 130, 200, 0.35);
+  /* ── App surface: deep navy chrome panels ────────────────── */
+  --color-bg:             #05091a;
+  --color-surface:        #0b1028;
+  --color-border:         rgba(100, 160, 240, 0.45);
 
-  --color-accent:         #4fc3f7;
-  --color-accent2:        #b8cce0;
+  /* ── Electric chrome accents ─────────────────────────────── */
+  --color-accent:         #29b6f6;
+  --color-accent2:        #90caf9;
 
-  --color-text-primary:   #d8eaf8;
-  --color-text-secondary: #4a6880;
+  /* ── Chrome specular token ───────────────────────────────── */
+  --color-chrome-hi:      rgba(200, 230, 255, 0.85);
 
+  /* ── Text ────────────────────────────────────────────────── */
+  --color-text-primary:   #e2f0ff;
+  --color-text-secondary: #3d5a80;
+
+  /* ── Typography ──────────────────────────────────────────── */
   --font-display: 'Orbitron', sans-serif;
   --font-body:    'Rajdhani', sans-serif;
   --font-mono:    'Share Tech Mono', monospace;
 
+  /* ── Geometry: sleek with subtle rounding ────────────────── */
   --radius-card: 5px;
   --radius-btn:  999px;
 
+  /* ── 4-way chrome bevel shadow ───────────────────────────── */
   --shadow-card:
-    inset 0 1px 0 rgba(140, 190, 255, 0.12),
-    inset 1px 0 0 rgba(140, 190, 255, 0.06),
-    0 4px 24px rgba(0, 8, 40, 0.85),
-    0 0 50px rgba(79, 195, 247, 0.04);
+    inset 0  1px 0 rgba(160, 210, 255, 0.30),
+    inset 0 -1px 0 rgba(0,   0,   0,   0.60),
+    inset  1px 0 0 rgba(120, 180, 255, 0.14),
+    inset -1px 0 0 rgba(0,   0,   0,   0.40),
+    0 4px 28px rgba(0, 4, 30, 0.92),
+    0 0 60px rgba(41, 182, 246, 0.06);
 
-  --glow-accent:  0 0 8px #4fc3f7, 0 0 18px rgba(79, 195, 247, 0.6), 0 0 36px rgba(79, 195, 247, 0.2);
-  --glow-accent2: 0 0 6px #b8cce0, 0 0 12px rgba(184, 204, 224, 0.3);
+  /* ── Intense 3-layer neon glow ───────────────────────────── */
+  --glow-accent:
+    0 0  6px #29b6f6,
+    0 0 18px rgba(41, 182, 246, 0.75),
+    0 0 40px rgba(41, 182, 246, 0.30);
+  --glow-accent2:
+    0 0 6px #90caf9,
+    0 0 14px rgba(144, 202, 249, 0.40);
 
   --visualizer-style: 'wave';
 }
@@ -329,6 +347,65 @@ input[type="range"].eq-slider::-moz-range-thumb {
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 5px rgba(0,0,0,0.45);
 }
 
+/* ── MetalHeart EQ Slider: chrome deep-channel fader ─────── */
+[data-skin="metalheart"] input[type="range"].eq-slider::-webkit-slider-runnable-track {
+  background: linear-gradient(to right,
+    rgba(0, 10, 40, 0.85) 0%,
+    rgba(5, 20, 65, 0.65) 100%
+  );
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.80),
+    inset 0 -1px 0 rgba(100, 180, 255, 0.14),
+    0 1px 0 rgba(100, 180, 255, 0.10);
+  border: 1px solid rgba(41, 182, 246, 0.28);
+  border-radius: 3px;
+  width: 4px;
+}
+[data-skin="metalheart"] input[type="range"].eq-slider::-moz-range-track {
+  background: rgba(0, 10, 40, 0.80);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.80),
+    inset 0 -1px 0 rgba(100, 180, 255, 0.12);
+  border: 1px solid rgba(41, 182, 246, 0.25);
+  border-radius: 3px;
+  width: 4px;
+}
+
+/* MetalHeart EQ thumb: silver chrome capsule with specular crown */
+[data-skin="metalheart"] input[type="range"].eq-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 9px;
+  border-radius: 4px;
+  background: linear-gradient(180deg,
+    rgba(220, 240, 255, 0.92) 0%,
+    rgba(100, 165, 225, 0.80) 45%,
+    rgba(20,  75, 160, 0.95) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(0, 30, 90, 0.50),
+    0 0 8px rgba(41, 182, 246, 0.55),
+    0 2px 6px rgba(0, 0, 0, 0.70);
+  border: 1px solid rgba(41, 182, 246, 0.55);
+  margin-left: -7px;
+  cursor: grab;
+}
+[data-skin="metalheart"] input[type="range"].eq-slider::-moz-range-thumb {
+  width: 18px;
+  height: 9px;
+  border-radius: 4px;
+  background: linear-gradient(180deg,
+    rgba(220, 240, 255, 0.92) 0%,
+    rgba(100, 165, 225, 0.80) 45%,
+    rgba(20,  75, 160, 0.95) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 0 8px rgba(41, 182, 246, 0.55);
+  border: 1px solid rgba(41, 182, 246, 0.55);
+}
+
 /* ============================================================
    SKIN 1 · CASSETTE — Surface & effect overrides
    ============================================================ */
@@ -437,12 +514,13 @@ input[type="range"].eq-slider::-moz-range-thumb {
    SKIN 3 · METALHEART — Surface & effect overrides
    ============================================================ */
 
-/* Radial chrome highlight on every surface panel */
+/* Wet chrome 3-radial highlight on every surface panel */
 [data-skin="metalheart"] .bg-surface {
   background-color: var(--color-surface);
   background-image:
-    radial-gradient(ellipse at 22% 14%, rgba(130, 180, 255, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse at 82% 88%, rgba(79, 195, 247, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 18% 10%, rgba(180, 220, 255, 0.14) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 50%, rgba(41, 182, 246, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(0, 0, 0, 0.50) 0%, transparent 60%);
   box-shadow: var(--shadow-card);
 }
 
@@ -451,29 +529,47 @@ input[type="range"].eq-slider::-moz-range-thumb {
   text-shadow: var(--glow-accent);
 }
 
-/* Chrome play button — glossy radial highlight */
+/* Chrome play button — aggressive studio-lit specular */
 [data-skin="metalheart"] .bg-accent {
   background-color: var(--color-accent);
   background-image:
-    radial-gradient(ellipse at 38% 28%, rgba(255, 255, 255, 0.22) 0%, transparent 60%);
+    radial-gradient(ellipse at 35% 22%, rgba(255, 255, 255, 0.32) 0%, transparent 55%),
+    radial-gradient(ellipse at 65% 75%, rgba(0, 60, 120, 0.35) 0%, transparent 60%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    var(--glow-accent),
-    0 5px 14px rgba(0, 0, 0, 0.7);
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 40, 100, 0.50),
+    0 0 12px rgba(41, 182, 246, 0.80),
+    0 0 32px rgba(41, 182, 246, 0.35),
+    0 6px 18px rgba(0, 0, 0, 0.80);
 }
 
-/* ── Wireframe vector grid overlay ───────────────────────── */
+/* ── Dual-density PCB circuit board grid ──────────────────── */
 [data-skin="metalheart"] body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 99990;
-  opacity: 0.032;
   background-image:
-    linear-gradient(rgba(79, 195, 247, 0.6) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79, 195, 247, 0.6) 1px, transparent 1px);
-  background-size: 44px 44px;
+    /* Fine grid — 20px PCB traces */
+    linear-gradient(rgba(41, 182, 246, 0.50) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 182, 246, 0.50) 1px, transparent 1px),
+    /* Coarse grid — 100px module boundaries */
+    linear-gradient(rgba(41, 182, 246, 0.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 182, 246, 0.28) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+  opacity: 0.05;
+}
+
+/* ── Deep space vignette + ambient blue-chrome halo ────────── */
+[data-skin="metalheart"] body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99991;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0, 2, 20, 0.70) 100%);
 }
 
 /* ============================================================
@@ -735,61 +831,76 @@ input[type="range"].eq-slider::-moz-range-thumb {
    SKIN 3 · METALHEART — Y2K Chrome + Icy Glass
    ══════════════════════════════════════════════════════════ */
 
-/* Chrome embossed screen headers */
+/* Chrome embossed screen headers — bright top-edge specular */
 [data-skin="metalheart"] .screen-header {
   background-image:
-    linear-gradient(180deg, rgba(79, 195, 247, 0.04) 0%, transparent 100%),
-    radial-gradient(ellipse at 0% 60%, rgba(130, 180, 255, 0.06) 0%, transparent 55%);
-  border-bottom: 1px solid rgba(79, 195, 247, 0.18);
+    linear-gradient(180deg,
+      rgba(41, 182, 246, 0.08) 0%,
+      rgba(41, 182, 246, 0.02) 60%,
+      transparent 100%
+    ),
+    radial-gradient(ellipse at 0% 55%, rgba(130, 180, 255, 0.08) 0%, transparent 55%);
+  border-bottom: 1px solid rgba(41, 182, 246, 0.35);
   box-shadow:
-    0 4px 24px rgba(0, 8, 40, 0.45),
-    0 1px 0 rgba(79, 195, 247, 0.12),
-    inset 0 -1px 0 rgba(0, 8, 40, 0.20);
+    inset 0 1px 0 rgba(160, 210, 255, 0.18),
+    0 1px 0 rgba(41, 182, 246, 0.22),
+    0 6px 28px rgba(0, 4, 30, 0.60);
 }
 
-/* Chrome gradient on h1 text inside screen header */
+/* Chrome gradient h1 — pure white crown to electric blue base */
 [data-skin="metalheart"] .screen-header h1 {
-  background: linear-gradient(180deg, #e8f4ff 0%, #9fc8e8 50%, #4fc3f7 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #c8e6ff 45%, #29b6f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 8px rgba(79, 195, 247, 0.35));
+  filter: drop-shadow(0 0 12px rgba(41, 182, 246, 0.55));
 }
 
-/* Section titles: icy telemetry labels */
+/* Section titles: bold data-telemetry labels */
 [data-skin="metalheart"] .section-title {
   color: var(--color-accent);
-  text-shadow: var(--glow-accent);
+  text-shadow:
+    0 0 6px #29b6f6,
+    0 0 16px rgba(41, 182, 246, 0.80),
+    0 0 36px rgba(41, 182, 246, 0.35);
   font-family: var(--font-mono);
-  letter-spacing: 0.20em;
+  letter-spacing: 0.22em;
 }
 
-/* Filter chips: glassy embossed pills */
+/* Filter chips: deep 4-way chrome emboss */
 [data-skin="metalheart"] .filter-chip {
-  background-image: linear-gradient(180deg, rgba(140, 190, 255, 0.08) 0%, transparent 100%);
+  background-image:
+    linear-gradient(160deg, rgba(150, 200, 255, 0.12) 0%, rgba(0, 20, 60, 0.30) 100%);
   box-shadow:
-    inset 0 1px 0 rgba(140, 190, 255, 0.18),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.30),
-    0 2px 8px rgba(0, 8, 40, 0.55);
+    inset 0  1px 0 rgba(160, 215, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    inset  1px 0 0 rgba(120, 180, 255, 0.10),
+    inset -1px 0 0 rgba(0, 0, 0, 0.25),
+    0 2px 10px rgba(0, 4, 30, 0.65);
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.12em;
 }
 
-/* Active chip: chrome radial highlight */
+/* Active chip: bright lit chrome panel */
 [data-skin="metalheart"] .filter-chip.bg-accent {
   background-image:
-    radial-gradient(ellipse at 50% 0%, rgba(79, 195, 247, 0.28) 0%, transparent 70%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, transparent 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.20) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(0, 50, 100, 0.40) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(41, 182, 246, 0.15) 0%, transparent 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    var(--glow-accent),
-    0 4px 14px rgba(0, 8, 40, 0.65);
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(0, 40, 100, 0.45),
+    0 0 10px rgba(41, 182, 246, 0.70),
+    0 0 24px rgba(41, 182, 246, 0.30),
+    0 4px 14px rgba(0, 4, 30, 0.70);
 }
 
-/* Track covers: liquid chrome hover morph */
+/* Track covers: chrome-framed thumbnail with glow on hover */
 [data-skin="metalheart"] .track-cover {
-  box-shadow: 0 2px 10px rgba(0, 8, 40, 0.55), 0 0 0 1px rgba(79, 195, 247, 0.08);
+  box-shadow:
+    0 2px 12px rgba(0, 4, 30, 0.65),
+    0 0 0 1px rgba(41, 182, 246, 0.18);
   transition:
     box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
     filter 0.35s ease,
@@ -798,19 +909,28 @@ input[type="range"].eq-slider::-moz-range-thumb {
 
 [data-skin="metalheart"] .track-cover:hover {
   box-shadow:
-    0 6px 24px rgba(0, 8, 40, 0.75),
-    0 0 0 1.5px rgba(79, 195, 247, 0.50),
-    var(--glow-accent);
-  filter: saturate(1.25) brightness(1.08);
+    0 6px 24px rgba(0, 4, 30, 0.80),
+    0 0 0 2px rgba(41, 182, 246, 0.70),
+    0 0 16px rgba(41, 182, 246, 0.55),
+    0 0 40px rgba(41, 182, 246, 0.20);
+  filter: saturate(1.30) brightness(1.10);
   transform: scale(1.03);
 }
 
-/* Track list rows: icy radial hover state */
+/* Track list rows: blue left-edge indicator + icy hover fade */
 [data-skin="metalheart"] .track-list-row {
-  transition: background 0.20s ease;
+  border-left: 2px solid transparent;
+  transition:
+    background 0.18s ease,
+    border-left-color 0.18s ease;
 }
 [data-skin="metalheart"] .track-list-row:hover {
-  background: linear-gradient(90deg, rgba(79, 195, 247, 0.05) 0%, transparent 70%);
+  background: linear-gradient(90deg,
+    rgba(41, 182, 246, 0.10) 0%,
+    rgba(41, 182, 246, 0.03) 50%,
+    transparent 100%
+  );
+  border-left-color: rgba(41, 182, 246, 0.55);
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -1001,31 +1121,37 @@ input[type="range"].eq-slider::-moz-range-thumb {
 
 /* ── SKIN 3 · METALHEART — Nav + MiniPlayer ──────────────── */
 
-/* Subtle chrome gradient fade up into the nav bar */
+/* Chrome nav bar — bright top border + deep atmosphere shadow */
 [data-skin="metalheart"] .nav-bar {
-  background-image: linear-gradient(to bottom, rgba(79, 195, 247, 0.05) 0%, transparent 100%);
+  background-image:
+    linear-gradient(to bottom, rgba(41, 182, 246, 0.07) 0%, transparent 100%);
+  border-top: 1px solid rgba(41, 182, 246, 0.50) !important;
   box-shadow:
-    0 -1px 0 rgba(79, 195, 247, 0.22),
-    0 -8px 24px rgba(0, 8, 40, 0.55);
+    0 -1px 0 rgba(41, 182, 246, 0.35),
+    0 -12px 32px rgba(0, 4, 30, 0.80),
+    inset 0 1px 0 rgba(100, 180, 255, 0.12);
 }
 
-/* Chrome sweep line radiating from center of active icon */
+/* Wide chrome sweep line above active icon */
 [data-skin="metalheart"] .nav-bar a.text-accent::before {
   content: '';
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 48%;
+  width: 60%;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-  box-shadow: var(--glow-accent);
+  box-shadow:
+    0 0 6px #29b6f6,
+    0 0 14px rgba(41, 182, 246, 0.75);
 }
 
 [data-skin="metalheart"] .mini-player {
+  border-top: 1px solid rgba(41, 182, 246, 0.35) !important;
   box-shadow:
-    0 -1px 0 rgba(79, 195, 247, 0.2),
-    0 -8px 20px rgba(0, 8, 40, 0.6);
+    0 -1px 0 rgba(41, 182, 246, 0.25),
+    0 -10px 24px rgba(0, 4, 30, 0.75);
 }
 
 /* ── SKIN 4 · MEDIEVAL — Nav + MiniPlayer ────────────────── */
@@ -1449,8 +1575,12 @@ input[type="range"].pitch-slider::-moz-range-thumb {
 [data-skin="metalheart"] .info-hub-card,
 [data-skin="metalheart"] .pitch-card {
   box-shadow:
-    inset 0 1px 0 rgba(79, 195, 247, 0.18),
-    0 4px 20px rgba(0, 8, 40, 0.65);
+    inset 0  1px 0 rgba(160, 210, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    inset  1px 0 0 rgba(100, 170, 255, 0.12),
+    inset -1px 0 0 rgba(0, 0, 0, 0.35),
+    0 4px 24px rgba(0, 4, 30, 0.85),
+    0 0 40px rgba(41, 182, 246, 0.08);
 }
 
 /* ============================================================

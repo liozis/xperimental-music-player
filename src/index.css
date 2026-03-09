@@ -516,8 +516,9 @@ input[type="range"].eq-slider::-moz-range-thumb {
    SKIN 3 · METALHEART — Surface & effect overrides
    ============================================================ */
 
-/* Brushed chrome surface — sapphire light source top-left */
-[data-skin="metalheart"] .bg-surface {
+/* Brushed chrome surface — sapphire light source top-left
+   :not guards prevent position:relative from overriding nav-bar/mini-player's absolute */
+[data-skin="metalheart"] .bg-surface:not(.nav-bar):not(.mini-player) {
   background-color: var(--color-surface);
   background-image:
     /* Sapphire light source — top-left corner */

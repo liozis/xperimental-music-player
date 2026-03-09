@@ -173,37 +173,32 @@
    Aged gold. Blood red. Ultra-mechanical.
    ============================================================ */
 [data-skin="medieval"] {
-  /* ── Dark warm stage outside the device shell ────────────── */
-  --color-body-bg:        #1a1208;
+  --color-body-bg:        #0c0801;
 
-  /* ── Authentic aged parchment chassis ────────────────────── */
-  --color-bg:             #E8DCC4;
-  --color-surface:        #E8DCC4;
-  --color-border:         #000000;
+  --color-bg:             #0d0a04;
+  --color-surface:        #171209;
+  --color-border:         #7a5c14;
 
-  /* ── Pure digital blue (active) / pure black ink ─────────── */
-  --color-accent:         #0000FF;
-  --color-accent2:        #000000;
+  --color-accent:         #cc1100;
+  --color-accent2:        #d4a017;
 
-  /* ── Black ink on parchment ──────────────────────────────── */
-  --color-text-primary:   #000000;
-  --color-text-secondary: #444444;
+  --color-text-primary:   #e8d8a8;
+  --color-text-secondary: #8a7040;
 
-  /* ── Gothic Blackletter headers + 1-bit pixel terminal data ─ */
   --font-display: 'UnifrakturMaguntia', cursive;
-  --font-body:    'UnifrakturMaguntia', cursive;
-  --font-mono:    'VT323', monospace;
+  --font-body:    'Special Elite', cursive;
+  --font-mono:    'Courier Prime', monospace;
 
-  /* ── Zero radius: brutalist right-angle geometry ─────────── */
-  --radius-card: 0px;
+  --radius-card: 1px;
   --radius-btn:  0px;
 
-  /* ── Harsh solid digital drop shadow — no blur ───────────── */
-  --shadow-card: 6px 6px 0px #000000;
+  --shadow-card:
+    0 0 0 1px rgba(122, 92, 20, 0.6),
+    inset 0 0 0 1px rgba(212, 160, 23, 0.08),
+    2px 5px 18px rgba(0, 0, 0, 0.92);
 
-  /* ── No glow: 1-bit has no sub-pixel light bloom ─────────── */
-  --glow-accent:  0 0 0 rgba(0,0,0,0);
-  --glow-accent2: 0 0 0 rgba(0,0,0,0);
+  --glow-accent:  0 0 8px rgba(204, 17, 0, 0.8),  0 0 18px rgba(204, 17, 0, 0.4);
+  --glow-accent2: 0 0 6px rgba(212, 160, 23, 0.7), 0 0 14px rgba(212, 160, 23, 0.3);
 
   --visualizer-style: 'radial';
 }
@@ -433,41 +428,6 @@ input[type="range"].eq-slider::-moz-range-thumb {
     inset 1px 1px 3px rgba(255, 255, 255, 0.85),
     0 0 8px rgba(0, 87, 184, 0.50);
   border: 1px solid rgba(70, 100, 160, 0.65);
-}
-
-/* ── Medieval EQ slider: parchment channel + 1-bit black square knob ── */
-[data-skin="medieval"] input[type="range"].eq-slider::-webkit-slider-runnable-track {
-  background: #E8DCC4;
-  border: 1px solid #000000;
-  border-radius: 0;
-  width: 4px;
-  box-shadow: 2px 2px 0px rgba(0,0,0,0.45);
-}
-[data-skin="medieval"] input[type="range"].eq-slider::-moz-range-track {
-  background: #E8DCC4;
-  border: 1px solid #000000;
-  border-radius: 0;
-  width: 4px;
-}
-
-/* Thumb: pure black square — 1-bit key cap with drop shadow */
-[data-skin="medieval"] input[type="range"].eq-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px;
-  height: 8px;
-  border-radius: 0;
-  background: #000000;
-  border: none;
-  box-shadow: 2px 2px 0px rgba(0,0,0,0.40);
-  margin-left: -7px;
-  cursor: grab;
-}
-[data-skin="medieval"] input[type="range"].eq-slider::-moz-range-thumb {
-  width: 18px;
-  height: 8px;
-  border-radius: 0;
-  background: #000000;
-  border: none;
 }
 
 /* ── Acidgrafix EQ slider: liquid chrome fader + toxic green thumb ── */
@@ -801,68 +761,44 @@ input[type="range"].eq-slider::-moz-range-thumb {
 
 /* ============================================================
    SKIN 4 · FUTURE MEDIEVAL — Surface & effect overrides
-   Aged parchment × 1984 Mac 1-bit digital brutalism
    ============================================================ */
 
-/* All surfaces: aged parchment base */
+/* Parchment candlelight bleed on surfaces */
 [data-skin="medieval"] .bg-surface {
-  background-color: #E8DCC4;
-}
-
-/* Main panels: 1-bit dither grain + solid ink border + brutal drop shadow */
-[data-skin="medieval"] .bg-surface:not(.nav-bar):not(.mini-player) {
-  background-color: #E8DCC4;
+  background-color: var(--color-surface);
   background-image:
-    /* Pixel cross ornament — bottom-right corner woodblock stamp */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' shape-rendering='crispEdges'%3E%3Crect x='5' y='0' width='4' height='14' fill='%23000000' opacity='0.18'/%3E%3Crect x='0' y='5' width='14' height='4' fill='%23000000' opacity='0.18'/%3E%3C/svg%3E"),
-    /* Bayer 2×2 dither texture — 1-bit shading over organic parchment */
-    repeating-linear-gradient(
-      45deg,
-      rgba(0,0,0,0.045) 0px, rgba(0,0,0,0.045) 1px,
-      transparent 1px, transparent 5px
-    );
-  background-repeat: no-repeat, repeat;
-  background-position: right 4px bottom 4px, 0 0;
-  background-size: 14px 14px, auto;
-  border: 2px solid #000000 !important;
-  border-radius: 0 !important;
-  box-shadow: 6px 6px 0px #000000;
-  position: relative;
+    radial-gradient(ellipse at 22% 18%, rgba(212, 160, 23, 0.07) 0%, transparent 65%);
+  box-shadow: var(--shadow-card);
 }
 
-/* Digital blue for active/interactive text */
+/* Crimson ember text glow */
 [data-skin="medieval"] .text-accent {
-  color: #0000FF;
-  text-shadow: none;
+  text-shadow: var(--glow-accent);
 }
 
-/* Pure black ink for secondary text */
+/* Gold shimmer on accent2 text */
 [data-skin="medieval"] .text-accent2 {
-  color: #000000;
-  text-shadow: none;
+  text-shadow: var(--glow-accent2);
 }
 
-/* Digital blue play button — hard 1-bit Mac OS interface element */
+/* Blood-red glow on play button */
 [data-skin="medieval"] .bg-accent {
-  background-color: #0000FF !important;
-  border: 2px solid #000000 !important;
-  border-radius: 0 !important;
-  box-shadow: 4px 4px 0px #000000;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 100, 80, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    var(--glow-accent),
+    0 3px 10px rgba(0, 0, 0, 0.7);
 }
 
-/* ── Organic paper fiber — SVG feTurbulence parchment grain ── */
+/* ── Vignette + warm amber rim ────────────────────────────── */
 [data-skin="medieval"] body::before {
   content: '';
   position: fixed;
-  inset: -60%;
-  width: 220%;
-  height: 220%;
+  inset: 0;
   pointer-events: none;
   z-index: 99990;
-  opacity: 0.20;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
-  background-size: 220px 220px;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 42%, rgba(0, 0, 0, 0.58) 100%);
 }
 
 /* ============================================================
@@ -1369,141 +1305,105 @@ input[type="range"].eq-slider::-moz-range-thumb {
 }
 
 /* ══════════════════════════════════════════════════════════
-   SKIN 4 · FUTURE MEDIEVAL — Postmodern 1-Bit Manuscript
-   Gothic Blackletter on aged parchment × 1984 Mac digital
+   SKIN 4 · FUTURE MEDIEVAL — Parchment Manuscript Hardware
    ══════════════════════════════════════════════════════════ */
 
-/* ── Parchment header panel with solid ink border ─────────── */
+/* Parchment header with amber candle bleed */
 [data-skin="medieval"] .screen-header {
-  background-color: #E8DCC4;
+  background-color: var(--color-surface);
   background-image:
-    /* Pixel sword ornament — right edge woodblock stamp */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='32' shape-rendering='crispEdges'%3E%3Crect x='5' y='0' width='2' height='20' fill='%23000000' opacity='0.55'/%3E%3Crect x='1' y='20' width='10' height='2' fill='%23000000' opacity='0.55'/%3E%3Crect x='4' y='22' width='4' height='7' fill='%23000000' opacity='0.55'/%3E%3Crect x='3' y='29' width='6' height='3' fill='%23000000' opacity='0.55'/%3E%3C/svg%3E"),
-    /* Pixel chalice ornament — left edge mirrored stamp */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='2' width='12' height='2' fill='%23000000' opacity='0.45'/%3E%3Crect x='2' y='2' width='2' height='5' fill='%23000000' opacity='0.45'/%3E%3Crect x='12' y='2' width='2' height='5' fill='%23000000' opacity='0.45'/%3E%3Crect x='4' y='7' width='8' height='2' fill='%23000000' opacity='0.45'/%3E%3Crect x='6' y='9' width='4' height='3' fill='%23000000' opacity='0.45'/%3E%3Crect x='3' y='12' width='10' height='2' fill='%23000000' opacity='0.45'/%3E%3C/svg%3E"),
-    /* Subtle dither over parchment header */
-    repeating-linear-gradient(
-      45deg,
-      rgba(0,0,0,0.035) 0px, rgba(0,0,0,0.035) 1px,
-      transparent 1px, transparent 5px
-    );
-  background-repeat: no-repeat, no-repeat, repeat;
-  background-position: right 10px center, left 10px center, 0 0;
-  background-size: 12px 32px, 16px 16px, auto;
-  border-bottom: 2px solid #000000;
-  box-shadow: 0 4px 0 #000000;
+    radial-gradient(ellipse at 0% 60%, rgba(212, 160, 23, 0.07) 0%, transparent 55%);
+  box-shadow:
+    0 3px 0 rgba(0, 0, 0, 0.65),
+    inset 0 -1px 0 rgba(122, 92, 20, 0.35);
   position: relative;
 }
 
-/* Pixelated ink rule below header — 4px block dashes */
+/* Torn / wax-seal impressed dashed ink border */
 [data-skin="medieval"] .screen-header::after {
   content: '';
   position: absolute;
-  bottom: -8px;
-  left: 0;
-  right: 0;
-  height: 4px;
+  bottom: -4px;
+  left: 1rem;
+  right: 1rem;
+  height: 3px;
   pointer-events: none;
   background: repeating-linear-gradient(
     90deg,
-    #000000 0px, #000000 4px,
-    #E8DCC4 4px, #E8DCC4 8px
+    rgba(122, 92, 20, 0.80) 0px,  rgba(122, 92, 20, 0.80) 3px,
+    transparent                3px,  transparent                5px,
+    rgba(212, 160, 23, 0.50) 5px,  rgba(212, 160, 23, 0.50) 6px,
+    transparent                6px,  transparent               10px,
+    rgba(122, 92, 20, 0.65) 10px, rgba(122, 92, 20, 0.65) 12px,
+    transparent               12px, transparent               18px
   );
 }
 
-/* Gothic Blackletter h1 — pure ink on parchment */
+/* Gothic UnifrakturMaguntia on screen header h1 */
 [data-skin="medieval"] .screen-header h1 {
   font-family: 'UnifrakturMaguntia', cursive;
-  font-size: 2.2rem;
-  color: #000000;
-  text-shadow: 3px 3px 0px rgba(0,0,0,0.15);
-  letter-spacing: 0.02em;
+  font-size: 2rem;
+  color: var(--color-accent2);
+  text-shadow: var(--glow-accent2), 1px 1px 0 rgba(0, 0, 0, 0.75);
+  letter-spacing: 0.03em;
   -webkit-text-fill-color: initial;
 }
 
-/* Section labels: VT323 1-bit pixel terminal uppercase */
+/* Section titles: illuminated manuscript caps */
 [data-skin="medieval"] .section-title {
-  font-family: 'VT323', monospace;
-  font-size: 18px;
-  font-weight: 400;
-  color: #000000;
-  text-shadow: none;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
+  color: var(--color-accent2);
+  text-shadow: var(--glow-accent2);
+  font-family: var(--font-body);
+  letter-spacing: 0.18em;
 }
 
-/* ── Filter chips: parchment switches with solid black frame ── */
+/* Filter chips: stiff mechanical key press */
 [data-skin="medieval"] .filter-chip {
-  background-color: #E8DCC4;
-  background-image:
-    /* Diagonal 1-bit dither hatching on inactive chip face */
-    repeating-linear-gradient(
-      45deg,
-      rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px,
-      transparent 1px, transparent 5px
-    );
-  border: 2px solid #000000 !important;
-  border-radius: 0 !important;
-  box-shadow: 3px 3px 0px #000000;
-  font-family: 'VT323', monospace;
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: 0.10em;
-  color: #000000;
-  text-shadow: none;
-  text-transform: uppercase;
+  border: 1px solid rgba(122, 92, 20, 0.65);
+  box-shadow:
+    inset 0 1px 0 rgba(212, 160, 23, 0.10),
+    2px 3px 8px rgba(0, 0, 0, 0.65);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
 }
 
-/* Active chip: pure digital blue — 1984 Mac alert color */
+/* Active chip: blood-red illumination + depression */
 [data-skin="medieval"] .filter-chip.bg-accent {
-  background-color: #0000FF !important;
-  background-image: none !important;
-  color: #FFFFFF !important;
-  border: 2px solid #000000 !important;
-  border-radius: 0 !important;
-  box-shadow: 3px 3px 0px #000000;
-  transform: none;
-  text-shadow: none;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.45),
+    1px 1px 0 rgba(0, 0, 0, 0.60),
+    var(--glow-accent);
+  transform: translateY(1px);
 }
 
-/* Data readouts: VT323 pixel monospace terminal */
+/* Data readouts: Courier Prime typewriter mono */
 [data-skin="medieval"] .data-readout {
-  font-family: 'VT323', monospace;
-  font-size: 14px;
-  color: #000000;
-  letter-spacing: 0.10em;
-  text-shadow: none;
+  font-family: 'Courier Prime', monospace;
+  color: var(--color-accent2);
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 4px rgba(212, 160, 23, 0.30);
 }
 
-/* Track covers: 1-bit bitmap filter — dithered woodblock engraving */
+/* Track covers: aged vellum border */
 [data-skin="medieval"] .track-cover {
-  filter: grayscale(1) contrast(2.8) brightness(1.08);
-  border: 2px solid #000000 !important;
-  outline: none;
-  box-shadow: 4px 4px 0px #000000;
-  border-radius: 0 !important;
+  outline: 1px solid rgba(122, 92, 20, 0.50);
+  outline-offset: 1px;
+  box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.80), inset 0 0 0 1px rgba(212, 160, 23, 0.06);
 }
 
-/* Track list rows: 1-bit ink grid lines + dithered hover */
+/* Track list rows: candlelight hover bloom */
 [data-skin="medieval"] .track-list-row {
-  border-bottom: 1px solid rgba(0,0,0,0.35);
-  transition: background 0s steps(1);
+  transition: background 0.25s ease;
 }
 [data-skin="medieval"] .track-list-row:hover {
-  background-color: rgba(0,0,0,0.06);
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      rgba(0,0,0,0.045) 0px, rgba(0,0,0,0.045) 1px,
-      transparent 1px, transparent 5px
-    );
+  background: radial-gradient(ellipse at left, rgba(122, 92, 20, 0.10) 0%, transparent 60%);
 }
 
-/* Physical press: drop shadow collapses — pixel snaps to grid */
+/* Stiff mechanical clack on all Medieval buttons */
 [data-skin="medieval"] button:active {
-  transform: translateY(3px) translateX(3px);
-  box-shadow: 3px 3px 0px #000000 !important;
-  transition: transform 0.04s steps(1), box-shadow 0.04s steps(1);
+  transform: translateY(2px) scale(0.985);
+  filter: brightness(0.82);
+  transition: transform 0.04s, filter 0.04s;
 }
 
 /* ============================================================
@@ -1688,57 +1588,31 @@ input[type="range"].eq-slider::-moz-range-thumb {
 
 /* ── SKIN 4 · MEDIEVAL — Nav + MiniPlayer ────────────────── */
 
-/* ── Digital foundation: parchment base + solid 2px ink top rail ── */
+/* Deep shadow cavern + amber candle rim on nav bar */
 [data-skin="medieval"] .nav-bar {
-  background-color: #E8DCC4 !important;
-  background-image:
-    /* Pixel chalice center motif — woodblock stamp */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='2' width='12' height='2' fill='%23000000' opacity='0.22'/%3E%3Crect x='2' y='2' width='2' height='5' fill='%23000000' opacity='0.22'/%3E%3Crect x='12' y='2' width='2' height='5' fill='%23000000' opacity='0.22'/%3E%3Crect x='4' y='7' width='8' height='2' fill='%23000000' opacity='0.22'/%3E%3Crect x='6' y='9' width='4' height='3' fill='%23000000' opacity='0.22'/%3E%3Crect x='3' y='12' width='10' height='2' fill='%23000000' opacity='0.22'/%3E%3C/svg%3E"),
-    repeating-linear-gradient(
-      45deg,
-      rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px,
-      transparent 1px, transparent 5px
-    );
-  background-repeat: repeat, repeat;
-  background-size: 32px 32px, auto;
-  border-top: 2px solid #000000 !important;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  border-bottom: 0 !important;
-  box-shadow: 0 -4px 0 #000000;
+  border-top-color: rgba(122, 92, 20, 0.75);
+  box-shadow:
+    0 -4px 16px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(212, 160, 23, 0.10);
 }
 
-/* Digital blue sweep line above active nav icon */
+/* Gold arc chalice indicator above active icon */
 [data-skin="medieval"] .nav-bar a.text-accent::before {
   content: '';
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%;
-  height: 3px;
-  background: #0000FF;
-  box-shadow: none;
+  width: 38%;
+  height: 2px;
+  background: var(--color-accent2);
+  box-shadow: var(--glow-accent2);
 }
 
-/* Nav icon labels: force black text on parchment */
-[data-skin="medieval"] .nav-bar span {
-  color: #444444;
-}
-
-/* Mini-player: parchment card + solid ink top border */
 [data-skin="medieval"] .mini-player {
-  background-color: #E8DCC4 !important;
-  border-top: 2px solid #000000 !important;
-  box-shadow: 0 -4px 0 #000000;
-}
-
-/* Mini-player track title: Gothic Blackletter + black ink */
-[data-skin="medieval"] .mini-player .font-body {
-  font-family: 'UnifrakturMaguntia', cursive !important;
-  color: #000000 !important;
-  font-size: 13px !important;
-  text-shadow: none;
+  box-shadow:
+    0 -4px 14px rgba(0, 0, 0, 0.82),
+    inset 0 1px 0 rgba(212, 160, 23, 0.08);
 }
 
 /* ============================================================
@@ -2246,16 +2120,9 @@ input[type="range"].pitch-slider::-moz-range-thumb {
    SKIN 4 · MEDIEVAL — Info Hub + Pitch
    ============================================================ */
 
-/* ── Info Hub + Pitch: parchment panels with full 1-bit frame ── */
-[data-skin="medieval"] .info-hub-card {
-  background-color: #E8DCC4;
-  border: 2px solid #000000;
-  border-radius: 0 !important;
-  box-shadow: 6px 6px 0px #000000;
-}
+[data-skin="medieval"] .info-hub-card,
 [data-skin="medieval"] .pitch-card {
-  background-color: #E8DCC4;
-  border: 2px solid #000000;
-  border-radius: 0 !important;
-  box-shadow: 6px 6px 0px #000000;
+  box-shadow:
+    inset 0 1px 0 rgba(212, 160, 23, 0.12),
+    0 4px 20px rgba(0, 0, 0, 0.80);
 }

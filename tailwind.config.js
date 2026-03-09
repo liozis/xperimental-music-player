@@ -11,6 +11,7 @@ export default {
         accent2:   'var(--color-accent2)',
         textPrimary:   'var(--color-text-primary)',
         textSecondary: 'var(--color-text-secondary)',
+        bodyBg:        'var(--color-body-bg)',
       },
       fontFamily: {
         display: 'var(--font-display)',

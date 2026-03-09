@@ -1,91 +1,161 @@
-@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Share+Tech+Mono&family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&family=UnifrakturMaguntia&family=Special+Elite&family=Courier+Prime&family=Exo+2:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Big+Shoulders+Display:wght@400;700;900&family=Electrolize&family=Share+Tech+Mono&family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&family=UnifrakturMaguntia&family=Special+Elite&family=Courier+Prime&family=Exo+2:wght@300;400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ============================================================
-   SKIN 1: CASSETTE FUTURISM
+   SKIN 1 · CASSETTE FUTURISM
+   Vibe: 1970–85 Japanese bubble-era hardware. Syd Mead.
+   Old Sony Walkmans. Physical beige. LED bleeds. Film grain.
    ============================================================ */
 :root,
 [data-skin="cassette"] {
-  --color-bg:             #0f0e0c;
-  --color-surface:        #1e1c18;
-  --color-border:         #2e2b24;
-  --color-accent:         #ff6a00;
-  --color-accent2:        #ffaa33;
-  --color-text-primary:   #e8dfc8;
-  --color-text-secondary: #6a6050;
+  /* ── Body chrome ──────────────────────────────────────── */
+  --color-body-bg:        #1e1509;
 
-  --font-display: 'Electrolize', monospace;
+  /* ── App surface: warm hardware beige ─────────────────── */
+  --color-bg:             #c8bca4;
+  --color-surface:        #b8ac94;
+  --color-border:         #7d7058;
+
+  /* ── LED accents ───────────────────────────────────────── */
+  --color-accent:         #ff5500;
+  --color-accent2:        #ffc400;
+
+  /* ── Text on beige ─────────────────────────────────────── */
+  --color-text-primary:   #1c140a;
+  --color-text-secondary: #5c4e38;
+
+  /* ── Hardware typography ───────────────────────────────── */
+  --font-display: 'VT323', 'Share Tech Mono', monospace;
   --font-body:    'Share Tech Mono', monospace;
   --font-mono:    'Share Tech Mono', monospace;
 
-  --radius-card:  2px;
-  --radius-btn:   1px;
+  /* ── Geometry: angular, physical ───────────────────────── */
+  --radius-card: 3px;
+  --radius-btn:  2px;
+
+  /* ── Physical raised-panel card shadow ─────────────────── */
+  --shadow-card:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.55),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.12),
+    3px 5px 14px rgba(0, 0, 0, 0.45),
+    1px 2px 4px rgba(0, 0, 0, 0.25);
+
+  /* ── LED glow values ───────────────────────────────────── */
+  --glow-accent:  0 0 10px #ff5500, 0 0 22px rgba(255, 85, 0, 0.55), 0 0 48px rgba(255, 50, 0, 0.2);
+  --glow-accent2: 0 0 8px #ffc400, 0 0 16px rgba(255, 196, 0, 0.4);
+
   --visualizer-style: 'bars';
 }
 
 /* ============================================================
-   SKIN 2: ACIDGRAFIX
+   SKIN 2 · ACIDGRAFIX
+   Vibe: Underground rave flyers. Cybernetic brutalism.
+   Liquid mercury metallic. Blinding neon. Dense data.
    ============================================================ */
 [data-skin="acidgrafix"] {
+  --color-body-bg:        #000000;
+
   --color-bg:             #000000;
-  --color-surface:        #080808;
+  --color-surface:        #050507;
   --color-border:         #00ff41;
+
   --color-accent:         #00ff41;
   --color-accent2:        #ff2d78;
-  --color-text-primary:   #ffffff;
-  --color-text-secondary: #00cc33;
 
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body:    'Barlow Condensed', sans-serif;
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: #3dcc5a;
+
+  --font-display: 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+  --font-body:    'Share Tech Mono', monospace;
   --font-mono:    'Share Tech Mono', monospace;
 
-  --radius-card:  0px;
-  --radius-btn:   0px;
+  --radius-card: 0px;
+  --radius-btn:  0px;
+
+  --shadow-card:
+    0 0 0 1px #00ff41,
+    0 0 18px rgba(0, 255, 65, 0.14),
+    inset 0 0 28px rgba(0, 255, 65, 0.03);
+
+  --glow-accent:  0 0 8px #00ff41, 0 0 18px rgba(0, 255, 65, 0.65), 0 0 40px rgba(0, 255, 65, 0.25);
+  --glow-accent2: 0 0 8px #ff2d78, 0 0 18px rgba(255, 45, 120, 0.5);
+
   --visualizer-style: 'peaks';
 }
 
 /* ============================================================
-   SKIN 3: METALHEART
+   SKIN 3 · METALHEART
+   Vibe: 1998–2004 Depthcore / Y2K Chrome. The Attik.
+   Brainreactor. Glossy radial chrome. Techno-organic.
    ============================================================ */
 [data-skin="metalheart"] {
-  --color-bg:             #050508;
-  --color-surface:        #0d0d18;
-  --color-border:         #2a2a4a;
+  --color-body-bg:        #000308;
+
+  --color-bg:             #060a14;
+  --color-surface:        #0c1120;
+  --color-border:         rgba(90, 130, 200, 0.35);
+
   --color-accent:         #4fc3f7;
-  --color-accent2:        #b0bec5;
-  --color-text-primary:   #dde8f0;
-  --color-text-secondary: #607080;
+  --color-accent2:        #b8cce0;
+
+  --color-text-primary:   #d8eaf8;
+  --color-text-secondary: #4a6880;
 
   --font-display: 'Orbitron', sans-serif;
   --font-body:    'Rajdhani', sans-serif;
   --font-mono:    'Share Tech Mono', monospace;
 
-  --radius-card:  6px;
-  --radius-btn:   999px;
+  --radius-card: 5px;
+  --radius-btn:  999px;
+
+  --shadow-card:
+    inset 0 1px 0 rgba(140, 190, 255, 0.12),
+    inset 1px 0 0 rgba(140, 190, 255, 0.06),
+    0 4px 24px rgba(0, 8, 40, 0.85),
+    0 0 50px rgba(79, 195, 247, 0.04);
+
+  --glow-accent:  0 0 8px #4fc3f7, 0 0 18px rgba(79, 195, 247, 0.6), 0 0 36px rgba(79, 195, 247, 0.2);
+  --glow-accent2: 0 0 6px #b8cce0, 0 0 12px rgba(184, 204, 224, 0.3);
+
   --visualizer-style: 'wave';
 }
 
 /* ============================================================
-   SKIN 4: FUTURE MEDIEVAL
+   SKIN 4 · FUTURE MEDIEVAL
+   Vibe: Teenage Engineering EP-1320. Gothic LCD. Parchment.
+   Aged gold. Blood red. Ultra-mechanical.
    ============================================================ */
 [data-skin="medieval"] {
-  --color-bg:             #0a0c08;
-  --color-surface:        #161a10;
-  --color-border:         #8b6914;
+  --color-body-bg:        #0c0801;
+
+  --color-bg:             #0d0a04;
+  --color-surface:        #171209;
+  --color-border:         #7a5c14;
+
   --color-accent:         #cc1100;
   --color-accent2:        #d4a017;
-  --color-text-primary:   #f0e8d0;
-  --color-text-secondary: #b8a878;
+
+  --color-text-primary:   #e8d8a8;
+  --color-text-secondary: #8a7040;
 
   --font-display: 'UnifrakturMaguntia', cursive;
   --font-body:    'Special Elite', cursive;
   --font-mono:    'Courier Prime', monospace;
 
-  --radius-card:  0px;
-  --radius-btn:   0px;
+  --radius-card: 1px;
+  --radius-btn:  0px;
+
+  --shadow-card:
+    0 0 0 1px rgba(122, 92, 20, 0.6),
+    inset 0 0 0 1px rgba(212, 160, 23, 0.08),
+    2px 5px 18px rgba(0, 0, 0, 0.92);
+
+  --glow-accent:  0 0 8px rgba(204, 17, 0, 0.8),  0 0 18px rgba(204, 17, 0, 0.4);
+  --glow-accent2: 0 0 6px rgba(212, 160, 23, 0.7), 0 0 14px rgba(212, 160, 23, 0.3);
+
   --visualizer-style: 'radial';
 }
 
@@ -105,13 +175,16 @@ html, body, #root {
 }
 
 body {
-  background-color: #0a0a0a;
+  background-color: var(--color-body-bg, #0a0a0a);
   color: var(--color-text-primary);
   font-family: var(--font-body);
   overscroll-behavior: none;
+  transition: background-color 0.45s ease;
 }
 
-/* Scrollable containers */
+/* ============================================================
+   SCROLLABLE CONTAINERS
+   ============================================================ */
 .scroll-x {
   overflow-x: auto;
   overflow-y: hidden;
@@ -120,7 +193,6 @@ body {
   scroll-snap-type: x mandatory;
 }
 .scroll-x::-webkit-scrollbar { display: none; }
-/* Exclude aria-hidden spacer divs from snap so they don't create bogus snap targets */
 .scroll-x > *:not([aria-hidden]) {
   scroll-snap-align: start;
 }
@@ -134,10 +206,10 @@ body {
 .scroll-y::-webkit-scrollbar { display: none; }
 
 /* ============================================================
-   MARQUEE ANIMATION (Upgrade 5)
+   MARQUEE ANIMATION
    ============================================================ */
 @keyframes marquee {
-  0% { transform: translateX(0%); }
+  0%   { transform: translateX(0%); }
   100% { transform: translateX(-100%); }
 }
 
@@ -153,7 +225,7 @@ body {
 }
 
 /* ============================================================
-   EQ SLIDER STYLING (Upgrade 13)
+   EQ SLIDER STYLING
    ============================================================ */
 input[type="range"].eq-slider {
   -webkit-appearance: none;
@@ -167,7 +239,7 @@ input[type="range"].eq-slider {
 }
 
 input[type="range"].eq-slider::-webkit-slider-runnable-track {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   width: 4px;
 }
@@ -183,7 +255,7 @@ input[type="range"].eq-slider::-webkit-slider-thumb {
 }
 
 input[type="range"].eq-slider::-moz-range-track {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   width: 4px;
 }
@@ -194,4 +266,265 @@ input[type="range"].eq-slider::-moz-range-thumb {
   border-radius: 50%;
   background: var(--color-accent);
   border: none;
+}
+
+/* Cassette: dark track visible on beige */
+[data-skin="cassette"] input[type="range"].eq-slider::-webkit-slider-runnable-track {
+  background: rgba(0, 0, 0, 0.18);
+}
+[data-skin="cassette"] input[type="range"].eq-slider::-moz-range-track {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+/* ============================================================
+   SKIN 1 · CASSETTE — Surface & effect overrides
+   ============================================================ */
+
+/* Physical raised-panel surfaces */
+[data-skin="cassette"] .bg-surface {
+  box-shadow: var(--shadow-card);
+}
+
+/* Orange LED bleed on accent fills (play button etc.) */
+[data-skin="cassette"] .bg-accent {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 200, 120, 0.45),
+    inset 0 -2px 0 rgba(80, 25, 0, 0.45),
+    var(--glow-accent),
+    0 5px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* LED orange text glow */
+[data-skin="cassette"] .text-accent {
+  text-shadow: 0 0 8px rgba(255, 85, 0, 0.65), 0 0 16px rgba(255, 60, 0, 0.3);
+}
+
+/* Hardware button physical press depression */
+[data-skin="cassette"] button:active {
+  transform: translateY(1px);
+  filter: brightness(0.93);
+  transition: transform 0.05s, filter 0.05s;
+}
+
+/* ── Film grain animated overlay ─────────────────────────── */
+[data-skin="cassette"] body::before {
+  content: '';
+  position: fixed;
+  /* Oversized so animation translation never shows edges */
+  inset: -60%;
+  width: 220%;
+  height: 220%;
+  pointer-events: none;
+  z-index: 99990;
+  opacity: 0.042;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 0.18s steps(1) infinite;
+}
+
+@keyframes grain-shift {
+  0%   { transform: translate(0,    0);   }
+  11%  { transform: translate(-3%, -2%);  }
+  22%  { transform: translate( 2%,  3%);  }
+  33%  { transform: translate(-1%,  4%);  }
+  44%  { transform: translate( 4%, -1%);  }
+  55%  { transform: translate(-2%,  2%);  }
+  66%  { transform: translate( 1%, -4%);  }
+  77%  { transform: translate(-3%,  3%);  }
+  88%  { transform: translate( 3%, -2%);  }
+}
+
+/* ============================================================
+   SKIN 2 · ACIDGRAFIX — Surface & effect overrides
+   ============================================================ */
+
+/* Neon green border glow + asymmetric thickness */
+[data-skin="acidgrafix"] .bg-surface {
+  box-shadow: var(--shadow-card);
+  border-width: 1px 2px 1px 1px;
+}
+
+/* Acid green text glow */
+[data-skin="acidgrafix"] .text-accent {
+  text-shadow: var(--glow-accent);
+}
+
+/* Neon fill glow on accent buttons */
+[data-skin="acidgrafix"] .bg-accent {
+  box-shadow:
+    inset 0 1px 0 rgba(180, 255, 200, 0.22),
+    var(--glow-accent),
+    0 4px 10px rgba(0, 0, 0, 0.85);
+}
+
+/* Hot pink glow on accent2 */
+[data-skin="acidgrafix"] .text-accent2 {
+  text-shadow: var(--glow-accent2);
+}
+
+/* ── CRT scanline overlay ─────────────────────────────────── */
+[data-skin="acidgrafix"] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99990;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent    0px,
+    transparent    3px,
+    rgba(0, 255, 65, 0.016) 3px,
+    rgba(0, 255, 65, 0.016) 4px
+  );
+}
+
+/* ============================================================
+   SKIN 3 · METALHEART — Surface & effect overrides
+   ============================================================ */
+
+/* Radial chrome highlight on every surface panel */
+[data-skin="metalheart"] .bg-surface {
+  background-color: var(--color-surface);
+  background-image:
+    radial-gradient(ellipse at 22% 14%, rgba(130, 180, 255, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 82% 88%, rgba(79, 195, 247, 0.05) 0%, transparent 50%);
+  box-shadow: var(--shadow-card);
+}
+
+/* Icy blue text glow */
+[data-skin="metalheart"] .text-accent {
+  text-shadow: var(--glow-accent);
+}
+
+/* Chrome play button — glossy radial highlight */
+[data-skin="metalheart"] .bg-accent {
+  background-color: var(--color-accent);
+  background-image:
+    radial-gradient(ellipse at 38% 28%, rgba(255, 255, 255, 0.22) 0%, transparent 60%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    var(--glow-accent),
+    0 5px 14px rgba(0, 0, 0, 0.7);
+}
+
+/* ── Wireframe vector grid overlay ───────────────────────── */
+[data-skin="metalheart"] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99990;
+  opacity: 0.032;
+  background-image:
+    linear-gradient(rgba(79, 195, 247, 0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 195, 247, 0.6) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* ============================================================
+   SKIN 4 · FUTURE MEDIEVAL — Surface & effect overrides
+   ============================================================ */
+
+/* Parchment candlelight bleed on surfaces */
+[data-skin="medieval"] .bg-surface {
+  background-color: var(--color-surface);
+  background-image:
+    radial-gradient(ellipse at 22% 18%, rgba(212, 160, 23, 0.07) 0%, transparent 65%);
+  box-shadow: var(--shadow-card);
+}
+
+/* Crimson ember text glow */
+[data-skin="medieval"] .text-accent {
+  text-shadow: var(--glow-accent);
+}
+
+/* Gold shimmer on accent2 text */
+[data-skin="medieval"] .text-accent2 {
+  text-shadow: var(--glow-accent2);
+}
+
+/* Blood-red glow on play button */
+[data-skin="medieval"] .bg-accent {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 100, 80, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    var(--glow-accent),
+    0 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* ── Vignette + warm amber rim ────────────────────────────── */
+[data-skin="medieval"] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99990;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 42%, rgba(0, 0, 0, 0.58) 100%);
+}
+
+/* ============================================================
+   EQ MICRO-INTERACTIONS (per skin, triggered by data-ticking)
+   ============================================================ */
+
+/* Cassette: mechanical 7-segment counter tick */
+[data-skin="cassette"] .eq-db-value[data-ticking] {
+  animation: mech-tick 0.09s steps(2, end) forwards;
+}
+@keyframes mech-tick {
+  0%   { opacity: 0.15; transform: translateY(-3px); filter: blur(1px); }
+  55%  { opacity: 0.75; transform: translateY(0);    filter: none;      }
+  100% { opacity: 1;    transform: translateY(0);    filter: none;      }
+}
+
+/* Acidgrafix: liquid glitch matrix flash */
+[data-skin="acidgrafix"] .eq-db-value[data-ticking] {
+  animation: glitch-flash 0.13s steps(4, end) forwards;
+}
+@keyframes glitch-flash {
+  0%   { color: #ff2d78; text-shadow: 2px 0 #00ff41, -2px 0 #ff2d78; transform: skewX(-8deg);  }
+  25%  { color: #00ff41; text-shadow: -2px 0 #ff2d78, 2px 0 #00ff41; transform: skewX( 4deg);  }
+  50%  { color: #ffffff; text-shadow: 1px 0 #00ff41, -1px 0 #ff2d78; transform: skewX( 0deg);  }
+  75%  { color: #00ff41; text-shadow: 0 0 6px #00ff41;               transform: skewX( 0deg);  }
+  100% { color: var(--color-accent); text-shadow: var(--glow-accent); transform: skewX( 0deg);  }
+}
+
+/* Metalheart: liquid mercury blob morph */
+[data-skin="metalheart"] .eq-db-value[data-ticking] {
+  animation: mercury-morph 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes mercury-morph {
+  0%   { transform: scaleX(1.45) scaleY(0.55); opacity: 0.45; filter: blur(2px);    }
+  55%  { transform: scaleX(0.88) scaleY(1.18); opacity: 0.9;  filter: blur(0.4px);  }
+  100% { transform: scaleX(1)    scaleY(1);    opacity: 1;    filter: none;          }
+}
+
+/* Medieval: heavy stiff mechanical clack */
+[data-skin="medieval"] .eq-db-value[data-ticking] {
+  animation: mech-clack 0.07s steps(1, end) forwards;
+}
+@keyframes mech-clack {
+  0%   { opacity: 0;   transform: translateY(4px)  scaleY(0.55); filter: blur(1px); }
+  60%  { opacity: 0.9; transform: translateY(-1px) scaleY(1.05); filter: none;      }
+  100% { opacity: 1;   transform: translateY(0)    scaleY(1);    filter: none;      }
+}
+
+/* ============================================================
+   CINEMATIC BLINK — 150ms CRT flash on theme swap
+   ============================================================ */
+[data-blinking] #iphone-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 99999;
+  border-radius: 38px;
+  pointer-events: none;
+  background: white;
+  animation: crt-flash 0.3s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+@keyframes crt-flash {
+  0%   { opacity: 0;    }
+  28%  { opacity: 0.96; }
+  58%  { opacity: 0.72; }
+  100% { opacity: 0;    }
 }

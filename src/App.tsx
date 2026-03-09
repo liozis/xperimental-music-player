@@ -37,10 +37,14 @@ export default function App() {
   return (
     <SkinProvider>
       <PlayerProvider>
-        {/* Full-viewport dark backdrop */}
-        <div className="min-h-screen w-full flex items-center justify-center bg-neutral-950">
-          {/* iPhone 15 Pro Max device shell */}
+        {/* Full-viewport backdrop — color tracks active skin */}
+        <div
+          className="min-h-screen w-full flex items-center justify-center transition-colors duration-500"
+          style={{ backgroundColor: 'var(--color-body-bg, #0a0a0a)' }}
+        >
+          {/* iPhone 15 Pro Max device shell — id used by cinematic blink */}
           <div
+            id="iphone-shell"
             className="relative overflow-hidden rounded-[40px] border border-white/10"
             style={{ width: 430, height: 932 }}
           >

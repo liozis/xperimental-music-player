@@ -15,8 +15,18 @@ export function SkinProvider({ children }: { children: ReactNode }) {
   });
 
   const setSkin = (s: SkinId) => {
-    setSkinState(s);
-    localStorage.setItem('xp-skin', s);
+    // ── Cinematic blink: CRT flash masks the CSS variable repaint ──
+    // data-blinking on <html> triggers ::after flash overlay on #iphone-shell
+    document.documentElement.setAttribute('data-blinking', 'true');
+    // Switch skin variables at the peak of the flash (75ms = halfway through 150ms blink)
+    setTimeout(() => {
+      setSkinState(s);
+      localStorage.setItem('xp-skin', s);
+    }, 75);
+    // Remove flag after full 300ms animation completes
+    setTimeout(() => {
+      document.documentElement.removeAttribute('data-blinking');
+    }, 320);
   };
 
   useEffect(() => {

@@ -845,14 +845,14 @@ input[type="range"].eq-slider::-moz-range-thumb {
    EQ MICRO-INTERACTIONS (per skin, triggered by data-ticking)
    ============================================================ */
 
-/* Cassette: mechanical 7-segment counter tick */
+/* Cassette: LCD text-only tick — container stays completely static, only text color pulses */
 [data-skin="cassette"] .eq-db-value[data-ticking] {
-  animation: mech-tick 0.09s steps(2, end) forwards;
+  animation: cassette-lcd-tick 0.10s steps(2, end) forwards;
 }
-@keyframes mech-tick {
-  0%   { opacity: 0.15; transform: translateY(-3px); filter: blur(1px); }
-  55%  { opacity: 0.75; transform: translateY(0);    filter: none;      }
-  100% { opacity: 1;    transform: translateY(0);    filter: none;      }
+@keyframes cassette-lcd-tick {
+  0%   { color: rgba(164, 198, 57, 0.25); text-shadow: none; }
+  55%  { color: rgba(164, 198, 57, 0.80); text-shadow: 0 0 2px rgba(164, 198, 57, 0.3); }
+  100% { color: #A4C639; text-shadow: none; }
 }
 
 /* Acidgrafix: liquid glitch matrix flash */
@@ -1278,16 +1278,17 @@ input[type="range"].eq-slider::-moz-range-thumb {
   transition: transform 0.06s ease, box-shadow 0.06s ease;
 }
 
-/* Active chip: sapphire-lit chrome dome — lighter for legibility */
+/* Active chip: sapphire-lit chrome dome — dark navy text, max contrast */
 [data-skin="metalheart"] .filter-chip.bg-accent {
   background: radial-gradient(circle at 30% 28%,
-    rgba(255, 255, 255, 0.90) 0%,
-    rgba(140, 195, 255, 0.85) 30%,
-    rgba(60,  130, 220, 0.90) 60%,
-    rgba(20,   80, 170, 0.95) 100%
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(160, 210, 255, 0.88) 30%,
+    rgba(80,  150, 230, 0.90) 60%,
+    rgba(40,  100, 190, 0.95) 100%
   );
-  color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 20, 70, 0.70);
+  color: #061428 !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
   box-shadow:
     inset  2px  2px 4px rgba(255, 255, 255, 0.70),
     inset -1px -1px 3px rgba(0,   0,   0,   0.30),
@@ -2223,21 +2224,24 @@ input[type="range"].pitch-slider::-moz-range-thumb {
 
 /* ── DSEG14 font for EQ dB readouts — colors match Search Bar ── */
 [data-skin="cassette"] .eq-db-value {
-  font-family: 'DSEG14 Classic', monospace !important;
-  font-size: 9px !important;
+  font-family: 'DSEG14 Classic', 'VT323', monospace !important;
+  font-size: 11px !important;
   background: #4D5D53 !important;
   color: #A4C639 !important;
-  padding: 1px 3px;
+  padding: 2px 3px;
   border-radius: 2px;
   border: 1px solid #3d4d43 !important;
   box-shadow:
     inset 1px 1px 3px rgba(0, 0, 0, 0.45),
     0 1px 0 rgba(255, 255, 255, 0.15);
   letter-spacing: 0.02em;
-  width: 36px !important;   /* fixed width — no layout shift when digits change */
+  width: 42px !important;   /* fixed width — no layout shift when digits change */
   min-width: unset !important;
   text-align: center;
+  /* Static container: contain isolates repaints to text-only, prevents background flicker */
+  contain: layout style paint;
   transform: translateZ(0); /* GPU layer — prevents repaint jitter on drag */
+  will-change: color;       /* only text color animates, nothing else */
 }
 
 /* ── Library chips — vintage retro PC-case gray + colored LED ── */
@@ -2410,7 +2414,8 @@ input[type="range"].pitch-slider::-moz-range-thumb {
 [data-skin="cassette"] input[type="range"].eq-slider {
   writing-mode: vertical-lr;
   direction: rtl;
-  -webkit-appearance: slider-vertical;
+  -webkit-appearance: none !important;
+  appearance: none !important;
   width: 28px;
   height: 90px;
   background: transparent;
@@ -2509,9 +2514,12 @@ input[type="range"].pitch-slider::-moz-range-thumb {
   box-shadow: 0 0 6px #FF00FF, 0 0 14px rgba(255, 0, 255, 0.90), 0 0 28px rgba(255, 0, 255, 0.45) !important;
 }
 
-/* ── Now Playing: extra bottom padding so play btn doesn't touch edge ── */
+/* ── Now Playing: lift play button away from container edge ── */
 [data-skin="acidgrafix"] .bg-surface.flex.flex-col .pb-3 {
   padding-bottom: 1.25rem !important;
+}
+[data-skin="acidgrafix"] .play-pause-btn {
+  transform: translateY(-3px);
 }
 
 /* ── Spiky chrome corners: removed — clean look ──────────── */
@@ -2521,21 +2529,21 @@ input[type="range"].pitch-slider::-moz-range-thumb {
    METALHEART — MULTI-SKIN OVERHAUL
    ============================================================ */
 
-/* ── Chrome headers: gradient text, softened depth ────────────── */
+/* ── Chrome headers: navy-steel gradient text, high legibility ── */
 [data-skin="metalheart"] .screen-header h1 {
   font-weight: 800 !important;
   background: linear-gradient(180deg,
-    #c0c8d4 0%,
-    #8A9198 35%,
-    #4a5260 65%,
-    #1a2030 100%
+    #7a8da8 0%,
+    #4a5e7a 30%,
+    #2a3e58 60%,
+    #0e1e35 100%
   ) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
   filter:
-    drop-shadow(0  1px 0   rgba(255, 255, 255, 0.45))
-    drop-shadow(0  2px 3px rgba(0, 0, 0, 0.55)) !important;
+    drop-shadow(0  1px 0   rgba(255, 255, 255, 0.50))
+    drop-shadow(0  2px 3px rgba(0, 0, 0, 0.45)) !important;
   letter-spacing: 0.02em !important;
 }
 
@@ -2646,16 +2654,20 @@ input[type="range"].pitch-slider::-moz-range-thumb {
     0 3px 8px rgba(0, 0, 0, 0.65) !important;
 }
 
-/* ── Metalheart: deeply recessed search bar ─────────────── */
+/* ── Metalheart: brushed-steel recessed search bar ─────── */
 [data-skin="metalheart"] .bg-surface.py-2\.5,
 [data-skin="metalheart"] .bg-surface.rounded-xl {
-  background: rgba(0, 4, 20, 0.92) !important;
+  background: linear-gradient(180deg,
+    rgba(155, 168, 188, 0.88) 0%,
+    rgba(175, 188, 208, 0.92) 45%,
+    rgba(165, 178, 198, 0.90) 100%
+  ) !important;
   box-shadow:
-    inset 0 3px 14px rgba(0, 0, 0, 0.90),
-    inset 0 1px 5px rgba(0, 0, 0, 0.75),
-    inset 0 -1px 0 rgba(41, 182, 246, 0.10),
-    0 1px 0 rgba(100, 150, 220, 0.18) !important;
-  border: 1px solid rgba(41, 182, 246, 0.18) !important;
+    inset 0 2px 8px rgba(0, 0, 0, 0.40),
+    inset 0 1px 3px rgba(0, 0, 0, 0.30),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.55),
+    0 1px 0 rgba(255, 255, 255, 0.70) !important;
+  border: 1px solid rgba(80, 100, 140, 0.50) !important;
 }
 
 /* ── Metalheart: genre/popular tile cover art opacity boost ── */
@@ -2694,5 +2706,13 @@ input[type="range"].pitch-slider::-moz-range-thumb {
 /* ── Cassette: search/genre tile cover art opacity boost ────── */
 [data-skin="cassette"] img.opacity-50 {
   opacity: 0.80 !important;
+}
+
+/* ── Cassette: subtle warm stroke on Popular genre banner tiles ── */
+[data-skin="cassette"] .grid .relative.overflow-hidden {
+  box-shadow:
+    inset 0 0 0 1px rgba(199, 183, 157, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    0 1px 3px rgba(0, 0, 0, 0.18) !important;
 }
 

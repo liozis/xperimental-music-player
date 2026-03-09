@@ -8,7 +8,10 @@ const EQ_BANDS = [
 
 function toDB(v: number): string {
   const db = ((v / 100) * 24 - 12).toFixed(0);
-  return Number(db) > 0 ? `+${db}` : db;
+  const num = Number(db);
+  if (num > 0) return `+${db}`;
+  if (num === 0) return '\u00A00';   // non-breaking space prefix aligns with +/- signs
+  return db;                          // negative already has '-' prefix
 }
 
 interface EqualizerCardProps {

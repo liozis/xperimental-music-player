@@ -8,15 +8,13 @@ const downloadedWithArt = DOWNLOADED_ITEMS.map(item => ({
 }));
 import { TrackRow } from '../components/TrackRow';
 import { usePlayer } from '../context/PlayerContext';
-import { useNavigate } from 'react-router-dom';
 
 type Filter = 'Playlists' | 'Albums' | 'Artists' | 'Downloaded';
 const FILTERS: Filter[] = ['Playlists', 'Albums', 'Artists', 'Downloaded'];
 
 export function LibraryScreen() {
   const [active, setActive] = useState<Filter>('Albums');
-  const { play } = usePlayer();
-  const navigate = useNavigate();
+  const { play, openPlayer } = usePlayer();
 
   return (
     <div className="scroll-y h-full pb-28">
@@ -63,7 +61,7 @@ export function LibraryScreen() {
           {PLAYLISTS.map(pl => (
             <button
               key={pl.id}
-              onClick={() => { play(TRACKS[0]); navigate('/player'); }}
+              onClick={() => { play(TRACKS[0]); openPlayer(); }}
               className="active:opacity-70 transition-opacity text-left"
             >
               <img src={pl.coverUrl} alt={pl.name} className="aspect-square rounded-lg object-cover w-full" />
@@ -80,7 +78,7 @@ export function LibraryScreen() {
           {ALBUMS.map(album => (
             <button
               key={album.id}
-              onClick={() => { play(TRACKS[0]); navigate('/player'); }}
+              onClick={() => { play(TRACKS[0]); openPlayer(); }}
               className="flex items-center gap-3 w-full px-4 py-3 active:opacity-70 transition-opacity"
             >
               <img src={album.coverUrl} alt={album.title} className="w-[52px] h-[52px] rounded object-cover flex-shrink-0" />
@@ -101,7 +99,7 @@ export function LibraryScreen() {
           {[...ARTISTS].sort((a, b) => a.name.localeCompare(b.name)).map(artist => (
             <button
               key={artist.id}
-              onClick={() => { play(TRACKS[0]); navigate('/player'); }}
+              onClick={() => { play(TRACKS[0]); openPlayer(); }}
               className="flex items-center gap-3 w-full px-4 py-3 active:opacity-70 transition-opacity"
             >
               <img
@@ -124,7 +122,7 @@ export function LibraryScreen() {
           {downloadedWithArt.map(item => (
             <button
               key={item.id}
-              onClick={() => { play(TRACKS[0]); navigate('/player'); }}
+              onClick={() => { play(TRACKS[0]); openPlayer(); }}
               className="active:opacity-70 transition-opacity text-left"
             >
               <img

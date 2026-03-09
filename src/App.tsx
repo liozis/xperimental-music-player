@@ -1,6 +1,6 @@
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { SkinProvider } from './context/SkinContext';
-import { PlayerProvider } from './context/PlayerContext';
+import { PlayerProvider, usePlayer } from './context/PlayerContext';
 import { BottomNav } from './components/BottomNav';
 import { MiniPlayer } from './components/MiniPlayer';
 import { StatusBar } from './components/StatusBar';
@@ -11,8 +11,9 @@ import { LibraryScreen } from './screens/LibraryScreen';
 import { PlayerScreen }  from './screens/PlayerScreen';
 
 function AppRoutes() {
-  const { pathname } = useLocation();
-  const showNav = pathname !== '/player';
+  const { showPlayer } = usePlayer();
+  // MiniPlayer and BottomNav hide whenever the full player overlay is visible
+  const showNav = !showPlayer;
 
   return (
     /* flex-col locks StatusBar at top, content area fills remaining height */
@@ -24,10 +25,11 @@ function AppRoutes() {
           <Route path="/"        element={<HomeScreen />} />
           <Route path="/search"  element={<SearchScreen />} />
           <Route path="/library" element={<LibraryScreen />} />
-          <Route path="/player"  element={<PlayerScreen />} />
         </Routes>
         {showNav && <MiniPlayer />}
         {showNav && <BottomNav />}
+        {/* PlayerScreen lives outside Routes — persistent overlay driven by showPlayer state */}
+        <PlayerScreen />
       </div>
     </div>
   );

@@ -1,14 +1,12 @@
 import type { Track } from '../data/mockData';
 import { usePlayer } from '../context/PlayerContext';
-import { useNavigate } from 'react-router-dom';
 
 export function TrackCard({ track }: { track: Track }) {
-  const { play } = usePlayer();
-  const navigate = useNavigate();
+  const { play, openPlayer } = usePlayer();
 
   return (
     <button
-      onClick={() => { play(track); navigate('/player'); }}
+      onClick={() => { play(track); openPlayer(); }}
       className="flex-shrink-0 flex flex-col gap-2 active:opacity-70 transition-opacity min-w-[140px] w-[140px]"
     >
       <img

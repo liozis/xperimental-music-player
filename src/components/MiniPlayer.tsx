@@ -1,18 +1,15 @@
 import { usePlayer } from '../context/PlayerContext';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { MarqueeText } from './MarqueeText';
 
 export function MiniPlayer() {
-  const { currentTrack, isPlaying, togglePlay } = usePlayer();
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const { currentTrack, isPlaying, togglePlay, openPlayer } = usePlayer();
 
-  if (!currentTrack || pathname === '/player') return null;
+  if (!currentTrack) return null;
 
   return (
-    <div className="absolute left-0 right-0 bottom-14 bg-surface border-t border-border z-40">
+    <div className="mini-player absolute left-0 right-0 bottom-14 bg-surface border-t border-border z-40">
       <div className="flex items-center gap-3 px-4 py-2">
-        <button onClick={() => navigate('/player')} className="flex items-center gap-3 flex-1 min-w-0">
+        <button onClick={openPlayer} className="flex items-center gap-3 flex-1 min-w-0">
           <img
             src={currentTrack.coverUrl}
             alt={currentTrack.title}

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { TRACKS, ARTISTS, PLAYLISTS } from '../data/mockData';
 import { TrackRow } from '../components/TrackRow';
 import { usePlayer } from '../context/PlayerContext';
-import { useNavigate } from 'react-router-dom';
 
 const RECENT_SEARCHES = [
   { id: 'r1', type: 'track',    label: TRACKS[1].title,   sub: TRACKS[1].artist,                         img: TRACKS[1].coverUrl,   round: false },
@@ -22,8 +21,7 @@ const POPULAR_TILES = [
 
 export function SearchScreen() {
   const [query, setQuery] = useState('');
-  const { play } = usePlayer();
-  const navigate = useNavigate();
+  const { play, openPlayer } = usePlayer();
 
   const results = query.length > 1
     ? TRACKS.filter(t =>
@@ -88,7 +86,7 @@ export function SearchScreen() {
                 onClick={() => {
                   if (item.type === 'track') {
                     const track = TRACKS.find(t => t.title === item.label);
-                    if (track) { play(track); navigate('/player'); }
+                    if (track) { play(track); openPlayer(); }
                   }
                 }}
                 className="flex items-center gap-3 w-full px-4 py-2.5 active:opacity-70 transition-opacity"

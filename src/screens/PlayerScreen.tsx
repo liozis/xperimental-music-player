@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { usePlayer } from '../context/PlayerContext';
 import { TRACKS } from '../data/mockData';
 import { MainPlayerCard } from '../components/MainPlayerCard';
@@ -7,8 +6,11 @@ import { EqualizerCard } from '../components/EqualizerCard';
 import { QueueCard } from '../components/QueueCard';
 
 export function PlayerScreen() {
-  const { currentTrack, isPlaying, togglePlay, next, prev, progress, setProgress, play, queue } = usePlayer();
-  const navigate = useNavigate();
+  const {
+    currentTrack, isPlaying, togglePlay, next, prev,
+    progress, setProgress, play, queue,
+    showPlayer, closePlayer,
+  } = usePlayer();
 
   const [eqValues, setEqValues] = useState<Record<string, number>>({
     'eq-60hz': 60, 'eq-230hz': 45, 'eq-910hz': 50, 'eq-4khz': 40, 'eq-14khz': 55,
@@ -17,21 +19,30 @@ export function PlayerScreen() {
   const [repeat, setRepeat]   = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
-  // Slide-in on mount
+  // Drive slide-in/out via showPlayer from context (no routing dependency)
   const [visible, setVisible] = useState(false);
+
   useEffect(() => {
-    const raf = requestAnimationFrame(() => setVisible(true));
-    return () => cancelAnimationFrame(raf);
-  }, []);
+    if (showPlayer) {
+      // RAF ensures component is in DOM at translateY(100%) before animating to 0
+      const raf = requestAnimationFrame(() => setVisible(true));
+      return () => cancelAnimationFrame(raf);
+    } else {
+      setVisible(false);
+    }
+  }, [showPlayer]);
 
   // Reset like when track changes
   useEffect(() => { setIsLiked(false); }, [currentTrack?.id]);
 
   const dismiss = () => {
     setVisible(false);
-    setTimeout(() => navigate(-1), 300);
+    // Wait for slide-out animation before unmounting
+    setTimeout(() => closePlayer(), 300);
   };
 
+  // Not shown and not mid-animation — stay out of DOM
+  if (!showPlayer && !visible) return null;
   if (!currentTrack) return null;
 
   // Up Next: next 4 tracks wrapping around queue

@@ -1,15 +1,13 @@
 import type { Track } from '../data/mockData';
 import { usePlayer } from '../context/PlayerContext';
-import { useNavigate } from 'react-router-dom';
 
 export function TrackRow({ track }: { track: Track }) {
-  const { play, currentTrack } = usePlayer();
-  const navigate = useNavigate();
+  const { play, currentTrack, openPlayer } = usePlayer();
   const isActive = currentTrack?.id === track.id;
 
   const handleTap = () => {
     play(track);
-    navigate('/player');
+    openPlayer();
   };
 
   return (

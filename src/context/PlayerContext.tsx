@@ -7,12 +7,15 @@ interface PlayerContextType {
   isPlaying: boolean;
   queue: Track[];
   progress: number;
+  showPlayer: boolean;
   play: (track: Track) => void;
   togglePlay: () => void;
   next: () => void;
   prev: () => void;
   setProgress: (p: number) => void;
   audioRef: React.RefObject<HTMLAudioElement>;
+  openPlayer: () => void;
+  closePlayer: () => void;
 }
 
 const PlayerContext = createContext<PlayerContextType>({} as PlayerContextType);
@@ -21,8 +24,12 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(TRACKS[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [showPlayer, setShowPlayer] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const queue = TRACKS;
+
+  const openPlayer  = () => setShowPlayer(true);
+  const closePlayer = () => setShowPlayer(false);
 
   const play = (track: Track) => {
     setCurrentTrack(track);
@@ -60,7 +67,11 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <PlayerContext.Provider value={{ currentTrack, isPlaying, queue, progress, play, togglePlay, next, prev, setProgress, audioRef }}>
+    <PlayerContext.Provider value={{
+      currentTrack, isPlaying, queue, progress, showPlayer,
+      play, togglePlay, next, prev, setProgress, audioRef,
+      openPlayer, closePlayer,
+    }}>
       <audio ref={audioRef} />
       {children}
     </PlayerContext.Provider>

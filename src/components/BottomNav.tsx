@@ -35,7 +35,7 @@ function LibraryIcon() {
 
 export function BottomNav() {
   return (
-    <nav className="absolute bottom-0 left-0 right-0 bg-surface border-t border-border z-50">
+    <nav className="nav-bar absolute bottom-0 left-0 right-0 bg-surface border-t border-border z-50">
       <div className="flex justify-around items-center h-14">
         {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
           <NavLink

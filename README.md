@@ -178,6 +178,34 @@ src/
 
 ---
 
+## A Design Experiment: From Static Mockups to High-Fidelity Soul
+
+As a **Product Designer**, I've spent years crafting high-fidelity mockups in Figma, often spending 4–5 weeks on a single project just to show a *glimpse* of interaction. Usually, by the time a design reaches development, the most "tactile" and "expressive" details are simplified due to technical constraints or timeline pressures.
+
+**This project is my breakthrough.**
+
+### The Vision: Reviving the Soul of UI
+
+I deeply miss the color, vitality, and sheer personality of early UI design. Modern interfaces have become sterile and overly standardized. This experiment was my playground to realize a design fantasy: bringing back the tactile, maximalist, and "soulful" energy of the early 2000s software era.
+
+This project is a direct **tribute to Winamp skin culture**—a time when software was an extension of your personality, not just a utility.
+
+### The Power of AI-Native Design
+
+By adopting an **AI-Native workflow** with Claude, I completely bypassed the "static design" phase and moved directly into building a fully functional product. What would have normally taken me over a month to prototype—with far less realistic animations—was achieved in a fraction of the time.
+
+- **Zero Compromise**: I didn't have to simplify my vision. The extreme skeuomorphism, complex gradients, and hardware-inspired layouts were implemented exactly as I imagined them, without "dumbing down" the UI for easier coding.
+- **Designer as Creator**: With AI, the distance between a designer's raw vision and a functional, polished output has vanished. I am no longer just drawing buttons; I am engineering an entire sensory experience.
+
+### Visual & Aesthetic References
+
+This study was heavily influenced by the incredible archives of:
+
+- **[CARI (Consumer Aesthetics Research Institute)](https://cari.institute/aesthetics)**: My primary guide for defining aesthetics like Metalheart, Acidgrafix, and Future Medieval.
+- **[The Winamp Skin Museum](https://skins.webamp.org/)**: A frequent source of inspiration during development, reminding me of how fun and expressive software used to be.
+
+---
+
 ## 📜 License
 
 MIT License - Feel free to fork, modify, and deploy!

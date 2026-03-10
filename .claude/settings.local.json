@@ -24,7 +24,15 @@
       "Bash(git init)",
       "Bash(git add -A)",
       "Bash(git commit:*)",
-      "Bash(git add src/data/mockData.ts)"
+      "Bash(git add src/data/mockData.ts)",
+      "Bash(git add src/)",
+      "Bash(git checkout e5ad349 -- src/screens/PlayerScreen.tsx src/components/MainPlayerCard.tsx src/components/EqualizerCard.tsx)",
+      "Bash(git add src/index.css)",
+      "Bash(git revert HEAD --no-edit)",
+      "Bash(git add index.html src/App.tsx src/components/BottomNav.tsx src/components/MainPlayerCard.tsx src/components/MiniPlayer.tsx src/index.css src/screens/HomeScreen.tsx)",
+      "Bash(git add src/components/EqualizerCard.tsx src/components/FloatingThemeSwitcher.tsx src/components/QueueCard.tsx src/index.css)",
+      "Bash(git add src/components/EqualizerCard.tsx src/index.css)",
+      "Bash(git add src/components/MainPlayerCard.tsx src/index.css src/screens/PlayerScreen.tsx)"
     ]
   }
 }

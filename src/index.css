@@ -269,6 +269,227 @@ body {
 }
 
 /* ============================================================
+   AUDIO VISUALIZER — BASE (Unified Segmented Blocks)
+   ============================================================ */
+.visualizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  padding: 4px 2px 0;
+}
+
+.viz-col {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+}
+
+.viz-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.5%;                   /* JS overrides via style.height */
+  /* Universal segmented block pattern: 5px block + 2px gap */
+  background:
+    repeating-linear-gradient(
+      to top,
+      var(--color-accent) 0px,
+      var(--color-accent) 5px,
+      transparent 5px,
+      transparent 7px
+    );
+  border-radius: 0;              /* Rectangular blocks */
+  will-change: height;
+}
+
+.viz-peak {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;                      /* JS overrides via style.bottom */
+  height: 5px;                    /* Matches one segment block height */
+  background: var(--color-accent);
+  border-radius: 0;              /* Rectangular block */
+  opacity: 0;                     /* JS overrides via style.opacity */
+  pointer-events: none;
+  will-change: bottom, opacity;
+}
+
+/* ============================================================
+   AUDIO VISUALIZER — SKIN: MEDIEVAL (Stained Glass Blocks)
+   ============================================================ */
+[data-skin="medieval"] .visualizer-bars {
+  gap: 3px;
+  padding: 6px 4px 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(212,160,23,0.08) 0%, transparent 70%);
+}
+[data-skin="medieval"] .viz-bar {
+  border: 2px solid #1A1A1A;      /* Cast-iron came border */
+}
+[data-skin="medieval"] .viz-peak {
+  border: 1px solid #1A1A1A;
+}
+/* Ruby Red glass blocks */
+[data-skin="medieval"] .viz-col:nth-child(4n+1) .viz-bar {
+  background:
+    repeating-linear-gradient(
+      to top,
+      #cc1100 0px, #cc1100 5px,
+      transparent 5px, transparent 7px
+    );
+  box-shadow: inset 0 0 14px rgba(204,17,0,0.75), 0 0 8px rgba(204,17,0,0.35);
+}
+[data-skin="medieval"] .viz-col:nth-child(4n+1) .viz-peak {
+  background: #cc1100;
+  box-shadow: 0 0 6px rgba(204,17,0,0.9);
+}
+/* Cobalt Blue glass blocks */
+[data-skin="medieval"] .viz-col:nth-child(4n+2) .viz-bar {
+  background:
+    repeating-linear-gradient(
+      to top,
+      #1a4fc0 0px, #1a4fc0 5px,
+      transparent 5px, transparent 7px
+    );
+  box-shadow: inset 0 0 14px rgba(26,79,192,0.75), 0 0 8px rgba(26,79,192,0.35);
+}
+[data-skin="medieval"] .viz-col:nth-child(4n+2) .viz-peak {
+  background: #1a4fc0;
+  box-shadow: 0 0 6px rgba(26,79,192,0.9);
+}
+/* Emerald Green glass blocks */
+[data-skin="medieval"] .viz-col:nth-child(4n+3) .viz-bar {
+  background:
+    repeating-linear-gradient(
+      to top,
+      #188833 0px, #188833 5px,
+      transparent 5px, transparent 7px
+    );
+  box-shadow: inset 0 0 14px rgba(24,136,51,0.75), 0 0 8px rgba(24,136,51,0.35);
+}
+[data-skin="medieval"] .viz-col:nth-child(4n+3) .viz-peak {
+  background: #188833;
+  box-shadow: 0 0 6px rgba(24,136,51,0.9);
+}
+/* Amber Yellow glass blocks */
+[data-skin="medieval"] .viz-col:nth-child(4n) .viz-bar {
+  background:
+    repeating-linear-gradient(
+      to top,
+      #d4a017 0px, #d4a017 5px,
+      transparent 5px, transparent 7px
+    );
+  box-shadow: inset 0 0 14px rgba(212,160,23,0.75), 0 0 8px rgba(212,160,23,0.35);
+}
+[data-skin="medieval"] .viz-col:nth-child(4n) .viz-peak {
+  background: #d4a017;
+  box-shadow: 0 0 6px rgba(212,160,23,0.9);
+}
+
+/* ============================================================
+   AUDIO VISUALIZER — SKIN: CASSETTE (Hardware LED Blocks)
+   ============================================================ */
+[data-skin="cassette"] .visualizer-bars {
+  gap: 3px;
+  background: #1a1614;
+  padding: 6px 4px 2px;
+  border-radius: var(--radius-card);
+}
+[data-skin="cassette"] .viz-bar {
+  background:
+    repeating-linear-gradient(
+      to top,
+      #FF8C00 0px,
+      #FF8C00 5px,
+      #1a1614 5px,
+      #1a1614 7px
+    );
+  box-shadow: 0 0 4px rgba(255,140,0,0.3);
+  opacity: 0.92;
+}
+/* Peak = single unattached LED block */
+[data-skin="cassette"] .viz-peak {
+  background: #FF8C00;
+  box-shadow: 0 0 6px rgba(255,140,0,0.7);
+}
+
+/* ============================================================
+   AUDIO VISUALIZER — SKIN: ACIDGRAFIX (Magenta Blocks)
+   ============================================================ */
+[data-skin="acidgrafix"] .visualizer-bars {
+  gap: 3px;
+  background: #000;
+  padding: 4px 2px 0;
+}
+[data-skin="acidgrafix"] .viz-bar {
+  background:
+    repeating-linear-gradient(
+      to top,
+      #FF00FF 0px,
+      #FF00FF 5px,
+      transparent 5px,
+      transparent 7px
+    );
+  box-shadow: 0 0 8px #FF00FF, 0 0 16px rgba(255,0,255,0.3);
+}
+/* Peak = floating toxic green block with glow */
+[data-skin="acidgrafix"] .viz-peak {
+  background: #39FF14;
+  box-shadow: 0 0 8px #39FF14, 0 0 14px rgba(57,255,20,0.5);
+}
+
+/* ============================================================
+   AUDIO VISUALIZER — SKIN: METALHEART (Chrome Blocks)
+   ============================================================ */
+[data-skin="metalheart"] .visualizer-bars {
+  gap: 2px;
+  padding: 4px 2px 0;
+  background: linear-gradient(180deg, rgba(0,8,32,0.3) 0%, rgba(0,8,32,0.6) 100%);
+}
+[data-skin="metalheart"] .viz-bar {
+  min-width: 6px;
+  /* Chrome gradient provides the color/material */
+  background: linear-gradient(180deg,
+    #FFFFFF  0%,
+    #D1D5DA 18%,
+    #8A9198 38%,
+    #24272B 60%,
+    #9CA3A8 80%,
+    #FFFFFF 100%
+  );
+  /* Segmented mask cuts the chrome into discrete blocks */
+  -webkit-mask-image: repeating-linear-gradient(
+    to top,
+    black 0px, black 5px,
+    transparent 5px, transparent 7px
+  );
+  mask-image: repeating-linear-gradient(
+    to top,
+    black 0px, black 5px,
+    transparent 5px, transparent 7px
+  );
+  box-shadow:
+    inset 2px 0 3px rgba(255,255,255,0.5),
+    inset -2px 0 3px rgba(0,0,0,0.4),
+    inset 0 2px 2px rgba(255,255,255,0.7),
+    0 2px 6px rgba(0,0,0,0.5);
+  border: 1px solid rgba(80,110,160,0.4);
+}
+/* Peak = floating chrome block */
+[data-skin="metalheart"] .viz-peak {
+  background: linear-gradient(180deg, #FFFFFF 0%, #8A9198 50%, #FFFFFF 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 1px 4px rgba(0,0,0,0.5),
+    0 0 6px rgba(0,87,184,0.3);
+  border: 1px solid rgba(80,110,160,0.3);
+}
+
+/* ============================================================
    EQ SLIDER STYLING
    ============================================================ */
 input[type="range"].eq-slider {
@@ -2517,6 +2738,16 @@ input[type="range"].pitch-slider::-moz-range-thumb {
 /* ── Now Playing: extra lift on acidgrafix play button ── */
 [data-skin="acidgrafix"] .play-pause-btn {
   transform: translateY(-3px);
+}
+
+/* ── Shuffle / Repeat toggle buttons: magenta when active, bright green when inactive ── */
+[data-skin="acidgrafix"] .transport-toggle {
+  color: #B2ED32 !important;              /* 100% bright toxic green when OFF */
+  text-shadow: 0 0 8px #B2ED32, 0 0 16px rgba(178, 237, 50, 0.4);
+}
+[data-skin="acidgrafix"] .transport-toggle.is-active {
+  color: #FF00FF !important;              /* Electric Magenta when ON */
+  text-shadow: 0 0 8px #FF00FF, 0 0 16px rgba(255, 0, 255, 0.5);
 }
 
 /* ── Spiky chrome corners: removed — clean look ──────────── */

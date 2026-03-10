@@ -1,4 +1,5 @@
 import type { Track } from '../data/mockData';
+import { AudioVisualizer } from './AudioVisualizer';
 
 interface MainPlayerCardProps {
   currentTrack: Track;
@@ -67,16 +68,18 @@ export function MainPlayerCard({
         </div>
       </div>
 
-      {/* ── Audio Visualizer Placeholder ────────────────────────── */}
+      {/* ── Audio Visualizer ────────────────────────────────────── */}
       <div
         id="visualizer-container"
         aria-label="Audio Visualizer"
-        className="mx-3 mt-3 flex-1 min-h-[80px] border border-dashed border-border bg-bg/60 flex items-center justify-center"
+        className="mx-3 mt-3 flex-1 min-h-[80px] overflow-hidden flex items-end"
         style={{ borderRadius: 'var(--radius-card)' }}
       >
-        <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-textSecondary/40 select-none">
-          [ Audio Visualizer ]
-        </span>
+        <AudioVisualizer
+          isPlaying={isPlaying}
+          progress={progress}
+          trackId={currentTrack.id}
+        />
       </div>
 
       {/* Progress Bar */}
@@ -96,7 +99,7 @@ export function MainPlayerCard({
       <div className="flex items-center justify-between px-8 mt-1 pb-5">
         <button
           onClick={onToggleShuffle}
-          className={`p-2 transition-colors ${shuffle ? 'text-accent' : 'text-textSecondary'}`}
+          className={`transport-toggle p-2 transition-colors ${shuffle ? 'text-accent is-active' : 'text-textSecondary'}`}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="16,3 21,3 21,8"/>
@@ -160,7 +163,7 @@ export function MainPlayerCard({
 
         <button
           onClick={onToggleRepeat}
-          className={`p-2 transition-colors ${repeat ? 'text-accent' : 'text-textSecondary'}`}
+          className={`transport-toggle p-2 transition-colors ${repeat ? 'text-accent is-active' : 'text-textSecondary'}`}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="17,1 21,5 17,9"/>

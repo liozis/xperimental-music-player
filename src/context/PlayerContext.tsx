@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useRef, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useRef, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import type { Track } from '../data/mockData';
 import { TRACKS } from '../data/mockData';
 
@@ -15,7 +16,7 @@ interface PlayerContextType {
   prev: () => void;
   setProgress: (p: number) => void;
   setPitch: (p: number) => void;
-  audioRef: React.RefObject<HTMLAudioElement>;
+  audioRef: React.RefObject<HTMLAudioElement | null>;
   openPlayer: () => void;
   closePlayer: () => void;
 }

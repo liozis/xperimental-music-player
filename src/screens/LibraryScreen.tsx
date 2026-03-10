@@ -6,7 +6,6 @@ const downloadedWithArt = DOWNLOADED_ITEMS.map(item => ({
   ...item,
   coverUrl: ALBUMS.find(a => a.title.toLowerCase() === item.title.toLowerCase())?.coverUrl ?? item.coverUrl,
 }));
-import { TrackRow } from '../components/TrackRow';
 import { usePlayer } from '../context/PlayerContext';
 
 type Filter = 'Playlists' | 'Albums' | 'Artists' | 'Downloaded';
